@@ -1,3 +1,9 @@
-comit 1
-comit 2
-comit test
+structure:
+static/
+     css/
+     javascript/
+
+template/
+     home.html
+
+main.py
