@@ -7,3 +7,6 @@ template/
      home.html
 
 main.py
+
+notes:
+     cannot use ports sub 1024
