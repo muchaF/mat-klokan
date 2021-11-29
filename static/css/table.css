@@ -1,0 +1,26 @@
+form{
+    border-radius: 5px;
+    left: 500px;
+}
+
+.container{
+    display: flex;
+    width: 20%;
+    background-color: #4DED30;
+}
+
+.score{
+    width: 80%;
+    margin-right: 5%;
+    height: 1.5rem;
+    align-self: center;
+    border: 1px solid #454545;
+    border-radius: 2px;
+}
+
+.number{
+    text-align: center;
+    margin-left: 1%;
+    margin-right: 5%;
+    width: 2rem !important;
+}

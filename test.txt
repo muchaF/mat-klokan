@@ -1,7 +1,9 @@
 structure:
 static/
      css/
+          table.css
      javascript/
+          table.js
 
 template/
      home.html

@@ -36,5 +36,12 @@ def userValidation():
           return redirect("/dashboard/"+login)
      return redirect("/login/fail")
 
+@server.route("/submit",methods=['POST'])
+def submit():
+     # print(request.form)
+     for each in request.form:
+          print(each + ". " +request.form[each])
+     return "OK"
+
 if __name__ == "__main__":
      server.run(host='localhost',port=2000,debug=True)
