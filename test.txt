@@ -12,3 +12,4 @@ main.py
 
 notes:
      cannot use ports sub 1024
+     mongoDB - database

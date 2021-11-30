@@ -1,5 +1,5 @@
 from logging import debug
-from flask import Flask, render_template, redirect, request, session
+from flask import Flask, render_template, redirect, request, session, jsonify
 
 admin = {
      "password":"WYSI",
@@ -42,6 +42,10 @@ def submit():
      for each in request.form:
           print(each + ". " +request.form[each])
      return "OK"
+
+@server.route("/getForm",methods=["GET"])
+def getForm():
+     return (jsonify({"name":"Aarush"}),200)
 
 if __name__ == "__main__":
      server.run(host='localhost',port=2000,debug=True)
