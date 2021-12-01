@@ -38,14 +38,14 @@ def userValidation():
 
 @server.route("/submit",methods=['POST'])
 def submit():
-     # print(request.form)
+     print(request.form)
      for each in request.form:
           print(each + ". " +request.form[each])
      return "OK"
 
 @server.route("/getForm",methods=["GET"])
 def getForm():
-     return (jsonify({"name":"Aarush"}),200)
+     return (jsonify({"1":"Aarush","5":"Filip","3":"Radim","9":"Pavel"}),200)
 
 if __name__ == "__main__":
      server.run(host='localhost',port=2000,debug=True)
