@@ -1,13 +1,18 @@
 from logging import debug
 from flask import Flask, render_template, redirect, request, session, jsonify
+import json
 
-admin = {
-     "password":"WYSI",
-     "username":"admin"
+import flask
+users = {
+     "admin":"WYSI",
+     "ZSTGM":"123"
 }
 
 server = Flask("Mat Klokan")
 server.secret_key = 'jf_73j_CER'
+
+userData = json.load(open("database/userData/test.json"))
+
 
 @server.route("/")
 def home():
@@ -30,22 +35,27 @@ def dashboad(user):
 def userValidation():
      login = request.form["login"]
      password = request.form["password"]
-
-     if (password == admin["password"] and login == admin["username"]):
-          session["user"] = login
-          return redirect("/dashboard/"+login)
+     if (login in users):
+          if (password == users[login]):
+               session["user"] = login
+               return redirect("/dashboard/"+login)
      return redirect("/login/fail")
 
 @server.route("/submit",methods=['POST'])
 def submit():
-     print(request.form)
-     for each in request.form:
-          print(each + ". " +request.form[each])
+     if (session["user"] in userData):
+          userData[session["user"]] = request.form.to_dict(flat=False)
+          with open('database/userData/test.json', 'w') as outfile:
+               json.dump(userData, outfile,indent=2)
      return "OK"
 
 @server.route("/getForm",methods=["GET"])
 def getForm():
-     return (jsonify({"1":"Aarush","5":"Filip","3":"Radim","9":"Pavel"}),200)
+     print(session["user"] in userData)
+     if (session["user"] in userData):
+          return (jsonify(userData[session["user"]]),200)
+     return "NOT OK"
+     
 
 if __name__ == "__main__":
      server.run(host='localhost',port=2000,debug=True)

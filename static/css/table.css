@@ -2,21 +2,23 @@ body{
     font-family: sans-serif ;
     background-color: rgb(25, 30, 35);
 }
+
 form{
     border-radius: 5px;
-    background: transparent;
-    border: 1px solid #f2f2f2;
+    background: rgb(22, 34, 46);
+    border: 1px solid #FFF;
     /* background: linear-gradient(0deg, rgb(253,29,29), rgb(255,148,0)); */
     width: 20%;
 }
+
 #heading{
     color: rgb(230, 230, 230);
     float: right;
     margin-right: 1%;
 }
+
 .container{
     display: flex;  
-    
 }
 
 .score{
