@@ -1,4 +1,10 @@
 structure:
+database/
+     userData/
+          # each user has its own file
+     
+     structure.json # contains path and tracks files in userData folder
+
 static/
      css/
           table.css
@@ -11,5 +17,8 @@ template/
 main.py
 
 notes:
-     cannot use ports sub 1024
+     cannot use ports sub 1024 (on linux) #later depends on hosting
      mongoDB - database
+
+trackovani progresu:
+https://trello.com/invite/b/TVGh29qe/90741b4c00683f9f1a86d85a507d6cc3/matematicky-klokan

@@ -2,7 +2,6 @@ from logging import debug
 from flask import Flask, render_template, redirect, request, session, jsonify
 import json
 
-import flask
 users = {
      "admin":"WYSI",
      "ZSTGM":"123"
@@ -21,16 +20,15 @@ def home():
 @server.route("/login")
 @server.route("/login/<state>")
 def login(state=""):
-     print(state)
      return render_template("login.html", state = state)
 
 @server.route("/dashboard/<user>")
 def dashboad(user):
      if ("user" in session and session["user"] == user):
           return render_template("dashboard.html",user = user)
-     return redirect("/login")
+     else: return redirect("/login")
 
-""" API - login"""
+""" API - login, database updata, database loading"""
 @server.route("/userValidation",methods= ["POST"])
 def userValidation():
      login = request.form["login"]
@@ -51,7 +49,6 @@ def submit():
 
 @server.route("/getForm",methods=["GET"])
 def getForm():
-     print(session["user"] in userData)
      if (session["user"] in userData):
           return (jsonify(userData[session["user"]]),200)
      return "NOT OK"
