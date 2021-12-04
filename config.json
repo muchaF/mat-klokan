@@ -1,6 +1,7 @@
 {
-     "path":"database/userData/",
-     "files":{
-          "admin":"admin.json"
+     "path": "database/userData/",
+     "collection": {
+          "admin": "admin.json",
+          "ZSTGM": "ZSTGM.json"
      }
 }

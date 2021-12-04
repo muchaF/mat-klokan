@@ -1,17 +1,18 @@
 from logging import debug
-from flask import Flask, render_template, redirect, request, session, jsonify
-import json
+from os import stat
+from flask import Flask, render_template, redirect, request, session, jsonify, Response
+import json, database
 
 users = {
      "admin":"WYSI",
      "ZSTGM":"123"
 }
+# Database variables
+userData = database.database("config.json")
 
+# Webserver variables
 server = Flask("Mat Klokan")
 server.secret_key = 'jf_73j_CER'
-
-userData = json.load(open("database/userData/test.json"))
-
 
 @server.route("/")
 def home():
@@ -28,7 +29,7 @@ def dashboad(user):
           return render_template("dashboard.html",user = user)
      else: return redirect("/login")
 
-""" API - login, database updata, database loading"""
+# API - login, database updata, database loading
 @server.route("/userValidation",methods= ["POST"])
 def userValidation():
      login = request.form["login"]
@@ -39,19 +40,23 @@ def userValidation():
                return redirect("/dashboard/"+login)
      return redirect("/login/fail")
 
+#saving data from server
 @server.route("/submit",methods=['POST'])
 def submit():
-     if (session["user"] in userData):
-          userData[session["user"]] = request.form.to_dict(flat=False)
-          with open('database/userData/test.json', 'w') as outfile:
-               json.dump(userData, outfile,indent=2)
-     return "OK"
+     if ("user" in session):
+          data = {}
+          for key in request.form.keys():
+               data[key] = request.form[key]
+          print(data)    
+          userData.write(session["user"],data)
+     return Response(status=200)
 
+# send data to server
 @server.route("/getForm",methods=["GET"])
 def getForm():
-     if (session["user"] in userData):
-          return (jsonify(userData[session["user"]]),200)
-     return "NOT OK"
+     if ("user" in session):
+          return userData.get(session["user"]),200
+     return Response(status=404)
      
 
 if __name__ == "__main__":

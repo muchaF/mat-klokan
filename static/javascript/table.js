@@ -56,6 +56,8 @@ function fillForm(data) {
 
 // preventing redirect on submit
 function formSubmit(event) {
+     
+
     var url = "/submit";
     var request = new XMLHttpRequest();
     request.open('POST', url, true);
