@@ -1,14 +1,10 @@
 from logging import debug
-from os import stat
 from flask import Flask, render_template, redirect, request, session, jsonify, Response
 import json, database
 
-users = {
-     "admin":"WYSI",
-     "ZSTGM":"123"
-}
 # Database variables
 userData = database.database("config.json")
+users = json.load(open("database/users.json"))
 
 # Webserver variables
 server = Flask("Mat Klokan")
@@ -26,8 +22,12 @@ def login(state=""):
 @server.route("/dashboard/<user>")
 def dashboad(user):
      if ("user" in session and session["user"] == user):
-          return render_template("dashboard.html",user = user)
-     else: return redirect("/login")
+          if (users[user]["type"] == "admin"):
+               return render_template("dashboardAdmin.html",user = "admin")
+          else:
+               return render_template("dashboardUser.html",user = users[user]["school"])
+     else:
+          return redirect("/login")
 
 # API - login, database updata, database loading
 @server.route("/userValidation",methods= ["POST"])
@@ -35,7 +35,7 @@ def userValidation():
      login = request.form["login"]
      password = request.form["password"]
      if (login in users):
-          if (password == users[login]):
+          if (password == users[login]["password"]):
                session["user"] = login
                return redirect("/dashboard/"+login)
      return redirect("/login/fail")
@@ -47,7 +47,6 @@ def submit():
           data = {}
           for key in request.form.keys():
                data[key] = request.form[key]
-          print(data)    
           userData.write(session["user"],data)
      return Response(status=200)
 

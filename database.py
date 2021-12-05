@@ -1,6 +1,4 @@
-import json
-from os import path, write
-from typing import Dict
+import json,time
 
 STRUCTURE = "database/structure.json"
 class database():
@@ -11,6 +9,7 @@ class database():
           self.collection = self.config["collection"]
 
      def write(self,name,data=None):
+          start = time.time()
           if not name in self.collection:
                with open(self.configFile,"w") as file:
                     self.config["collection"][name] = name + ".json"
@@ -30,12 +29,13 @@ class database():
                     file.seek(0)
                     json.dump(filtered,file,indent=5)
                     file.truncate()
-          print('\033[92m' + "# Finished writing to",name+".json" + '\033[0m')
+          print(time.time()-start)
+          print('\033[92m' + "# Finished writing to",name+".json in",str(time.time()-start) + '\033[0m')
 
-     def get(self,name) -> Dict:
+     def get(self,name) -> dict:
           if name in self.collection:
                with open(self.path + name + '.json',"r") as file:
                     return json.load(file)
 
           else: 
-               raise Exception(name + "is not in database")
+               raise Exception(name + " is not in database")

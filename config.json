@@ -2,6 +2,6 @@
      "path": "database/userData/",
      "collection": {
           "admin": "admin.json",
-          "ZSTGM": "ZSTGM.json"
+          "zstgm": "zstgm.json"
      }
 }

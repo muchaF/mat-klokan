@@ -1,0 +1,13 @@
+{
+     "admin":{
+          "password":"wysi",
+          "type":"admin",
+          "authority":"0"
+     },
+     "zstgm":{
+          "school":"zstgm",
+          "password":"123",
+          "type":"user",
+          "authority":"1"
+     }
+}

@@ -3,3 +3,7 @@ database uses .json files as storage
 use database.database("config.json") to initialize database
 .get(name) to retrive from database
 .write(name, data) to write to database
+
+
+Note:
+- need to add subcategory

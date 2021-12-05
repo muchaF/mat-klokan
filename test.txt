@@ -1,24 +1,30 @@
-structure:
+----- structure ------
 database/
      userData/
           # each user has its own file
      
-     structure.json # contains path and tracks files in userData folder
+     users.json
 
 static/
      css/
           table.css
+          styles.css
      javascript/
           table.js
 
 template/
-     home.html
+     dashboardAdmin.html
+     dashboardUser.html
+     login.html
 
+config.json - config file for database
+database.py
 main.py
+
+----- stuff -----
 
 notes:
      cannot use ports sub 1024 (on linux) #later depends on hosting
-     mongoDB - database
 
 trackovani progresu:
 https://trello.com/invite/b/TVGh29qe/90741b4c00683f9f1a86d85a507d6cc3/matematicky-klokan
