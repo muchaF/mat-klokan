@@ -5,9 +5,9 @@
           "authority":"0"
      },
      "zstgm":{
-          "school":"zstgm",
+          "school":"zakladni skola tomase garrigue masaryka",
           "password":"123",
-          "type":"user",
+          "type":"admin",
           "authority":"1"
      }
 }

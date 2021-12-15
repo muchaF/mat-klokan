@@ -7,18 +7,13 @@
      <body>
           <nav>
                <div id="login">
-                    <p id="name">{{ user }}</p>   
-                    <div id="notification-board" class="hide">
-                         <div id="node1">
-                              <p class="notification-element notification-title">notification</p>
-                              <p class="notification-element">note 1</p>
-                              <p class="notification-element">note 2</p>
-                              <p class="notification-element">note 3</p>
-                         </div>
-                         <div id="account">
-                              <p class="notification-element notification-title">account</p>
-                              <p class="notification-element last">log out</p>
-                         </div>
+                    <!-- <p id="name">{{ user }}</p> -->
+                    <p id="name">{{ user }}</p>
+               </div>
+               <div id="notification-board" class="hide">
+                    <div id="account">
+                         <p id="full-name" class="notification-element"></p>
+                         <p id="logout" class="notification-element last">log out</p>
                     </div>
                </div>
           </nav>
@@ -26,5 +21,6 @@
                
           </div>
           <script src="/static/javascript/logout.js"></script>
+          <script src="/static/javascript/initials.js"></script>
      </body>
 </html>

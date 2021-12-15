@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;500;700&display=swap');
 
 :root{
-     --snow-white: #f7f7f7;
-     --menu1: #ffa600;
-     --menu-highlight: #e29300;
-     --shade: #e9e9e9;
+     --board: #f7f7f7;
+     --menu: #fff;
+     --highlight: #d6d6d6;
+     --contrast: #e5e5e5;
+     --icon-color: #cf0000;
+     --icon-highlight:#a10101;
      --navbar-height: 3rem;
+     --navbar-offset-r: 1%;
 }
 
 *{
@@ -16,39 +19,50 @@
 
 body{
      font-family: 'Nunito', 'sans-serif' ;
-     background-color: var(--snow-white);
 }
 
 nav{
      height: var(--navbar-height);
-     width: 95%;
+     width: calc(100% - var(--navbar-offset-r));
      display: flex;
      flex-direction: row-reverse;
-     background-color: var(--menu1);
-     padding-right: 5%;
+     background-color: var(--menu);
+     /* background-image: url("../img/low-poly-grid-haikei.svg"); */
+     padding-right: var(--navbar-offset-r);  
+     border-bottom: 2px solid var(--contrast);
 }
 
 #login{
      height: 100%;
      display: flex;
      align-items: center;
-     padding-right: 20px;
-     padding-left: 20px;
      transition: 125ms;
-     background-color: var(--menu1);
+     background-color: var(--menu);
+     align-self: center;
+     background-color: var(--icon-color);
+     width: calc(var(--navbar-height) * 0.75);
+     height: calc(var(--navbar-height) * 0.75);
+     border-radius: calc(var(--navbar-height) * 0.75 * 0.5);
+     z-index: 2;
+     user-select: none;
+     cursor: pointer;     
 }
 
 #login:hover {
-     background-color: var(--menu-highlight);
+     background-color: var(--icon-highlight);
 }
 
 #name{
      position: relative;
      font-weight: 500;
      font-size: 1.5rem;
+     font-size: 100%;
      color: #fff;
      pointer-events: none;
-     user-select: none;
+     z-index: 3;
+     width: auto;
+     margin-left: auto;
+     margin-right: auto;
 }
 
 #notification-board{
@@ -56,41 +70,50 @@ nav{
      float: right;
      top: var(--navbar-height);
      right: 0px;
-     background-color: var(--snow-white);
-     border: 2px solid var(--shade);
-     
+     background-color: var(--menu);
+     border: 2px solid var(--contrast);
+     min-width: 10%;
      z-index: 10;
-     margin-right: 5%;
-     margin-top: 0.4rem;
+     margin-right: var(--navbar-offset-r);
+     margin-top: 0rem;
      filter: drop-shadow(2px 2px 2px #00000046);
      border-radius: 10px;
-}
-
-.notification-title{
-     font-weight: 700 !important;
-     font-size: 1.25rem !important;
-     padding: 10px !important;
-     padding-left: 20px !important;
-     padding-right: 40px !important;
-     pointer-events: none;
+     user-select: none;
+     overflow: hidden;
 }
 
 .notification-element{
-     border-bottom: 2px solid var(--shade);
-     font-weight: 500;
+     border-bottom: 2px solid var(--contrast);
+     font-weight: 300;
      font-size: 1rem;
-     padding: 4px;
-     padding-left: 20px;
+     padding: 0.25rem;
+     padding-left: 1rem;
+     padding-right: 1rem;
      color: #000;
 }
 
-.notification-element:hover{
-     background-color: var(--shade);
-}
 #board{
      position: relative;
      width: 100%;
-     height: calc(100vh - var(--navbar-height));
+     height: calc(100vh - var(--navbar-height) - 2px);
+}
+
+#full-name{
+     text-align: center;
+     font-size: 1.75rem;
+     font-weight: 700;
+     padding: 0.3rem;
+     padding-left: 3rem;
+     padding-right: 3rem;
+     pointer-events: none;
+}
+
+/* extention class */
+.notification-element:hover{
+     background-color: var(--contrast);
+}
+.notification-element:active{
+     background-color: calc(var(--contrast) + #333);
 }
 
 .hide{
@@ -99,4 +122,10 @@ nav{
 
 .last{
      border-bottom: none;
+     cursor: pointer;
+}
+
+.wide{
+     width:  10% !important;
+     padding: auto;
 }
