@@ -1,36 +1,33 @@
-const notification = document.getElementById("notification-board");
-const board = document.getElementById("board");
-const logOut = document.getElementById("logout");
-const displayName = document.getElementById("name"); 
+const menu = document.getElementById("login");
+const elements = Array.from(document.getElementsByClassName("item"));
+const base = menu.clientWidth;
 var state = false
+var width = 0;
 
-login.addEventListener("click", () => {
-     if (!state) {
-          state = true;
-          notification.classList.remove("hide");
-          login.classList.add("wide");
-          board.classList.add("shade");
-          displayName.innerText = "User";
-     }
+window.onload = () => {   
+     elements.forEach(element => {
+          var margins = getComputedStyle(element)
+          width += element.offsetWidth + parseInt(margins.marginLeft) + parseInt(margins.marginRight);
+     });
+     
+     login.addEventListener("click", () => {
+          if (!state) {
+               state = true;
+               menu.classList.add("stay");
+               menu.style.setProperty("width", width + "px")
+          }
+     });
 
-     else {
-          state = false;
-          notification.classList.add("hide");
-          board.classList.remove("shade");
-          login.classList.remove("wide");
-          displayName.innerText = "U";
-     }
-});
-
-board.addEventListener("click", (event) => {
-     console.log("s")
-     if (event.target != login && state) {
-          state = false;
-          notification.classList.add("hide");
-          board.classList.remove("shade");
-     }
-});
-
-logOut.addEventListener("click", ()=>{
-     console.log("logout");
-})
+     document.addEventListener("click", (event)=>{
+          if (!(event.target == menu || menu.contains(event.target))){
+               console.log('close')
+               state = false;
+               menu.classList.remove("stay")
+               menu.style.setProperty("width",base + "px")
+          };
+     });
+     
+     document.getElementById("logout").addEventListener("click",()=>{
+          console.log("log-out");
+     })
+};
