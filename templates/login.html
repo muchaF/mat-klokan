@@ -1,17 +1,15 @@
 <head>
      <!-- <link rel="stylesheet" href="/static/css/login.css"> -->
      <title>Mat klokan</title>
-     <link rel="stylesheet" href="../static/css/styles.css">
+     <link rel="stylesheet" href="../static/css/login.css">
 </head>
 <body>
-     <h1>Matematicky klokan</h1>
      <form action="http://localhost:2000/userValidation" method="post">
-          <p>login</p>
-          <input name="login" type="text">
-          <p>password</p>
-          <input name="password" type="password">
+          <p>Prihlaseni</p>
+          <input name="login" placeholder="email" type="text" class="item text-input">
+          <input name="password" placeholder="heslo" type="password" class="item text-input">
           <br>
-          <input type="submit" value="submit">
+          <input id="submit" type="submit" value="submit" class="item">
      </form>
-     <p>{{ state }}</p> 
+     <!-- <p>{{ state }}</p>  -->
 </body>
