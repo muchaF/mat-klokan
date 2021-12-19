@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;500;700&display=swap');
 
 :root{
-     --board: #f7f7f7;
+     --board: #eeeeee;
      --menu: #24557a;
      --detail: #124872;
      --highlight: #d6d6d6;
@@ -31,7 +31,7 @@ nav{
      align-items: center;
      background-color: var(--menu);
      padding-right: var(--navbar-offset-r);  
-     border-bottom: 2px solid var(--detail);
+     user-select: none;
 }
 
 #login{
@@ -39,8 +39,6 @@ nav{
      display: flex;
      align-items: center;
      align-self: center;
-     
-     background-color: var(--menu);
      background-color: var(--icon-color);
      
      width: calc(var(--navbar-height) * 0.75);
@@ -57,11 +55,11 @@ nav{
 }
 
 #logout{
-     border-left: 2px solid var(--detail) ;
      display: flex;
      background-color: var(--icon-color);
      height: 100%;
      align-items: center;
+     border-radius:   calc(var(--navbar-height) * 0.75 * 0.5 - 2px) 0 0 calc(var(--navbar-height) * 0.75 * 0.5 - 2px);
      padding: 0 calc(var(--navbar-height) * 0.75 * 0.5) 0 calc(var(--navbar-height) * 0.75 * 0.5);
 }
 
@@ -70,6 +68,37 @@ nav{
      margin-right: auto;
      margin-left: calc((var(--navbar-height) * 0.75 / 2) - var(--navbar-height) * 0.5 / 2);
      filter: invert(100%);
+}
+
+#navigation{
+     display: flex;
+     flex-direction: row;
+     width: 100%;
+}
+
+.nav-item{
+     
+     align-self: center;
+     height: calc(var(--navbar-height) - 2px);
+     padding: 0 1rem 0 1rem ;
+     display: flex;
+     align-items: center;
+     border-top: 2px solid transparent;
+     padding-bottom: 2px;
+     transition: 125ms;
+     cursor: pointer;
+     box-sizing: border-box;
+}
+
+.nav-item:hover{
+     border-color: var(--highlight);
+     background-color: var(--icon-color);
+}
+
+#logo{
+     height: calc((var(--navbar-height) * 0.75));
+     filter: invert(100%);
+     pointer-events: none;
 }
 
 #board{

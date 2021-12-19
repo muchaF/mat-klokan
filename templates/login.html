@@ -2,13 +2,15 @@
      <!-- <link rel="stylesheet" href="/static/css/login.css"> -->
      <title>Mat klokan</title>
      <link rel="stylesheet" href="../static/css/login.css">
+     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> -->
+     <!-- <meta name="viewport" content="width=device-width, user-scalable=no" -->
 </head>
 <body>
-     <form action="http://localhost:2000/userValidation" method="post">
+     <form autocomplete="off" action="http://localhost:2000/userValidation" method="post">
           <p>Prihlaseni</p>
           <input name="login" placeholder="email" type="text" class="item text-input">
           <input name="password" placeholder="heslo" type="password" class="item text-input">
-          <br>
+          <br style="line-height:0px; height:0px" />
           <input id="submit" type="submit" value="submit" class="item">
      </form>
      <!-- <p>{{ state }}</p>  -->

@@ -1,23 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;500;700;800;900&display=swap');
 
 :root{
-     --board: #f7f7f7;
+     --board: #fff;
      --menu: #24557a;
-     --detail: #124872;
-     --highlight: #d6d6d6;
-     --contrast: #e5e5e5;
-     --icon-color: #31668f;
-     --icon-highlight:#225d8a;
-     --boarder: #3c3c3c;
+     --outline: #cfcfcf;
+     --fill: #F7F7F7;
+     --text: #8d8d8d;
 }
 
 *{
      padding: 0;
      margin: 0;
+     font-family: 'Nunito', 'sans-serif' ;
 }
 
 body{
-     font-family: 'Nunito', 'sans-serif' ;
+     
      text-align: center;
      background-color: var(--board);
      height: 100%;
@@ -25,41 +23,53 @@ body{
      align-items: center;
      justify-content: center;
      flex-direction: column;
+     background-color: var(--menu);
+     background-image: url('../img/loginBackground.svg');
+     background-size: cover;
 }
-
+::placeholder{
+     color: var(--text);
+     opacity: 0.8;
+}
 form{
      display: flex;
      flex-direction: column;
-     width: auto;
+     width: 15%;
      height: auto;
-     padding: 1.5%;
+     padding: 1%;
      border-radius: 0.75rem;
-     background-color: transparent;
-     color: #fff;
+     color: var(--text);
      font-weight: 700;
      font-size: 1.5rem;
      margin-bottom: 15%;
-}
-
-.item{
-     margin: 6.5%;
-     outline: none;
-     background-color: #ffffffaf;
-     background-color: #fff;
-     border: none;
-     padding: 0.25rem;
-     border-radius: 0.25rem;
-     border: 1px solid var(--boarder);
-}
-
-.text-input{
-     /* outline: 2px solid var(--menu); */
+     background-color: var(--fill);
 }
 
 #submit{
-     /* color: #fff; */
-     /* font-weight: 700; */
-     /* background: linear-gradient(90deg,#0080d6, #4bdbff); */
+     margin-top: 10px; 
+     background-color: var(--board);
+}
+
+#submit:hover{
+     background-color: transparent;
+}
+
+.item{
+     margin: 1%;
+     outline: none;
+     background-color: var(--board);
+     color: var(--text);
+     font-weight: 700;
+     border: none;
+     padding: 0.5rem;
+     border-radius: 0.5rem;
+     border: 2px solid var(--outline);
+}
+
+p{
+     margin: 1%;
+     font-size: 2rem;
+     margin-bottom: 5%;
 }
 
 @media only screen and (max-device-width: 1100px){
@@ -70,8 +80,26 @@ form{
      p{
           font-size: 3rem;
           margin: 3% 0 3% 0;
+          font-weight: 800;
      }
+
      form{
-          margin-bottom: 50%;
+          margin-top: 10%;
+          margin-bottom: 10%;
+          width: 50%;
+          padding: 2.5%;
      }
+
+     /* .item{
+          font-size: 32px;
+     } */
+
+     #submit{
+          margin-top: -2%;
+     }
+     @-moz-document url-prefix() {
+          #submit{
+               margin-top: 5% !important;
+          }
+      }
 }

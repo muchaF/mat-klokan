@@ -3,6 +3,7 @@
      <head>
           <title>Mat klokan</title>
           <link rel="stylesheet" href="/static/css/main.css">
+          <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
      </head>
      <body>
           <nav>
@@ -13,6 +14,12 @@
                          <p   id="user" class="item">uzivatel</p>
                          <p   id="logout" class="item">odhlasit</p>
                     </div>
+               </div>
+               <div id="navigation">
+                    <img id="logo" class="nav-item" src="../static/img/kongaroo.png">
+                    <p class="nav-item">prehled</p>
+                    <p class="nav-item">vysledky</p>
+                    <p class="nav-item">legenda SSP Brno Petr Prikryl</p>
                </div>
           </nav>
           <div id="board">      </div>
