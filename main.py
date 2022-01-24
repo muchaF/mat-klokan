@@ -41,22 +41,18 @@ def userValidation():
      return redirect("/login/fail")
 
 #saving data from server
-@server.route("/submit",methods=['POST'])
+@server.route("/API/form",methods=['GET','POST'])
 def submit():
      if ("user" in session):
-          data = {}
-          for key in request.form.keys():
-               data[key] = request.form[key]
-          userData.write(session["user"],data)
-     return Response(status=200)
+          if (request.method == 'POST'):
+               data = {}
+               for key in request.form.keys():
+                    data[key] = request.form[key]
+               userData.write(session["user"],data)
+               return Response(status=200)  
 
-# send data to server
-@server.route("/getForm",methods=["GET"])
-def getForm():
-     if ("user" in session):
-          return userData.get(session["user"]),200
-     return Response(status=404)
-     
+          if (request.method == 'GET'):
+               return userData.get(session["user"]),200
 
 if __name__ == "__main__":
      server.run(host='localhost',port=2000,debug=True)

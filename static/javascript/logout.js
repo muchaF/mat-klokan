@@ -1,7 +1,7 @@
 const menu = document.getElementById("login");
 const elements = Array.from(document.getElementsByClassName("item"));
 const base = menu.clientWidth;
-var state = false
+var state = false;
 var width = 0;
 
 window.onload = () => {   
@@ -9,7 +9,7 @@ window.onload = () => {
           var margins = getComputedStyle(element)
           width += element.offsetWidth + parseInt(margins.marginLeft) + parseInt(margins.marginRight);
      });
-     
+
      login.addEventListener("click", () => {
           if (!state) {
                state = true;
@@ -31,3 +31,5 @@ window.onload = () => {
           console.log("log-out");
      })
 };
+
+
