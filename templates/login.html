@@ -1,14 +1,10 @@
 <head>
-     <!-- <link rel="stylesheet" href="/static/css/login.css"> -->
      <title>Mat klokan</title>
      <link rel="stylesheet" href="../static/css/login.css">
-     <!-- <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /> -->
-     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> -->
-     <!-- <meta name="viewport" content="width=device-width, user-scalable=no" -->
+     <meta charset="cz">
 </head>
-<body scroll="no">
-     <form autocomplete="off" action="http://localhost:2000/userValidation" method="post" id="form">
-          <p id="name">Prihlaseni</p>
+<body>
+     <form autocomplete="off" action="http://localhost:2000/API/validation" method="post" id="form">
           <input name="login" placeholder="email" type="text" class="item text-input">
           <input name="password" placeholder="heslo" type="password" class="item text-input">
           <br style="line-height:0px; height:0px" />

@@ -29,13 +29,12 @@ def dashboad(user):
      else:
           return redirect("/login")
 
-# API - login, database updata, database loading
-@server.route("/userValidation",methods= ["POST"])
+# API
+@server.route("/API/validation",methods= ["POST"])
 def userValidation():
-     login = request.form["login"]
-     password = request.form["password"]
-     if (login in users):
-          if (password == users[login]["password"]):
+     requestData = request.form
+     if (requestData["login"] in users):
+          if (requestData["password"] == users[login]["password"]):
                session["user"] = login
                return redirect("/dashboard/"+login)
      return redirect("/login/fail")
