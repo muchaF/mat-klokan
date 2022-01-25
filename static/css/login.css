@@ -3,17 +3,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
 :root{
-     --board: #fff;
+     --board: #f8f8f8;
      --menu: #24557a;
-     --outline: #cfcfcf;
-     --fill: #F7F7F7;
-     --text: #6d6d6d;
+     --outline: #dfdfdf;
+     --outlineFocus: #c5c5c5;
+     --form: #ffffff;
+     --text: #8a8a8a;
+     --submit: #3e87be;
+     --submitHigh: #3c80b4;
+     --submitDark: #3572a1;
 }
 
 *{
      padding: 0;
      margin: 0;
-     font-family: 'Nunito', 'sans-serif' ;
+     font-family: 'Roboto', 'sans-serif' ;
 }
 
 body{
@@ -38,33 +42,46 @@ body{
 form{
      display: flex;
      flex-direction: column;
-     width: 15%;
+     width: 20%;
+     min-width: 200px;
      padding: 2rem;
      border-radius: 0.75rem;
      color: var(--text);
      margin-bottom: 15%;
-     background-color: var(--fill);
+     background-color: var(--form);
 }
 
 #submit{
-     margin-top: 5%; 
-     background-color: var(--board);
+     background-color: var(--submit);
+     border-color: var(--submit);
+     color: #FFF;
+     cursor: pointer;
+     transition: 90ms;
+     width: 80%;
+     margin: 4% auto 0px ;
+     border-color: var(--submitDark);
 }
 
 #submit:hover{
-     background-color: transparent;
+     border-color: var(--submitDark);
+     background-color: var(--submitHigh);
 }
 
 .item{
-     margin: 1% 0%;
+     margin: 1.5% 0%;
      background-color: var(--board);
      color: var(--text);
      font-weight: 700;
      outline: none;
      border: none;
+     line-height: 1rem;
      padding: 0.5rem;
      border-radius: 0.5rem;
      border: 2px solid var(--outline);
+}
+
+.item:focus{
+     border-color: var(--outlineFocus);
 }
 
 @media only screen and (max-device-width: 1100px){
@@ -84,10 +101,6 @@ form{
           width: 50%;
           padding: 2.5%;
      }
-
-     /* .item{
-          font-size: 32px;
-     } */
 
      #submit{
           margin-top: -2%;
