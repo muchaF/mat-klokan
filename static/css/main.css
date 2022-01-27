@@ -2,11 +2,11 @@
 
 :root{
      --board: #eeeeee;
-     --menu: #24557a;
-     --detail: #124872;
+     --menu: #3c80b4;
+     --detail: #00000000;
      --highlight: #d6d6d6;
      --contrast: #e5e5e5;
-     --icon-color: #31668f;
+     --icon-color: #2d6c9c;
      --icon-highlight:#225d8a;
      --navbar-height: 3rem;
      --navbar-offset-r: 1%;
