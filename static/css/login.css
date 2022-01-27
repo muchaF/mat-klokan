@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;500;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
 :root{
      --board: #f8f8f8;
      --menu: #24557a;
@@ -47,7 +46,7 @@ form{
      flex-direction: column;
      width: 20%;
      min-width: 200px;
-     padding: 2rem;
+     padding: 2.5rem;
      border-radius: 0.75rem;
      color: var(--text);
      margin-bottom: 25vh;
@@ -60,8 +59,11 @@ form{
      color: #FFF;
      cursor: pointer;
      transition: 90ms;
-     width: 80%;
-     margin: 4% auto 0px ;
+     width: auto;
+     /* margin: 4% auto 0px ; */
+     margin: auto;
+     margin-top: 1vh;
+     padding: 0.5rem 2.5rem;
      border-color: var(--submitHigh);
 }
 
@@ -71,13 +73,14 @@ form{
 }
 
 .item{
-     margin: 1.5% 0%;
+     margin: 2.5% 0%;
      background-color: var(--board);
      color: var(--text);
-     font-weight: 700;
+     font-weight: 500;
      outline: none;
      border: none;
-     line-height: 1rem;
+     line-height: 1.15rem !important;
+     font-size: 1.15rem;
      padding: 0.5rem;
      border-radius: 0.5rem;
      border: 2px solid var(--outline);
@@ -88,8 +91,8 @@ form{
 }
 .heading{
      font-size: 2rem;
-     font-weight: 500;
-     margin:0px;
+     font-weight: 700;
+     margin: 0px;
      margin-bottom: 1rem;
 }
 
