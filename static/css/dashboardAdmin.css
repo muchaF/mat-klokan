@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+*{
+     margin: 0;
+     padding: 0;
+     color: #fff;
+     /* transition: 125ms; */
+}
+
+body{
+     font-family: 'Roboto', 'sans-serif' ;
+}
+
+.navbar{
+     z-index: 10;
+     height: 100vh;
+     width: 5rem;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     background-color: var(--main4);
+}
+
+.navigation{
+     height: auto;
+     width: 100%;
+}
+
+.element{
+     width: 4rem;
+     height: 4rem;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     z-index: 10;
+     padding: 0.5rem;
+     cursor: pointer;
+}
+
+.element:hover{
+     background-color: var(--contrast1);
+}
+
+.active{
+     background-color: var(--contrast1);
+     /* border-left: 5px solid white;
+     width: calc(4rem - 5px); */
+}
+
+.image{
+     filter: invert(100%);
+     pointer-events: none;
+     transform: translateX(-2%);
+     height: 2rem;
+}
+.image-holder{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 4rem;
+}
+
+
+.icon{
+     filter: invert(100%);
+     width: 40%;
+     margin-bottom: 5px;
+}
+
+.desc{
+     text-align: center;
+     font-weight: 700;
+     font-size: 0.9rem;
+}
+
+/* user profile */
+.profile-icon{
+     margin-top: auto;
+}
+
+.profile-icon .icon{
+     margin: 0;
+     width: 2rem;
+}
+
+.profile{
+     transition: 125ms;
+     z-index: 1;
+     position: absolute;
+     left: 5rem;
+     bottom: 0px;
+     width: auto;
+     height: 4rem;
+     min-width: auto;
+     padding: 0.5rem;
+     background-color: var(--main2);
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+     align-items: center;
+}
+
+.profile-element{
+     color: #000;
+     margin: 0px 1vw; 
+     height: 100%;
+     /* width: 100%; */
+}
+
+.profile-info{
+     color: #000;
+     text-align: left;
+}
+
+.text-align{
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+}
+
+.profile button{
+     width: 50%;
+     padding: 5px;
+     outline: none;
+     border: none;
+}
+
+.logout{
+     width: 4rem !important;
+}

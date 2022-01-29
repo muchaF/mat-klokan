@@ -19,7 +19,7 @@
      font-family: 'Roboto', 'sans-serif' ;
 }
 
-body{
+body{     
      text-align: center;
      background-color: var(--board);
      height: 100vh;
