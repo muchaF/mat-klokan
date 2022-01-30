@@ -1,14 +1,17 @@
 const profileToggle = document.getElementById("profileToggle");
 const profileTab = document.getElementById("profile");
 var state = false;
-
+profileTab.style = "transform: translateX(-100%)"
 window.onload = () => {   
      profileToggle.addEventListener("click",()=>{
-          if(profileTab.offsetLeft >= 80){
-               profileTab.style = "left:" + (profileTab.clientWidth * -1) +"px;"
+          console.log(typeof(profileTab.style.transform))
+          console.log(profileTab.style.transform)
+          if(profileTab.style.transform == "translateX(-100%)" ){
+               console.log("toggle")
+               profileTab.style = "transform: translateX(0%)"
           }
           else{
-               profileTab.style = "left:" + (profileToggle.clientWidth) +"px;"
+               profileTab.style = "transform: translateX(-100%)"
           }
      });
 };

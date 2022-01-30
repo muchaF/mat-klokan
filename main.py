@@ -1,4 +1,5 @@
 from logging import debug
+import re
 from xml.etree.ElementTree import tostring
 from flask import Flask, render_template, redirect, request, session, jsonify, Response
 import json, database
@@ -34,6 +35,8 @@ def dashboad(user):
 # API login
 @server.route("/API/validation",methods= ["POST"])
 def userValidation():
+     print('\033[92m' + "------------" + '\033[0m')
+     print(session.keys())
      requestData = request.form
      if (requestData["login"] in users):
           if (requestData["password"] == users[requestData["login"]]["password"]):
@@ -41,6 +44,10 @@ def userValidation():
                return redirect("/dashboard/" + requestData["login"])
      return redirect("/login/fail")
                
+@server.route("/API/logout")
+def logOut():
+     session["user"] = None
+     return redirect("/login")
 
 #saving data from server
 @server.route("/API/form",methods=['GET','POST'])

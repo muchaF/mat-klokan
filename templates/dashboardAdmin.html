@@ -4,6 +4,7 @@
           <title>Mat klokan</title>
           <link rel="stylesheet" href="/static/css/colors.css">
           <link rel="stylesheet" href="/static/css/dashboardAdmin.css">
+          <link rel="stylesheet" href="/static/css/table.css">
           <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
      </head>
      <body>
@@ -27,14 +28,38 @@
                </div>
           </nav>
           <div id="profile" class="profile">
+               <a class="logout text-align">Odhlasit</a>
                <div class="profile-element text-align">
                     <p class="profile-info" style="font-weight: 500;">SSP Purkynova</p>
-                    <p class="profile-info" style="font-weight: 400; font-size: 0.9rem;">marek.antonice@gmail.com</p>
+                    <p class="profile-info" style="font-weight: 400; font-size: 0.9rem;">ANTON@gmail.com</p>
                </div>
-               <button onclick="out()" class="profile-element logout">Odhlasit</button>
           </div>
-          <!-- <button onclick="out()" class="profile-element logout">Odhlasit</button> -->
-
+          <div class="table-container">
+               <div class="table">
+                    <p class="table-header"> header 1</p>
+                    <form>
+                         <div class="user-input">
+                              <p class="table-element">1</p>
+                              <input class="table-element"></input>
+                         </div>
+                         <div class="user-input">
+                              <p class="table-element">2</p>
+                              <input class="table-element"></input>
+                         </div>
+                         <div class="user-input">
+                              <p class="table-element">3</p>
+                              <input class="table-element"></input>
+                         </div>
+                         <div class="user-input">
+                              <p class="table-element">4</p>
+                              <input class="table-element"></input>
+                         </div>
+                    </form>
+               </div>
+          </div>
+          
+          <script src="/static/javascript/"></script>
           <script src="/static/javascript/logout.js"></script>
+
      </body>
 </html>
