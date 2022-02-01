@@ -1,10 +1,15 @@
-const name = document.getElementById("name");
-const form = document.getElementById("form");
-var nameWidth = 0;
-
-window.onload = () => {
-     var margins = getComputedStyle(name)
-     nameWidth += name.offsetWidth + parseInt(margins.marginLeft) + parseInt(margins.marginRight);
-     form.style.minWidth = nameWidth+"px";
+const patters =/\w+\@\w+\.\w+/gm
+function validEmail(email){
+     if(email.search(patters) != -1){
+          return true;
+     }
+     return false;
 }
 
+document.querySelector("#form").addEventListener("submit", (e) => {
+     e.preventDefault();
+     console.log("ss");
+     document.querySelector
+})
+
+validEmail("@ds.cs");

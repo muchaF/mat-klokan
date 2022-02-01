@@ -101,7 +101,7 @@ body{
      height: 4rem;
      min-width: auto;
      padding: 0.5rem 0;
-     background-color: var(--main2);
+     background-color: var(--main3);
      display: flex;
      transform: translateX(-100%);
      flex-direction: row;
