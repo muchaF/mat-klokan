@@ -1,69 +1,22 @@
-const size = 10;
+function addElement(obj,elementID){
+     var parent = document.createElement("div")
+     parent.classList.add("user-input");
 
-loadData("/getForm")
-function loadData(url) {
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function () {
-        if (request.readyState === 4) generateTable(request.responseText);
-    }
+     var child1 = document.createElement("p") 
+     var child2 = document.createElement("input")
 
-    request.open('GET', url, true);
-    request.send('');
-    return request;
+     child1.textContent = elementID.toString();
+     child1.classList.add("table-element");
+     child2.classList.add("table-element");
+
+     parent.appendChild(child1);
+     parent.appendChild(child2);
+
+     obj.appendChild(parent)
 }
 
-function generateTable(formFill = null) {
-    var form = document.createElement("form");
-    form.id = "scores";
 
-    document.body.appendChild(form);
-    for (let i = 1; i <= size; i++) {
-        let cell = document.createElement("div");
-        let index = document.createElement("p");
-        let input = document.createElement("input");
-
-        input.type = "text";
-        input.name = i;
-        input.id = i;
-        index.textContent = i;
-        index.classList.add("number");
-        input.classList.add("score");
-        cell.classList.add("container");
-
-        cell.appendChild(index);
-        cell.appendChild(input);
-        form.appendChild(cell);
-    }
-
-    var save = document.createElement("input");
-    save.type = "submit"
-    form.appendChild(save);
-    document.body.appendChild(form);
-    document.getElementById("scores").addEventListener("submit", formSubmit);
-    fillForm(formFill);
-}
-
-function fillForm(data) {
-    let jsonFill = JSON.parse(data)
-    for (var key in jsonFill) {
-        try {
-            document.getElementById(key).value = jsonFill[key]
-        } catch (error) {
-            console.log("if not found | index overflow")
-        }
-    }
-}
-
-// preventing redirect on submit
-function formSubmit(event) {
-     
-
-    var url = "/submit";
-    var request = new XMLHttpRequest();
-    request.open('POST', url, true);
-    request.onerror = function () {
-        alert("chyba pri spojeni se serverem")
-    };
-    request.send(new FormData(event.target));
-    event.preventDefault();
+const table = document.querySelector("form");
+for (let i = 0; i < 25; i++) {
+     addElement(table,i);     
 }
