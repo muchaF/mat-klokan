@@ -7,9 +7,11 @@ function validEmail(email){
      return false;
 }
 
-document.querySelector("#form").addEventListener("submit", (e) => {
-     if(validEmail(document.querySelector("input[name=login]").value) && document.querySelector("input[name=password]").value.search(passwordPatterns) != -1){
-          return;
-     }
-     e.preventDefault();
-});
+// document.querySelector("#form").addEventListener("submit", (e) => {
+//      if(validEmail(document.querySelector("input[name=login]").value) && document.querySelector("input[name=password]").value.search(passwordPatterns) != -1){
+//           console.log("passed")
+//           return;
+//      }
+//      console.log("filed")
+//      e.preventDefault();
+// });
