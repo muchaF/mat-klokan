@@ -44,12 +44,14 @@ body{
 form{
      display: flex;
      flex-direction: column;
+     align-items: center;
+     justify-content: center;
      width: 18%;
      min-width: 200px;
-     padding: 1.5rem 2.5rem 2rem;
+     padding: 2rem 1.5rem;
      border-radius: 0.5rem;
      color: var(--text);
-     margin-bottom: 25vh;
+     margin-bottom: 20vh;
      background-color: var(--form);
 }
 
@@ -59,9 +61,7 @@ form{
      color: #FFF;
      cursor: pointer;
      transition: 90ms;
-     width: auto;
-     margin: auto;
-     margin-top: calc(2rem - 2.5%);;
+     width: fit-content;
      padding: 0.5rem 2.5rem;
      border-color: var(--submitHigh);
 }
@@ -72,10 +72,11 @@ form{
 }
 
 .item{
-     margin: 2.5% 0%;
+     margin: 0.5rem 0;
      background-color: var(--board);
      color: var(--text);
      font-weight: 500;
+     width: 80%;
      outline: none;
      border: none;
      line-height: 1rem !important;
@@ -93,7 +94,7 @@ form{
      font-size: 2rem;
      font-weight: 700;
      margin: 0px;
-     margin-bottom: 1rem;
+     margin-bottom: 0.5rem;
      user-select: none;
 }
 

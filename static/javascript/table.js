@@ -1,22 +1,26 @@
-function addElement(obj,elementID){
-     var parent = document.createElement("div")
-     parent.classList.add("user-input");
 
-     var child1 = document.createElement("p") 
-     var child2 = document.createElement("input")
+const category = ["Cvrček",
+                  "Klokánek",
+                  "Benjamín",
+                  "Kadet",
+                  "Junior",
+                  "Student"]
 
-     child1.textContent = elementID.toString();
-     child1.classList.add("table-element");
-     child2.classList.add("table-element");
+const target = document.querySelector(".table-container");
 
-     parent.appendChild(child1);
-     parent.appendChild(child2);
-
-     obj.appendChild(parent)
+function generateTable(name, score) {
+     let table = document.createElement("form");
+     for (let e = 0; e < score; e++) {
+          var scoreValue = document.createElement("p") 
+          var input = document.createElement("input")
+          scoreValue.textContent = e.toString();
+          table.appendChild(scoreValue);
+          table.appendChild(input);
+     }
+     table.classList.add("table")
+     target.appendChild(table);
 }
 
-
-const table = document.querySelector("form");
-for (let i = 0; i < 25; i++) {
-     addElement(table,i);     
-}
+category.forEach(element => {
+     generateTable(element,20);
+});

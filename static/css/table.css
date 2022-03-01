@@ -9,50 +9,10 @@
      overflow: auto;
 }
 
-.table{
-     width: auto;
-     height:fit-content;
-     margin: 2%;
-     border-radius: 1rem;
-     border-style: inset;
-     background-color: var(--main1);
-     border: 2px solid var(--main4);
-     overflow: hidden;
+.table {
+     color: pink;
 }
 
-.table-header{
-     color: #fff;
-     font-size: 1.5rem;
-     font-weight: 700;
-     text-align: center;
-     padding: 10px;
-     background-color: var(--main4);
-}
-
-.user-input{
-     display: flex;
-     justify-content: center;
-     align-items: center;
-}
-
-.user-input:nth-child(even){
-     background-color: var(--main2);
-}
-
-.user-input > *{
+.table p {
      color: #000;
-}
-
-.table-element{
-     margin: 10px 5px;
-}
-
-.user-input > input{
-     border-radius: 0.25rem;
-     outline: none;
-     font-size: 1rem;
-     padding: 2px;
-     /* border: 2px solid var(--highlight); */
-     border: none;
-     width: 50px;
 }

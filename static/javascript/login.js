@@ -7,6 +7,8 @@ function validEmail(email){
      return false;
 }
 
+// Vypnuto pro testovani 
+// Validace pred odeslanim k overeni
 // document.querySelector("#form").addEventListener("submit", (e) => {
 //      if(validEmail(document.querySelector("input[name=login]").value) && document.querySelector("input[name=password]").value.search(passwordPatterns) != -1){
 //           console.log("passed")
