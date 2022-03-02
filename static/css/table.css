@@ -10,9 +10,34 @@
 }
 
 .table {
-     color: pink;
+     border-radius: 0.5rem;
+     background-color:  var(--main4);
+     height: fit-content;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     padding: 1rem;
+     margin: 1rem;
+     text-align: center;
+     width: fit-content;
 }
 
+.table div div {
+     display: flex;
+     margin: 2px;
+}
 .table p {
+     width: 2rem;
+     margin-right: 5px;
+     text-align: center;
+     color: #000;
+}
+.table div input{
+     width: 3rem;
+     float: right;
+}
+
+.table h2 {
      color: #000;
 }

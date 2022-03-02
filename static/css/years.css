@@ -1,0 +1,30 @@
+.year-container {
+     position: relative;
+     width: calc(100% - 5rem);
+     height: 100%;
+     margin-left: 5rem;
+}
+
+.year {
+     width: calc(100% - 6rem);
+     height: calc(fit-content - 4rem);
+     background-color: var(--main3);
+     margin: 1rem;
+     padding: 2rem;
+     border-radius: 0.5rem;
+}
+
+.cetegory {
+
+     position: relative;
+     width: fit-content;
+     height: fit-content;
+     margin-top: 1rem;
+     padding: 2rem;
+     border-radius: 0.5rem;
+     background-color: #fff;
+}
+
+.category-name{
+     color: #000;
+}
