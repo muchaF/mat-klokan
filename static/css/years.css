@@ -3,11 +3,16 @@
      width: calc(100% - 5rem);
      height: 100%;
      margin-left: 5rem;
+     margin-top: 1rem;
+     display: flex;
+     flex-direction: column;
+     /* justify-content: center; */
+     align-items: center;
 }
 
 .year {
-     width: calc(100% - 6rem);
-     height: calc(fit-content - 4rem);
+     width: fit-content;
+     height: fit-content;
      background-color: var(--main3);
      margin: 1rem;
      padding: 2rem;
@@ -15,16 +20,27 @@
 }
 
 .cetegory {
-
      position: relative;
-     width: fit-content;
+     width: 4rem;
+     text-align: center;
      height: fit-content;
-     margin-top: 1rem;
-     padding: 2rem;
+     margin: 0 1rem;
+     padding: 1.5rem;
      border-radius: 0.5rem;
      background-color: #fff;
+     cursor: pointer;
+     color: #000;
+}
+
+.cetegory:hover{
+     background-color: var(--main1);
 }
 
 .category-name{
      color: #000;
+}
+
+.category-container{
+     display: flex;
+     margin-top: 1rem;
 }
