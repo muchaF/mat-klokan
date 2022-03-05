@@ -9,6 +9,11 @@
      --contrast2:#5c5c5c;
 
      --highlight:#727272;
-
      --text:#252525;
+
+     /* release colors */
+     --green:#449342;
+     --green-highlight:#3b7e3a;
+     --green-light:#499e47;
+     --green-accent: #ececec; 
 }

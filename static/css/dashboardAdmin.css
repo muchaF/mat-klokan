@@ -22,12 +22,7 @@ body{
      display: flex;
      flex-direction: column;
      align-items: center;
-     background-color: var(--main4);
-}
-
-.navigation{
-     height: auto;
-     width: 100%;
+     background-color: var(--green);
 }
 
 .element{
@@ -43,21 +38,19 @@ body{
 }
 
 .element:hover{
-     background-color: var(--highlight);
+     background-color: var(--green-highlight);
 }
 
 .active{
-     background-color: var(--highlight);
-     /* border-left: 5px solid white;
-     width: calc(4rem - 5px); */
+     background-color: var(--green-highlight);
 }
 
 .image{
      filter: invert(100%);
-     pointer-events: none;
      transform: translateX(-2%);
      height: 2rem;
 }
+
 .image-holder{
      display: flex;
      justify-content: center;
@@ -65,11 +58,10 @@ body{
      height: 4rem;
 }
 
-
 .icon{
      filter: invert(100%);
      width: 40%;
-     margin-bottom: 5px;
+     margin-bottom: 0.35rem;
 }
 
 .desc{
@@ -81,7 +73,6 @@ body{
 /* user profile */
 .profile-icon{
      margin-top: auto;
-     background-color: var(--main4);
 }
 
 .profile-icon .icon{
@@ -93,32 +84,28 @@ body{
      position: fixed;
      transition: 125ms;
      z-index: 7;
-
      left: 5rem;
- 
      bottom: 0px;
-     width: auto;
      height: 4rem;
-     min-width: auto;
      padding: 0.5rem 0;
-     background-color: var(--main3);
-     display: flex;
      transform: translateX(-100%);
+     background-color: var(--green-light);
+     display: flex;
      flex-direction: row;
      justify-content: center;
      align-items: center;
      border-radius: 0 10px 0 0;
+     overflow: hidden;
 }
 
 .profile-element{
      margin: 0px 1vw; 
      height: 100%;
-     /* width: 100%; */
 }
 
 .profile-info{
-     color: #505050;
-     text-align: right;
+     color: #fff;
+     text-align: left;
 }
 
 .text-align{
@@ -138,12 +125,11 @@ body{
      width: 4rem !important;
      height: 100%;
      padding: 0.5rem 1rem;
-     /* background-color: var(--contrast1); */
-     color: var(--text);
+     color: #fff;
      font-weight: 700;
      cursor: pointer;
 }
 
 .logout:hover{
-     background-color: var(--highlight);
+     background-color: var(--green);
 }

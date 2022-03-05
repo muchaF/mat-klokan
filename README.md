@@ -9,4 +9,5 @@ Vlastnosti projektu které bychom chtěly ve verzi 0.1
 - export výsledků do .xlsx
 
 # Použíté knihovny
-- [Flask](https://github.com/pallets/flask) -  lightweight WSGI web application framework
+- [Flask](https://github.com/pallets/flask) - lightweight WSGI web application framework
+- [Flask-login](https://github.com/maxcountryman/flask-login) - Flask-Login provides user session management for Flask

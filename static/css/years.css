@@ -1,21 +1,20 @@
 .year-container {
      position: relative;
-     width: calc(100% - 5rem);
-     height: 100%;
+     width: calc(100% / 3 - 5rem);
+     height: calc(100%);
      margin-left: 5rem;
-     margin-top: 1rem;
      display: flex;
      flex-direction: column;
-     /* justify-content: center; */
      align-items: center;
+     /* background-color: var(--green-accent); */
 }
 
 .year {
-     width: fit-content;
+     /* width: fit-content; */
      height: fit-content;
-     background-color: var(--main3);
+     background-color: var(--green-light);
      margin: 1rem;
-     padding: 2rem;
+     padding: 1.25rem 0.5rem;
      border-radius: 0.5rem;
 }
 
@@ -24,12 +23,18 @@
      width: 4rem;
      text-align: center;
      height: fit-content;
-     margin: 0 1rem;
-     padding: 1.5rem;
+     padding: 1.2rem;
+     margin: 0.75rem 0.75rem 0 0.75rem;
      border-radius: 0.5rem;
      background-color: #fff;
      cursor: pointer;
      color: #000;
+}
+
+.year h1{
+     margin-left: 0.75rem;
+     font-size: 1.5rem;
+     font-weight: 500;
 }
 
 .cetegory:hover{
@@ -42,5 +47,6 @@
 
 .category-container{
      display: flex;
-     margin-top: 1rem;
+     flex-wrap: wrap;
+     /* margin-top: 1rem; */
 }
