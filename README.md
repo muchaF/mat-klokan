@@ -1,19 +1,12 @@
 # Matematický klokan
+webová stránka pro jednoduché zadávání a vyhodnocování výsledků matematického klokana
 
-## API
- ```mermaid
-graph TD
-	A(HOST Root hub) --> H1.1(HUB)
-	H1.1 --> H2.1(HUB)
-	H1.1 --> D2.1(Device)
-	H1.1 --> D2.2(Device)
-	H2.1 --> D3.1(Device)
-	H2.1 --> H3.1(HUB)
-	H3.1 --> D4.1(Device)
-	H3.1 --> D4.2(Device)
-	H3.1 --> D4.3(Device)
-```
+# Roadmap
+Vlastnosti projektu které bychom chtěly ve verzi 0.1
+- příjemné uživatelské rozhraní
+- ukládání výsledků na serveru 
+- vyhodnocování výsledků
+- export výsledků do .xlsx
 
-## User auth API
-
-## Design guidelines and website topology
+# Použíté knihovny
+- [Flask](https://github.com/pallets/flask) -  lightweight WSGI web application framework
