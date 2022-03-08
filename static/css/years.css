@@ -1,30 +1,34 @@
 .year-container {
-     position: relative;
-     width: calc(100% / 3 - 5rem);
-     height: calc(100%);
+     position: fixed;
+     min-width: fit-content;
+     width: 20%;
+     height: 100%;
      margin-left: 5rem;
      display: flex;
      flex-direction: column;
-     align-items: center;
-     /* background-color: var(--green-accent); */
+     background-color: #f0f0f0;
 }
 
 .year {
-     /* width: fit-content; */
+     width: fit-content;
+     min-width: fit-content;
      height: fit-content;
-     background-color: var(--green-light);
+     width: calc(100% - 3rem);
+     background-color: var(--green);
      margin: 1rem;
      padding: 1.25rem 0.5rem;
      border-radius: 0.5rem;
 }
 
+/* add js to set min width to highest value of batch */
 .cetegory {
      position: relative;
-     width: 4rem;
+     width: 80%;
+     min-width: 5rem;
      text-align: center;
-     height: fit-content;
-     padding: 1.2rem;
-     margin: 0.75rem 0.75rem 0 0.75rem;
+     height: 1rem;
+     padding: 0.8rem 5% 0.8rem 5%;
+     margin: 1rem 5% 0 5%;
      border-radius: 0.5rem;
      background-color: #fff;
      cursor: pointer;
@@ -32,21 +36,20 @@
 }
 
 .year h1{
-     margin-left: 0.75rem;
+     margin: 0 0.75rem;
      font-size: 1.5rem;
      font-weight: 500;
+     width: fit-content;
+}
+
+.selected{
+     background-color: var(--blue);
+     color: #fff;
+}
+.selected:hover{
+     background-color: var(--blue-dark) !important;
 }
 
 .cetegory:hover{
      background-color: var(--main1);
-}
-
-.category-name{
-     color: #000;
-}
-
-.category-container{
-     display: flex;
-     flex-wrap: wrap;
-     /* margin-top: 1rem; */
 }
