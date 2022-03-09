@@ -1,0 +1,35 @@
+.profile{
+    width: fit-content;
+    height: fit-content;
+    background-color: var(--green);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    border-radius: 0 0.5rem 0 0;
+}
+
+.logout{
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--green-lighter);
+}
+
+.logout:hover{
+    background-color: var(--green-light);
+    cursor: pointer;
+}
+
+.logout img {
+    margin-right: 0.5rem;
+}
+
+.elements{
+    margin-left: 1rem;
+}
+
+

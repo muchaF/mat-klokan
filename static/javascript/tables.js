@@ -32,6 +32,7 @@ function updateTo(name){
         categoryObject[key].classList.remove("selected");    
     }    
     categoryObject[name].classList.add("selected");
+    updateCSS();
 }
 
 target.appendChild(renderTables("header",150))

@@ -2,49 +2,30 @@
 <html lang="en">
      <head>
           <title>Mat klokan</title>
-          <link rel="stylesheet" href="/static/css/colors.css">
-          <link rel="stylesheet" href="/static/css/dashboardAdmin.css">
-          <link rel="stylesheet" href="/static/css/table.css">
-          <link rel="stylesheet" href="/static/css/years.css">
+          <link rel="stylesheet" href="/static/css/user/colors.css">
+          <link rel="stylesheet" href="/static/css/user/main.css">
+          <link rel="stylesheet" href="/static/css/user/table.css">
+          <link rel="stylesheet" href="/static/css/user/years.css">
+          <link rel="stylesheet" href="/static/css/user/profile.css">
           <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
      </head>
      <body>
-          <nav class="navbar">
-               <div>
-                    <div class="image-holder">
-                         <img class="image" src="/static/img/kongaroo.png">
-                    </div>
-
-                    <div class="element">
-                         <img class="icon" src="/static/img/copy.png">
-                         <p class="desc">Tabulky</p>
-                    </div>
-                    <div class="element">
-                         <img class="icon" src="/static/img/copy.png">
-                         <p class="desc">Statistiky</p>
-                    </div>
-               </div>
-               <div id="profileToggle" class="element profile-icon">
-                    <img class="icon" src="/static/img/user-avatar.png">
-               </div>
-          </nav>
-          
-          <div id="profile" class="profile">
-               <div class="profile-element text-align">
-                    <p class="profile-info" style="font-weight: 600; font-size: 1rem;">SSP Purkynova</p>
-                    <p class="profile-info" style="font-weight: 500; font-size: 0.9rem;">petr.sebela@gmail.com</p>
-               </div>
-               <a class="logout text-align">Odhlasit</a>
-          </div>
-          
-          <div class="year-container">
+          <nav>
                <div class="year">
                     <h1>Ročník 2022</h1>
                     <div class="category-container"></div>
                </div>
-          </div>
+               <div class="profile">
+                    <div class="elements">
+                         <p class="profile-info" style="font-weight: 600; font-size: 1rem;">SSP Purkynova</p>
+                         <p class="profile-info" style="font-weight: 500; font-size: 0.9rem;">petr.sebela@gmail.com</p>
+                    </div>
+                    <a class="logout"><img src="/static/img/svg/logout.svg">Odhlasit</a>
+               </div>
+          </nav>
           <div class="tables">
           </div>
+
           <script src="/static/javascript/css.js"></script>
           <script src="/static/javascript/tables.js"></script>
           <script src="/static/javascript/category.js"></script>

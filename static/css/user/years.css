@@ -13,9 +13,9 @@
      width: fit-content;
      min-width: fit-content;
      height: fit-content;
-     width: calc(100% - 3rem);
+     width: calc(100% - 2rem);
      background-color: var(--green);
-     margin: 1rem;
+     margin: 0.5rem;
      padding: 1.25rem 0.5rem;
      border-radius: 0.5rem;
 }

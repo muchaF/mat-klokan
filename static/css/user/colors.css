@@ -15,9 +15,12 @@
      --green:#449342;
      --green-highlight:#3b7e3a;
      --green-light:#499e47;
-     --green-accent: #ececec; 
+     --green-lighter:#49b447;
 
-     --blue:#2e94d8;
-     --blue-dark:#2980bb;
-     --blue-darker:#236fa1;
+     --blue-light:#1c8094;
+     --blue:#166f81;
+     --blue-dark:#114f5c;
+     --blue-darker:#003844;
+
+     --dark-blue: #02353c;
 }
