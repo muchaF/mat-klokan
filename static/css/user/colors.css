@@ -14,13 +14,14 @@
      /* release colors */
      --green:#449342;
      --green-highlight:#3b7e3a;
-     --green-light:#499e47;
+     /* --green-light:#499e47; */
+     --green-light:#249723;
      --green-lighter:#49b447;
 
-     --blue-light:#1c8094;
-     --blue:#166f81;
+     --blue-accent:#e1ebee;
+     --blue:#156272;
      --blue-dark:#114f5c;
-     --blue-darker:#003844;
-
+     --blue-darker:#1d2935;
+     
      --dark-blue: #02353c;
 }

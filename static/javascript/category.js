@@ -7,7 +7,6 @@ const category = ["Cvrček",
                   "Student"]
 
 const years = document.querySelectorAll(".category-container")
-console.log(years)
 var categoryObject = new Object();
 
 function fillYear(year){

@@ -21,4 +21,6 @@ nav{
      width: fit-content;
      height: 100vh;
      background-color: var(--main1);
+     background-image: url("/static/img/svg/sideBackground.svg");
+     background-size: cover;
 }

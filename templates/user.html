@@ -7,6 +7,7 @@
           <link rel="stylesheet" href="/static/css/user/table.css">
           <link rel="stylesheet" href="/static/css/user/years.css">
           <link rel="stylesheet" href="/static/css/user/profile.css">
+          <link rel="stylesheet" href="/static/css/user/save.css">
           <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
      </head>
      <body>
@@ -17,18 +18,29 @@
                </div>
                <div class="profile">
                     <div class="elements">
-                         <p class="profile-info" style="font-weight: 600; font-size: 1rem;">SSP Purkynova</p>
-                         <p class="profile-info" style="font-weight: 500; font-size: 0.9rem;">petr.sebela@gmail.com</p>
+                         <img class="profile-icon" src="/static/img/svg/account.svg">
+                         <div class="information">
+                              <p style="font-weight: 500; font-size: 1rem;">SSP Purkynova</p>
+                              <p style="font-weight: 300; font-size: 0.9rem;">petr.sebela@gmail.com</p>
+                         </div>
                     </div>
                     <a class="logout"><img src="/static/img/svg/logout.svg">Odhlasit</a>
                </div>
           </nav>
+
+          <div class="save">
+               <img src="/static/img/svg/save.svg">
+               <p>Uložit</p>
+          </div>
+
+
           <div class="tables">
           </div>
 
           <script src="/static/javascript/css.js"></script>
-          <script src="/static/javascript/tables.js"></script>
           <script src="/static/javascript/category.js"></script>
+          <script src="/static/javascript/tables.js"></script>
+          <script src="/static/javascript/sync.js"></script>
           <script src="/static/javascript/logout.js"></script>
      </body>
 </html>

@@ -7,7 +7,7 @@
 
 .activeTable{
      height: fit-content;
-     background-color: var(--green);
+     background-color: var(--green-light);
      padding: 0.8rem;
      margin: 1rem;
      margin-bottom: 10rem;
@@ -29,7 +29,7 @@
      padding: 0.4rem;
      margin: 0.5rem;
      border-radius: 0.5rem;
-     background-color: var(--blue);
+     background-color: var(--green-lighter);
 }
 
 .fragment input{

@@ -1,0 +1,28 @@
+.save{
+    position: fixed;
+    background-color: var(--green-light);
+    border: 2px solid #fff;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem;
+    right: 3rem;
+    bottom: 1rem;
+    cursor: pointer;
+    border-radius: 1rem;
+    user-select: none;
+}
+
+.save > *{
+    font-weight: 500;
+    margin: 0.5rem;
+}
+
+.save > *:last-child{
+    margin-left: 0;
+}
+
+.save:hover{
+    background-color: var(--green-lighter);
+}

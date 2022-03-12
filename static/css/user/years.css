@@ -13,11 +13,12 @@
      width: fit-content;
      min-width: fit-content;
      height: fit-content;
-     width: calc(100% - 2rem);
-     background-color: var(--green);
+     width: calc(100% - 2rem - 4px);
+     background-color: var(--green-light);
      margin: 0.5rem;
      padding: 1.25rem 0.5rem;
      border-radius: 0.5rem;
+     border: 2px solid #dadada;
 }
 
 /* add js to set min width to highest value of batch */
@@ -36,18 +37,20 @@
 }
 
 .year h1{
-     margin: 0 0.75rem;
-     font-size: 1.5rem;
+     margin: 0 5%;
+     font-size: 1.75rem;
      font-weight: 500;
      width: fit-content;
 }
 
 .selected{
-     background-color: var(--blue);
+     background-color: var(--green-lighter);
      color: #fff;
 }
 .selected:hover{
-     background-color: var(--blue-dark) !important;
+     background-color: var(--green-light) !important;
+     border-style: inset;
+     border: 2px solid #fff;
 }
 
 .cetegory:hover{

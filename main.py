@@ -37,5 +37,12 @@ def userValidation():
                return redirect("/dashboard/" + requestData["login"])
      return redirect("/login")
 
+@server.route("/API/sync",methods= ["POST"])
+def sync():
+     data = request.get_json()
+     print(data)
+
+     return "OK ulozeno",200
+
 if __name__ == "__main__":
      server.run(host='localhost',port=2000,debug=True)
