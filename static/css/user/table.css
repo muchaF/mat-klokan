@@ -6,6 +6,7 @@
 }
 
 .activeTable{
+     transition: none;
      height: fit-content;
      background-color: var(--green-light);
      padding: 0.8rem;
@@ -33,7 +34,7 @@
 }
 
 .fragment input{
-     width: 100%;
+     width: 5rem;
      border-radius: 0.25rem;
      padding: 0.25rem;
      outline: none;
@@ -45,4 +46,38 @@
      width: 2rem;
      text-align: center;
      margin-right: 0.5rem;
+}
+
+.best {
+     background-color: var(--green-light);
+     /* position: relative; */
+     width: fit-content;
+     height: fit-content;
+     margin: 1rem;
+     padding: 0.8rem;
+     border-radius: 0.5rem;
+}
+
+button {
+     color: #000;
+}
+
+.input-container {
+     height: fit-content;
+     display: flex;
+     flex-direction: column;
+}
+
+.details {
+     display: flex;
+}
+
+table, th, td {
+     border: 1px solid #fff;
+     border-collapse: collapse;
+}
+
+td{
+     white-space: nowrap;
+     padding: 0.5rem;
 }

@@ -1,7 +1,6 @@
 // generate tabels
 // switch active tables
 // sync data with server
-
 let target = document.querySelector(".tables")
 var activeTable;
 
@@ -14,8 +13,6 @@ function renderTables(name, maxScore) {
     
     let scoreParent = document.createElement("form");
     scoreParent.id = name;
-    scoreParent.action = "/API/sync"
-    scoreParent.method = "POST"
 
     for (let s = 0; s < maxScore; s++) {
         let container = document.createElement("div");
@@ -27,10 +24,12 @@ function renderTables(name, maxScore) {
     parent.appendChild(scoreParent);
     return parent
 }
-
+ 
 function updateTo(name){
     target.innerHTML = '';
-    target.appendChild(renderTables(name,150));
+    target.appendChild(renderTables(name,120));
+
+
     for (var key in categoryObject){
         categoryObject[key].classList.remove("selected");    
     }    
@@ -38,7 +37,19 @@ function updateTo(name){
     updateCSS();
 }
 
+function addPlayer(){
+    let table = document.querySelector(".studentList")
+    let row = document.createElement("tr");
+    row.innerHTML = "<td><button onclick='removeRow(this)'>Remove</button></td><td>name</td>"
+    table.appendChild(row)
+}
+
+function removeRow(element){
+    element.parentElement.parentElement.remove()
+}
+
 
 // default load
 updateTo("Cvrček")
 activeTable = "Cvrček";
+

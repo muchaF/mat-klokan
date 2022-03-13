@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
      <head>
+          <meta charset="cz">
           <title>Mat klokan</title>
           <link rel="stylesheet" href="/static/css/user/colors.css">
           <link rel="stylesheet" href="/static/css/user/main.css">
@@ -8,7 +9,7 @@
           <link rel="stylesheet" href="/static/css/user/years.css">
           <link rel="stylesheet" href="/static/css/user/profile.css">
           <link rel="stylesheet" href="/static/css/user/save.css">
-          <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+          <!-- <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"> -->
      </head>
      <body>
           <nav>
@@ -33,10 +34,26 @@
                <p>Uložit</p>
           </div>
 
-
-          <div class="tables">
+          <div class="input-container">
+               <div class="best">
+                    <h1>Nejlepší řešitelé pro kategorii "jmeno kategorie"</h1>
+                    <div class="students">
+                         <table class="studentList">
+                              <tr>
+                                   <td></td>
+                                   <td>Jmeno</td>
+                                   <td>Prijimeni</td>
+                                   <td>Trida</td>
+                                   <td>Datum narozeni</td>
+                              </tr>
+                         </table>
+                    </div>
+                    <button onclick="addPlayer()">Přidat řešitele</button>
+               </div>
+               <div class="tables">
+               </div>
           </div>
-
+          
           <script src="/static/javascript/css.js"></script>
           <script src="/static/javascript/category.js"></script>
           <script src="/static/javascript/tables.js"></script>
