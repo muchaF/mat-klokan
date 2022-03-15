@@ -1,9 +1,5 @@
-from datetime import timedelta
-from logging import debug
 import random
-import re
-from tkinter.messagebox import NO
-from flask import Flask, render_template, redirect, request, session, jsonify, Response
+from flask import Flask, render_template, redirect, request, session
 import json, database
 
 userData = database.database("config.json")
@@ -11,6 +7,7 @@ users = json.load(open("database/users.json"))
 
 server = Flask("Mat Klokan")
 server.secret_key = 'jf_73j_CER'
+server.config['JSON_AS_ASCII'] = False
 
 @server.route("/")
 def home():
@@ -42,18 +39,34 @@ def userValidation():
 @server.route("/API/sync",methods= ["POST","GET"])
 def sync():
      if(request.method == "POST"):
+     
           data = request.get_json()
+          print(session["user"])
           print("> posted data")
-          print(data)
+          print(json.dumps(data,indent=4))
      
      print(request)
      if(request.method == "GET"):
           args = request.args
           print(args.to_dict())
-          data = {}
+          data = {
+               "category":args["table"],
+               "best":{
+                    "0":{
+                         "name":"Petr",
+                         "surename":"Peroutka",
+                         "birthday":"21.2.2003",
+                         "class":"septima"                    
+                    }
+               },
+               "table":{
+
+               },
+          }
           for x in range(int(args['length'])):
-               data[x] = random.randint(0,150)
-          return jsonify(data), 200
+               data["table"][x] = random.randint(0,150)
+          
+          return data, 200
      return "OK ulozeno",200
 
 if __name__ == "__main__":

@@ -24,3 +24,9 @@ nav{
      background-image: url("/static/img/svg/sideBackground.svg");
      background-size: cover;
 }
+button{
+     padding: 0.5rem 1rem;
+}
+input{
+     color: #000;
+}
