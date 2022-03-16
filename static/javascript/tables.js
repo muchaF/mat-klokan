@@ -12,6 +12,9 @@ function renderTables(name, maxScore) {
     nameNode.textContent = name;
 
     let scoreParent = document.createElement("form");
+    scoreParent.onchange = () => {
+        save(activeTable);
+    }
     scoreParent.id = name;
 
     for (let s = 0; s < maxScore; s++) {

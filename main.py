@@ -1,3 +1,5 @@
+import email
+from unicodedata import name
 from flask import Flask, render_template, redirect, request, session
 import json, database, random
 from datetime import datetime
@@ -20,7 +22,7 @@ def login():
 @server.route("/dashboard/<user>")
 def dashboad(user):
      if ("user" in session and session["user"] == user):
-          return render_template("user.html")
+          return render_template("user.html", name="bim", email="bam@bum.com")
      else:
           return redirect("/login")
 
@@ -38,14 +40,14 @@ def userValidation():
 
 @server.route("/API/sync",methods= ["POST","GET"])
 def sync():
-     print('\33[33m' + "# new API call" + '\033[0m')
+     print('\33[33m' + "# API call" + '\033[0m')
      print("| time: " + str(datetime.now()))
      print('| user: ' + session["user"])
      print("| type: " + request.method)
      if(request.method == "POST"):
           data = request.get_json()
           print("| data content: json")
-          # print(json.dumps(data,indent=4))
+          print("| category: " + data["category"])
      
      if(request.method == "GET"):
           args = request.args

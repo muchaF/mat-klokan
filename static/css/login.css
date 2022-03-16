@@ -8,9 +8,9 @@
      --outlineFocus: #c5c5c5;
      --form: #ffffff;
      --text: #8a8a8a;
-     --submit: #3e87be;
-     --submitHigh: #3c80b4;
-     --submitDark: #3572a1;
+     --submit: #1a7a18;
+     --submitHigh: #1e971c;
+     --submitDark: #146413;
 }
 
 *{
@@ -28,7 +28,7 @@ body{
      justify-content: center;
      flex-direction: column;
      background-color: var(--menu);
-     background-image: url('../img/loginBackground.svg');
+     background-image: url('../img/svg/greenBackground.svg');
      background-size: cover;
      background-position: center center;
      background-attachment: fixed;
@@ -57,17 +57,17 @@ form{
 
 #submit{
      background-color: var(--submit);
-     border-color: var(--submit);
+     /* border-color: var(--submit); */
+     border: none;
      color: #FFF;
      cursor: pointer;
      transition: 90ms;
      width: fit-content;
      padding: 0.5rem 2.5rem;
-     border-color: var(--submitHigh);
+     /* border-color: var(--submitHigh); */
 }
 
 #submit:hover{
-     border-color: var(--submitDark);
      background-color: var(--submitHigh);
 }
 
