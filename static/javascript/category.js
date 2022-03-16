@@ -16,6 +16,7 @@ function fillYear(year){
           cat.classList.add("cetegory");
           // updating table to
           cat.addEventListener("click",() => {
+               console.log("updating....")
                updateTo(category[catIndex]);
                activeTable = category[catIndex];
           });

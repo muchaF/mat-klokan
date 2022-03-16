@@ -1,6 +1,6 @@
-import random
 from flask import Flask, render_template, redirect, request, session
-import json, database
+import json, database, random
+from datetime import datetime
 
 userData = database.database("config.json")
 users = json.load(open("database/users.json"))
@@ -38,32 +38,32 @@ def userValidation():
 
 @server.route("/API/sync",methods= ["POST","GET"])
 def sync():
+     print('\33[33m' + "# new API call" + '\033[0m')
+     print("| time: " + str(datetime.now()))
+     print('| user: ' + session["user"])
+     print("| type: " + request.method)
      if(request.method == "POST"):
-     
           data = request.get_json()
-          print(session["user"])
-          print("> posted data")
-          print(json.dumps(data,indent=4))
+          print("| data content: json")
+          # print(json.dumps(data,indent=4))
      
-     print(request)
      if(request.method == "GET"):
           args = request.args
-          print(args.to_dict())
+          print("| args: " + str(args.to_dict()))
           data = {
                "category":args["table"],
                "best":{
                     "0":{
                          "name":"Petr",
-                         "surename":"Peroutka",
-                         "birthday":"21.2.2003",
-                         "class":"septima"                    
+                         "surname":"Peroutka",
+                         "birthday":"2003-02-13",
+                         "class":"septima",
+                         "score": random.randint(0,120)                
                     }
                },
-               "table":{
-
-               },
+               "table":{},
           }
-          for x in range(int(args['length'])):
+          for x in range(50):
                data["table"][x] = random.randint(0,150)
           
           return data, 200
