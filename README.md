@@ -9,21 +9,21 @@ Vlastnosti projektu které bychom chtěly ve verzi 0.1
 - export výsledků do .xlsx
 
 # API
-'''json
-data = {
-    "category":args["table"],
+```json
+{
+    "category":"Cvrček",
     "best":{
         "0":{
-                "name":"jmeno",
-                "surname":"prijmeni",
-                "birthday":"datum narozeni ve formatu yyyy-mm-dd",
-                "class":"trida",
+                "name":"Marek",
+                "surname":"Polívka",
+                "birthday":"2003-09-24",
+                "class":"V2B",
                 "score": "skore zaka"                
         }
     },
     "table":{},
 }
-'''
+```
 
 # Použíté knihovny
 - [Flask](https://github.com/pallets/flask) - lightweight WSGI web application framework
