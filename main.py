@@ -16,8 +16,13 @@ def home():
      return redirect("/login")
 
 @server.route("/login")
-def login():
-     return render_template("login.html")
+@server.route("/login/<state>")
+def login(state=""):
+     email,password = '',''
+     args = state.split("-")
+     if("email" in args): email = "Špatný email"
+     if("password" in args): password = "Špatné heslo"
+     return render_template("login.html",email=email,password=password)
 
 @server.route("/dashboard/<user>")
 def dashboad(user):
@@ -36,7 +41,7 @@ def userValidation():
                session.permanent = True
                # server.permanent_session_lifetime = timedelta(seconds=1)
                return redirect("/dashboard/" + requestData["login"])
-     return redirect("/login")
+     return redirect("/login/password-email")
 
 @server.route("/API/sync",methods= ["POST","GET"])
 def sync():

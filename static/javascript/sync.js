@@ -46,7 +46,6 @@ function pull(table) {
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
-                // console.log(xhr.response)
                 let response = JSON.parse(xhr.response);
                 resolve(response)
             }

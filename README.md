@@ -9,6 +9,8 @@ Vlastnosti projektu které bychom chtěly ve verzi 0.1
 - export výsledků do .xlsx
 
 # API
+
+template pro json
 ```json
 {
     "category":"Cvrček",
@@ -18,10 +20,12 @@ Vlastnosti projektu které bychom chtěly ve verzi 0.1
                 "surname":"Polívka",
                 "birthday":"2003-09-24",
                 "class":"V2B",
-                "score": "skore zaka"                
+                "score": "102"                
         }
     },
-    "table":{},
+    "table":{
+        "0":"12",
+    },
 }
 ```
 
