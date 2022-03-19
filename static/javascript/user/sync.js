@@ -4,7 +4,6 @@ function save(table) {
     let formData = new FormData(form);
 
     let data = {
-        user: currentUser,
         category: activeTable,
         best: {},
         table: {}
@@ -52,7 +51,6 @@ function pull(table) {
         }
         argsString = "";
         args = {
-            user: currentUser,
             table: table
         };
         for (arg in args) {

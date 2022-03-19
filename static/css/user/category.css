@@ -49,8 +49,6 @@
 }
 .selected:hover{
      background-color: var(--green-light) !important;
-     border-style: inset;
-     border: 2px solid #fff;
 }
 
 .cetegory:hover{

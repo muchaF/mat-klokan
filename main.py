@@ -1,8 +1,7 @@
-import email
-from unicodedata import name
-from flask import Flask, render_template, redirect, request, session
+from flask import Flask, render_template, redirect, request, send_file, session
 import json, database, random
 from datetime import datetime
+import pprint
 
 userData = database.database("config.json")
 users = json.load(open("database/users.json"))
@@ -10,6 +9,15 @@ users = json.load(open("database/users.json"))
 server = Flask("Mat Klokan")
 server.secret_key = 'jf_73j_CER'
 server.config['JSON_AS_ASCII'] = False
+
+@server.route("/admin")
+def admin():
+     return render_template("admin.html")
+
+@server.route("/API/export")
+def export():
+     print("export files")
+     return send_file("export/test.xlsx",as_attachment=True)
 
 @server.route("/")
 def home():
@@ -49,11 +57,12 @@ def sync():
      print("| time: " + str(datetime.now()))
      print('| user: ' + session["user"])
      print("| type: " + request.method)
+
      if(request.method == "POST"):
           data = request.get_json()
           print("| data content: json")
           print("| category: " + data["category"])
-     
+          pprint.pprint(data)
      if(request.method == "GET"):
           args = request.args
           print("| args: " + str(args.to_dict()))

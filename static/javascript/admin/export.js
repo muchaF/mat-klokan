@@ -1,18 +1,14 @@
-function callForExport(exportType){
-     return new Promise((resolve,reject) => {
-          xhr = new XMLHttpRequest();   
-          xhr.onreadystatechange = () => {
-               if (ChannelSplitterNode.readyState === 4 ) {
-                    resolve(JSON.parse(xhr.response))
-               }
+function callForExport(){     
+     console.log("call...")
+     xhr = new XMLHttpRequest();   
+     xhr.onreadystatechange = () => {
+          if (xhr.readyState === 4 ) {
+               console.log("sd")
+               var blob = new Blob([xhr.response], {type: 'image/pdf'});
+               console.log(blob)
           }
-          xhr.open("GET","/API/export?" + exportType, true);
-          xhr.send();
-     })
-}
-
-function getExport(exportType) {
-     callForExport(exportType).then((result)=>{
-
-     })
+          // console.log(xhr.response)
+     }
+     xhr.open("GET","/API/export", true);
+     xhr.send();
 }

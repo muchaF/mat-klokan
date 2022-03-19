@@ -6,7 +6,7 @@
           <link rel="stylesheet" href="/static/css/user/colors.css">
           <link rel="stylesheet" href="/static/css/user/main.css">
           <link rel="stylesheet" href="/static/css/user/table.css">
-          <link rel="stylesheet" href="/static/css/user/years.css">
+          <link rel="stylesheet" href="/static/css/user/category.css">
           <link rel="stylesheet" href="/static/css/user/profile.css">
           <link rel="stylesheet" href="/static/css/user/save.css">
           <!-- <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"> -->
@@ -34,7 +34,7 @@
                <p>Uložit</p>
           </div>
 
-          <div class="input-container">
+          <div class="input-container hide">
                <div class="best">
                     <h1></h1>
                     <div class="students">
@@ -52,14 +52,16 @@
                     <button onclick="addPlayer()">+</button>
                </div>
                <div class="tables">
+                    <div class="activeTable">
+                         <h1 class="scoreName">Kategorie</h1>
+                         <form class="scoreForm"></form>
+                    </div>
                </div>
           </div>
-         
-          <script src="/static/javascript/user.js"></script>
-          <script src="/static/javascript/css.js"></script>
-          <script src="/static/javascript/sync.js"></script>
-          <script src="/static/javascript/category.js"></script>
-          <script src="/static/javascript/tables.js"></script>
-          <script src="/static/javascript/logout.js"></script>
+          <script src="/static/javascript/user/css.js"></script>
+          <script src="/static/javascript/user/category.js"></script>
+          <script src="/static/javascript/user/sync.js"></script>
+          <script src="/static/javascript/user/tables.js"></script>
+          <script src="/static/javascript/user/logout.js"></script>
      </body>
 </html>

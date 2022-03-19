@@ -1,31 +1,21 @@
-// generate tabels
-// switch active tables
-// sync data with server
 var activeTable;
 
 function renderTables(name, maxScore) {
-    table.innerHTML = ''; // clearing table container
-    let parent = document.createElement("div");
-    parent.classList.add("activeTable")
-    let nameNode = document.createElement("h1")
-    parent.appendChild(nameNode);
-    nameNode.textContent = name;
+    let nameNode = document.querySelector('.scoreName')
+    nameNode.innerHTML = name;
 
-    let scoreParent = document.createElement("form");
+    let scoreParent = document.querySelector(".scoreForm");
+    scoreParent.innerHTML = ""
     scoreParent.onchange = () => {
         save(activeTable);
     }
     scoreParent.id = name;
-
     for (let s = 0; s < maxScore; s++) {
         let container = document.createElement("div");
         container.classList.add("fragment")
         container.innerHTML = "<p>" + (s + 1) + "</p><input name=" + s + " type='number' min='0'>"
         scoreParent.appendChild(container);
     }
-
-    parent.appendChild(scoreParent);
-    table.appendChild(parent);
 }
 
 let table = document.querySelector(".tables");
@@ -35,6 +25,7 @@ function updateTo(name) {
         //set best player to table
         let players = document.querySelectorAll(".player");
         for (let player of players) player.remove();
+        
         let playerTable = document.querySelector(".studentList")
         for (let player in response.best) {
             let values = response.best[player]
