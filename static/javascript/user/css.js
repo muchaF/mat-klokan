@@ -1,4 +1,4 @@
-const numberOfcollumns = 4;
+const numberOfcollumns = 8;
 
 function updateCSS(){
     // icon size
@@ -16,7 +16,7 @@ function updateCSS(){
     try{
         let fragment = document.querySelector(".fragment");
         let computeWidth = (fragment.offsetWidth) * numberOfcollumns;
-        document.querySelector(".activeTable").style.width = "calc(" + computeWidth + "px + 4rem)";
+        document.querySelector(".activeTable").style.width = "calc(" + computeWidth + "px + 8rem)";
     } catch(error){}
 }
 

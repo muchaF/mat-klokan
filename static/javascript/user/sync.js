@@ -13,11 +13,11 @@ function save(table) {
     for (let player of document.querySelectorAll(".player")) {
         let childNodes = player.querySelectorAll('input');
         data["best"][index] = {};
-        data["best"][index]["score"] = childNodes[0].value;
-        data["best"][index]["name"] = childNodes[1].value;
-        data["best"][index]["surename"] = childNodes[2].value;
-        data["best"][index]["class"] = childNodes[3].value;
-        data["best"][index]["birthday"] = childNodes[4].value;
+        data["best"][index]["name"]     = childNodes[0].value;
+        data["best"][index]["surename"] = childNodes[1].value;
+        data["best"][index]["class"]    = childNodes[2].value;
+        data["best"][index]["birthday"] = childNodes[3].value;
+        data["best"][index]["score"]    = childNodes[4].value;
         index++
     }
 
