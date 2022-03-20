@@ -7,6 +7,7 @@ const category = ["Cvrček",
 
 const years = document.querySelectorAll(".category-container")
 var categoryObject = new Object();
+var loading = false
 
 function fillYear(year){
      for (let catIndex = 0; catIndex < category.length; catIndex++) {
@@ -16,6 +17,7 @@ function fillYear(year){
           // updating table to
           cat.addEventListener("click",() => {
                console.log("updating....")
+               loading = false;
                updateTo(category[catIndex]);
                activeTable = category[catIndex];
           });

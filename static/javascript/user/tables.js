@@ -10,7 +10,11 @@ function renderTables(name, maxScore) {
         save(activeTable);
     }
     scoreParent.id = name;
+<<<<<<< HEAD
+    for (let s = 120; s >= 0; s--) {
+=======
     for (let s = 120; s > 0; s--) {
+>>>>>>> main
         let container = document.createElement("div");
         container.classList.add("fragment")
         container.innerHTML = "<p>" + (s) + "</p><input name=" + s + " type='number' min='0'>"
@@ -29,25 +33,28 @@ function updateTo(name) {
         let playerTable = document.querySelector(".studentList")
         for (let player in response.best) {
             let values = response.best[player]
-            console.log(values)
+            // console.log(values)
             let playerObject = document.createElement("tr")
             playerObject.classList.add("player")
-            playerObject.innerHTML = "<td> <button onclick='removeRow(this)'>-</button> <td> <input type='text' value=" + values.name + "> </td> <td> <input type='text' value=" + values.surname + "> </td> <td> <input type='text' value=" + values.class + "> </td> <td><input type='date' value=" + values.birthday + "> </td></td> <td> <input type='number' value= " + values.score + "> </td> "
+            playerObject.innerHTML = "<td> <button onclick='removeRow(this)'> <img src='/static/img/svg/delete.svg'> </button> <td> <input type='text' value=" + values.name + "> </td> <td> <input type='text' value=" + values.surname + "> </td> <td> <input type='text' value=" + values.class + "> </td> <td><input type='date' value=" + values.birthday + "> </td></td> <td> <input type='number' value= " + values.score + "> </td> "
             playerTable.appendChild(playerObject)
         }
         document.querySelector(".best > h1").innerHTML = "Nejlepší řešitelé pro kategorii " + name;
 
         // display selected cetegory table
         renderTables(name, Object.keys(response.table).length);
+<<<<<<< HEAD
+        // console.log(response.table);
+=======
         console.log(response.table);
+>>>>>>> main
         for (let key in response.table) 
             document.querySelector("input[name='" + key + "']").value = response.table[key]
         
-
         // highlight selected category
         for (var key in categoryObject) categoryObject[key].classList.remove("selected");
         categoryObject[name].classList.add("selected");
-        updateCSS();
+        updateCSS();       
     })
 }
 
@@ -55,7 +62,11 @@ function addPlayer() {
     let table = document.querySelector(".studentList")
     let row = document.createElement("tr");
     row.classList.add("player");
+<<<<<<< HEAD
+    row.innerHTML = "<td> <button onclick='removeRow(this)'><img src='/static/img/svg/delete.svg'></button> <td> <input type='text'> </td> <td> <input type='text'> </td> <td> <input type='text'> </td> <td><input type='date'> </td></td> <td> <input type='number'> </td> "
+=======
     row.innerHTML = "<td> <button onclick='removeRow(this)'>-</button> <td> <input type='text'> </td> <td> <input type='text'> </td> <td> <input type='text'> </td> <td><input type='date'> </td></td> <td> <input type='number'> </td> "
+>>>>>>> main
     table.appendChild(row)
 }
 

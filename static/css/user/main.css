@@ -11,7 +11,9 @@
 body{
      font-family: 'Roboto', 'sans-serif' ;
      display: flex;
-     height: 100vh;
+     min-height: 100vh;
+     background-image: url("/static/img/svg/stacked-peaks-haikei.svg");
+     background-size: cover;
 }
 
 nav{
@@ -21,7 +23,8 @@ nav{
      width: fit-content;
      height: 100vh;
      background-color: var(--main1);
-     background-image: url("/static/img/svg/sideBackground.svg");
+     /* background-image: url("/static/img/svg/sideBackground.svg"); */
+     background-image: url("/static/img/svg/low-poly-grid-haikei.svg");
      background-size: cover;
 }
 
@@ -34,4 +37,9 @@ input{
 
 .hide{
      display: none !important;
+}
+
+img {
+     cursor: none;
+     pointer-events: none;
 }

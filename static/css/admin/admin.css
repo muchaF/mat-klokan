@@ -13,12 +13,43 @@ body {
      align-items: center;
      height: 100vh;
 }
+a {
+     background-color: #000;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     border-radius: 1rem;
+}
 
-button {
-     width: fit-content;
-     outline: none;
-     border: none;
-     padding: 1rem 3rem;
+a > * {
+     margin: 1rem;
+}
+
+a > :last-child {
+     margin-left: 0;
+}
+
+a > p {
+     /* text-decoration: none; */
+     color: #fff;
+}
+a {
+     text-decoration: none;
+}
+a:active {
+     text-decoration: none;
+}
+
+a:hover {
+     background-color: #616161;
+}
+
+.stats {
+     margin-bottom: 2rem;
+}
+
+.stats > p {
+     margin: 0.5rem;
 }
 
 .item-container {
