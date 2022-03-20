@@ -1,0 +1,141 @@
+/* profile css */
+.profile{
+    width: fit-content;
+    height: fit-content;
+    border-top: 2px solid #fff;
+    background-color: var(--green-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: auto; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.elements {
+    display: flex;
+    height: fit-content;
+}
+
+.information > p {
+    margin-left: 0.5rem;
+}
+
+.logout{
+    padding: 0.75rem;
+    margin: 0.75rem;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--green-lighter);
+}
+
+.logout:hover{
+    opacity: 0.75;
+    background-color: var(--green);
+    cursor: pointer;
+}
+
+.logout img {
+    margin-right: 0.5rem;
+}
+
+.elements{
+    margin-left: 1rem;
+}
+
+/* buttons */
+
+.control {
+    background-color: var(--green-light);
+    border-top: 2px solid #fff;
+}
+
+.save{
+    background-color: var(--white);
+    width: calc(100% - 2rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    right: 3rem;
+    bottom: 1rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    user-select: none;
+    margin: 0.5rem;
+}
+
+.save > *{
+    font-weight: 500;
+    margin: 0.5rem;
+    color: #000;
+}
+
+.save > *:last-child{
+    margin-left: 0;
+}
+
+.save:hover{
+    background-color: var(--main1);
+}
+
+/* category */
+.year-container {
+    position: fixed;
+    min-width: fit-content;
+    width: 20%;
+    height: 100%;
+    margin-left: 5rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f0f0;
+}
+
+.year {
+    width: fit-content;
+    min-width: fit-content;
+    height: fit-content;
+    width: calc(100% - 2rem - 4px);
+    background-color: var(--green-light);
+    margin: 0.5rem;
+    margin-bottom: auto;
+    padding: 1.25rem 0.5rem;
+    border-radius: 0.5rem;
+    border: 2px solid #dadada;
+}
+
+.cetegory {
+    position: relative;
+    width: 80%;
+    min-width: 5rem;
+    text-align: center;
+    height: 1rem;
+    padding: 0.8rem 5% 0.8rem 5%;
+    margin: 1rem 5% 0 5%;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    cursor: pointer;
+    color: #000;
+}
+
+.year h1{
+    margin: 0 5%;
+    font-size: 1.75rem;
+    font-weight: 500;
+    width: fit-content;
+}
+
+.selected{
+    background-color: var(--green-lighter);
+    color: #fff;
+}
+.selected:hover{
+    background-color: var(--green-light) !important;
+}
+
+.cetegory:hover{
+    background-color: var(--main1);
+}

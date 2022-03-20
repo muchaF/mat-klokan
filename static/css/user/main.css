@@ -38,3 +38,8 @@ input{
 .hide{
      display: none !important;
 }
+
+img {
+     cursor: none;
+     pointer-events: none;
+}

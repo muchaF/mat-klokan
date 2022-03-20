@@ -6,9 +6,10 @@
           <link rel="stylesheet" href="/static/css/user/colors.css">
           <link rel="stylesheet" href="/static/css/user/main.css">
           <link rel="stylesheet" href="/static/css/user/table.css">
-          <link rel="stylesheet" href="/static/css/user/category.css">
-          <link rel="stylesheet" href="/static/css/user/profile.css">
-          <link rel="stylesheet" href="/static/css/user/save.css">
+          <!-- <link rel="stylesheet" href="/static/css/user/category.css"> -->
+          <!-- <link rel="stylesheet" href="/static/css/user/profile.css"> -->
+          <!-- <link rel="stylesheet" href="/static/css/user/save.css"> -->
+          <link rel="stylesheet" href="/static/css/user/navbar.css">
           <!-- <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"> -->
      </head>
      <body>
@@ -17,9 +18,15 @@
                     <h1>Ročník 2022</h1>
                     <div class="category-container"></div>
                </div>
-               <div class="save">
-                    <img src="/static/img/svg/save.svg">
-                    <p>Uložit výsledky</p>
+               <div class="control">
+                    <div class="save">
+                         <img src="/static/img/svg/save.svg">
+                         <p>Uložit</p>
+                    </div>
+                    <div class="save">
+                         <img src="/static/img/svg/save.svg">
+                         <p>Exportovat</p>
+                    </div>
                </div>
                <div class="profile">
                     <div class="elements">
@@ -33,29 +40,31 @@
                </div>
           </nav>
 
-          
-
           <div class="input-container hide">
-               <div class="best">
-                    <h1></h1>
-                    <div class="students">
-                         <table class="studentList">
-                              <tr>
-                                   <td></td>
-                                   <td>Jmeno</td>
-                                   <td>Prijimeni</td>
-                                   <td>Trida</td>
-                                   <td>Datum narozeni</td>
-                                   <td>Pocet bodu</td>
-                              </tr>
-                         </table>
+               <div class="subcontainer">
+                    <div class="best">
+                         <h1></h1>
+                         <div class="students">
+                              <table class="studentList">
+                                   <tr>
+                                        <td></td>
+                                        <td>Jmeno</td>
+                                        <td>Prijimeni</td>
+                                        <td>Trida</td>
+                                        <td>Datum narozeni</td>
+                                        <td>Pocet bodu</td>
+                                   </tr>
+                              </table>
+                         </div>
+                         <button onclick="addPlayer()">
+                              <img src="/static/img/svg/add.svg" alt="">
+                         </button>
                     </div>
-                    <button onclick="addPlayer()">+</button>
-               </div>
-               <div class="tables">
-                    <div class="activeTable">
-                         <h1 class="scoreName">Kategorie</h1>
-                         <form class="scoreForm"></form>
+                    <div class="tables">
+                         <div class="activeTable">
+                              <h1 class="scoreName">Kategorie</h1>
+                              <form class="scoreForm"></form>
+                         </div>
                     </div>
                </div>
           </div>

@@ -9,7 +9,7 @@
      transition: none;
      height: fit-content;
      background-color: var(--green-light);
-     padding: 0.8rem;
+     padding: 1rem;
      margin: 1rem;
      margin-bottom: 10rem;
      border-radius: 0.5rem;
@@ -23,6 +23,7 @@
 .activeTable form{
      display: flex;
      flex-wrap: wrap;
+     gap: auto;
 }
 
 .fragment {
@@ -67,7 +68,8 @@ button {
      display: flex;
      flex-direction: column;
      justify-content: center;
-     
+     align-items: center;
+     width: 100%;     
 }
 
 .details {
@@ -82,4 +84,11 @@ table, th, td {
 td{
      white-space: nowrap;
      padding: 0.5rem;
+}
+
+.subcontainer {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
 }

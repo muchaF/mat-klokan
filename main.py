@@ -79,7 +79,7 @@ def sync():
                },
                "table":{},
           }
-          for x in range(1,121,1):
+          for x in range(121):
                data["table"][x] = random.randint(0,150)
           
           return data, 200
