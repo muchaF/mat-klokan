@@ -10,7 +10,11 @@ function renderTables(name, maxScore) {
         save(activeTable);
     }
     scoreParent.id = name;
+<<<<<<< HEAD
     for (let s = 120; s >= 0; s--) {
+=======
+    for (let s = 120; s > 0; s--) {
+>>>>>>> main
         let container = document.createElement("div");
         container.classList.add("fragment")
         container.innerHTML = "<p>" + (s) + "</p><input name=" + s + " type='number' min='0'>"
@@ -39,7 +43,11 @@ function updateTo(name) {
 
         // display selected cetegory table
         renderTables(name, Object.keys(response.table).length);
+<<<<<<< HEAD
         // console.log(response.table);
+=======
+        console.log(response.table);
+>>>>>>> main
         for (let key in response.table) 
             document.querySelector("input[name='" + key + "']").value = response.table[key]
         
@@ -54,7 +62,11 @@ function addPlayer() {
     let table = document.querySelector(".studentList")
     let row = document.createElement("tr");
     row.classList.add("player");
+<<<<<<< HEAD
     row.innerHTML = "<td> <button onclick='removeRow(this)'><img src='/static/img/svg/delete.svg'></button> <td> <input type='text'> </td> <td> <input type='text'> </td> <td> <input type='text'> </td> <td><input type='date'> </td></td> <td> <input type='number'> </td> "
+=======
+    row.innerHTML = "<td> <button onclick='removeRow(this)'>-</button> <td> <input type='text'> </td> <td> <input type='text'> </td> <td> <input type='text'> </td> <td><input type='date'> </td></td> <td> <input type='number'> </td> "
+>>>>>>> main
     table.appendChild(row)
 }
 
