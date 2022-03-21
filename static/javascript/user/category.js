@@ -5,6 +5,13 @@ const category = ["Cvrček",
                   "Junior",
                   "Student"]
 
+
+// const category = ["cvrcek",
+//                   "klokanek",
+//                   "benjamin",
+//                   "kadet",
+//                   "junior",
+//                   "student"]
 const years = document.querySelectorAll(".category-container")
 var categoryObject = new Object();
 var loading = false

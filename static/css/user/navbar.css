@@ -100,12 +100,13 @@
     min-width: fit-content;
     height: fit-content;
     width: calc(100% - 3rem - 4px);
+    width: calc(100% - 1rem );
     background-color: var(--green-light);
-    margin: 1rem;
+    /* margin: 1rem; */
     margin-bottom: auto;
     padding: 1.25rem 0.5rem;
-    border-radius: 0.5rem;
-    border: 2px solid #fff;
+    /* border-radius: 0.5rem; */
+    border-bottom: 2px solid #fff;
     font-weight: 500;
 }
 

@@ -32,12 +32,10 @@ function updateTo(name) {
             // console.log(values)
             let playerObject = document.createElement("tr")
             playerObject.classList.add("player")
-            // playerObject.innerHTML = "<td> <input type='text' value=" + values.name + "> </td> <td> <input type='text' value=" + values.surname + "> </td> <td> <input type='text' value=" + values.class + "> </td> <td><input type='date' value=" + values.birthday + "> </td></td> <td><input type='number' value= " + values.score + "><button onclick='decrement(this)' >-</button><button onclick='add(this)' class='plus'>+</button> </td> <td> <img onclick='removeRow(this)' onload='updateCSS()' src='/static/img/svg/delete.svg'></td>"
-            playerObject.innerHTML = "<td> <input type='text' value=" + values.name + "> </td> <td> <input type='text' value=" + values.surname + "> </td> <td> <input type='text' value=" + values.class + "> </td> <td><input type='date' value=" + values.birthday + "> </td></td> <td><input type='number' value= " + values.score + "></td> <td> <img onclick='removeRow(this)' onload='updateCSS()' src='/static/img/svg/delete.svg'></td>"
-
+            playerObject.innerHTML = "<td> <input type='text' value=" + values.name + "> </td> <td> <input type='text' value=" + values.surname + "> </td> <td> <input type='text' value=" + values.grade + "> </td> <td class='sample'><input type='date' value=" + values.date + "> </td></td> <td class='scinput'><input type='number' value= " + values.score + "><img src='/static/img/svg/remove.svg' onclick='decrement(this)' ><img src='/static/img/svg/add.svg' onclick='add(this)' class='plus'> </td> <td> <img onclick='removeRow(this)' onload='updateCSS()' src='/static/img/svg/delete.svg'></td>"
             playerTable.appendChild(playerObject)
         }
-        document.querySelector(".best > h1").innerHTML = "Nejlepší řešitelé pro kategorii " + name;
+        document.querySelector(".best-head").innerHTML = "Nejlepší řešitelé pro kategorii " + name;
 
         // display selected cetegory table
         renderTables(name, Object.keys(response.table).length);
@@ -57,7 +55,7 @@ function addPlayer() {
     let row = document.createElement("tr");
     row.classList.add("player");
     // row.innerHTML = "<td><input type='text'> </td> <td> <input type='text'> </td> <td> <input type='text'> </td> <td><input type='date'> </td></td> <td> <input type='number'> </td> <td> <img onclick='removeRow(this)' onload='updateCSS()' src='/static/img/svg/delete.svg'></td>"
-    row.innerHTML = "<td><input type='text'> </td> <td> <input type='text'> </td> <td> <input type='text'> </td> <td><input type='date'> </td></td> <td> <input type='number'> </td> <td> <img onclick='removeRow(this)' onload='updateCSS()' src='/static/img/svg/delete.svg'></td>"
+    row.innerHTML = "<td><input type='text'> </td> <td> <input type='text'> </td> <td> <input type='text'> </td> <td><input type='date'> </td></td> <td class='scinput'> <input type='number'><img src='/static/img/svg/remove.svg' onclick='decrement(this)' ><img src='/static/img/svg/add.svg' onclick='add(this)' class='plus'> </td> <td> <img onclick='removeRow(this)' onload='updateCSS()' src='/static/img/svg/delete.svg'></td>"
     table.appendChild(row)
 }
 

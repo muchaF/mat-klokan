@@ -62,10 +62,12 @@
 tr td:last-child{
      border: none;
      padding: 0 0.25rem;
+     transition: 100ms;
 }
 
 tr td:last-child:hover{
-     background-color: var(--main3);
+     /* background-color: red; */
+     filter: brightness(50%) sepia(100) saturate(85) hue-rotate(25deg);
 }
 
 button {
@@ -94,7 +96,8 @@ td{
      background-color: transparent;
      color: #fff;
      font-weight: 600;
-     text-align: center;
+     text-align: left;
+     height: fit-content;
      border-right: 1px solid var(--green);
 }
 
@@ -110,6 +113,31 @@ td > input[type="number"] {
 
 td > input[type=number]::-webkit-inner-spin-button, td >input[type=number]::-webkit-outer-spin-button { 
      -webkit-appearance: none;
+}
+
+.best-nav {
+     display: flex;
+
+}
+
+.scinput {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100%;
+}
+
+.scinput > img {
+     width: 1.25rem;
+     height: 1.25rem;
+     padding: 0.2rem;
+     margin: 0.2rem;
+     border-radius: 0.5rem;
+     background-color: var(--green);
+}
+
+.scinput > img:last-child {
+     margin-right: 0.4rem;
 }
 
 td > * {
@@ -129,6 +157,13 @@ td > * {
      border: none;
      pointer-events: none;
 }
+.header > td {
+     padding-left: 1rem;
+}
+
+::-webkit-calendar-picker-indicator {
+     background-image: url('/static/img/svg/calendar.svg');
+}
 
 td > img {
      pointer-events: all;
@@ -145,8 +180,8 @@ tr:nth-child(odd){
      background-color: var(--green-lighter-alt);
 }
 
-.best > h1 {
-     margin: 1rem 0 1rem 1rem;
+.best-head{
+     margin: 1rem auto 1rem 1rem;
 }
 
 .best > img {
@@ -164,15 +199,16 @@ tr:nth-child(odd){
      background-color: var(--green-lighter);
 }
 
-.best > p {
+.best-nav > p {
      font-size: 1.25rem;
-     font-weight: 600;
-     margin: 0 0 1rem 1rem;
+     font-weight: 500;
+     margin: auto 1rem;
      background-color: var(--green-light);
-     padding: 0.75rem;
+     padding: 0.5rem 0.8rem;
      border-radius: 0.75rem;
      width: fit-content;
      cursor: pointer;
+     user-select: none;
 }
 
 .subcontainer {

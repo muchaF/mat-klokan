@@ -1,10 +1,17 @@
+const conversion = { "Cvrček":"cvrcek",
+                "Klokánek":"klokanek",
+                "Benjamín":"benjamin",
+                "Kadet":"kadet",
+                "Junior":"junior",
+                "Student":"student"}
+
 function save(table) {
     // convert form to JSON format
     let form = document.querySelector("#" + table);
     let formData = new FormData(form);
 
     let data = {
-        category: activeTable,
+        category: conversion[activeTable],
         best: {},
         table: {}
     };
@@ -15,8 +22,8 @@ function save(table) {
         data["best"][index] = {};
         data["best"][index]["name"]     = childNodes[0].value;
         data["best"][index]["surename"] = childNodes[1].value;
-        data["best"][index]["class"]    = childNodes[2].value;
-        data["best"][index]["birthday"] = childNodes[3].value;
+        data["best"][index]["grade"]    = childNodes[2].value;
+        data["best"][index]["date"]     = childNodes[3].value;
         data["best"][index]["score"]    = childNodes[4].value;
         index++
     }

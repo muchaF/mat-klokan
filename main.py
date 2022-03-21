@@ -60,9 +60,12 @@ def sync():
 
      if(request.method == "POST"):
           data = request.get_json()
+          with open("export.json","w+") as file:
+               json.dump(data, file);
           print("| data content: json")
           print("| category: " + data["category"])
           pprint.pprint(data)
+
      if(request.method == "GET"):
           args = request.args
           print("| args: " + str(args.to_dict()))
@@ -72,8 +75,8 @@ def sync():
                     "0":{
                          "name":"Petr",
                          "surname":"Peroutka",
-                         "birthday":"2003-02-13",
-                         "class":"septima",
+                         "date":"2003-02-13",
+                         "grade":"septima",
                          "score": random.randint(0,120)                
                     }
                },
