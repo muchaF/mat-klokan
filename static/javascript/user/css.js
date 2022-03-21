@@ -21,13 +21,14 @@ function updateCSS(){
     let solvers = document.querySelector(".best").offsetWidth;
     document.querySelector(".activeTable").style.width = "calc(" + solvers + "px - 2rem)"
 
-    console.log(parseFloat(window.getComputedStyle(document.querySelector(".activeTable")).width))
-    // try{
-    //     let fragment = document.querySelector(".fragment");
-    //     let computeWidth = (fragment.offsetWidth) * numberOfcollumns;
-    //     document.querySelector(".activeTable").style.width = "calc(" + computeWidth + "px + 8rem)";
-    // } catch(error){}
-
+    let width = parseFloat(window.getComputedStyle(document.querySelector(".activeTable")).width)
+    let fragments = document.querySelectorAll(".fragment");
+    width /= 8;
+    // console.log(fragments)
+    for(let fg of fragments){
+        // console.log("calc(" + width + "px - 2rem)")
+        fg.style.width = "calc(" + width + "px - 2rem - 1px)";
+    }
 }
 
 window.addEventListener("resize",() => {
@@ -36,5 +37,6 @@ window.addEventListener("resize",() => {
 })
 
 window.addEventListener("load",() => {
+    console.log('load')
     updateCSS();
 })

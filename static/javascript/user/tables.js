@@ -32,7 +32,9 @@ function updateTo(name) {
             // console.log(values)
             let playerObject = document.createElement("tr")
             playerObject.classList.add("player")
-            playerObject.innerHTML = "<td> <img onclick='removeRow(this)' src='/static/img/svg/delete.svg'></td><td> <input type='text' value=" + values.name + "> </td> <td> <input type='text' value=" + values.surname + "> </td> <td> <input type='text' value=" + values.class + "> </td> <td><input type='date' value=" + values.birthday + "> </td></td> <td> <input type='number' value= " + values.score + "> </td> "
+            // playerObject.innerHTML = "<td> <input type='text' value=" + values.name + "> </td> <td> <input type='text' value=" + values.surname + "> </td> <td> <input type='text' value=" + values.class + "> </td> <td><input type='date' value=" + values.birthday + "> </td></td> <td><input type='number' value= " + values.score + "><button onclick='decrement(this)' >-</button><button onclick='add(this)' class='plus'>+</button> </td> <td> <img onclick='removeRow(this)' onload='updateCSS()' src='/static/img/svg/delete.svg'></td>"
+            playerObject.innerHTML = "<td> <input type='text' value=" + values.name + "> </td> <td> <input type='text' value=" + values.surname + "> </td> <td> <input type='text' value=" + values.class + "> </td> <td><input type='date' value=" + values.birthday + "> </td></td> <td><input type='number' value= " + values.score + "></td> <td> <img onclick='removeRow(this)' onload='updateCSS()' src='/static/img/svg/delete.svg'></td>"
+
             playerTable.appendChild(playerObject)
         }
         document.querySelector(".best > h1").innerHTML = "Nejlepší řešitelé pro kategorii " + name;
@@ -46,7 +48,7 @@ function updateTo(name) {
         // highlight selected category
         for (var key in categoryObject) categoryObject[key].classList.remove("selected");
         categoryObject[name].classList.add("selected");
-        updateCSS();       
+        updateCSS(); 
     })
 }
 
@@ -54,7 +56,8 @@ function addPlayer() {
     let table = document.querySelector(".studentList")
     let row = document.createElement("tr");
     row.classList.add("player");
-    row.innerHTML = "<td> <img onclick='removeRow(this)' src='/static/img/svg/delete.svg'></td> <td><input type='text'> </td> <td> <input type='text'> </td> <td> <input type='text'> </td> <td><input type='date'> </td></td> <td> <input type='number'> </td> "
+    // row.innerHTML = "<td><input type='text'> </td> <td> <input type='text'> </td> <td> <input type='text'> </td> <td><input type='date'> </td></td> <td> <input type='number'> </td> <td> <img onclick='removeRow(this)' onload='updateCSS()' src='/static/img/svg/delete.svg'></td>"
+    row.innerHTML = "<td><input type='text'> </td> <td> <input type='text'> </td> <td> <input type='text'> </td> <td><input type='date'> </td></td> <td> <input type='number'> </td> <td> <img onclick='removeRow(this)' onload='updateCSS()' src='/static/img/svg/delete.svg'></td>"
     table.appendChild(row)
 }
 
@@ -62,6 +65,12 @@ function removeRow(element) {
     element.parentElement.parentElement.remove()
 }
 
+function add(element){
+    element.parentNode.querySelector('input[type=number]').stepUp();
+}
+function decrement(element){
+    element.parentNode.querySelector('input[type=number]').stepDown();
+}
 updateTo("Cvrček")
 activeTable = "Cvrček";
 

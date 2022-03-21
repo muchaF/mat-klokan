@@ -35,7 +35,7 @@
 }
 
 .fragment input{
-     width: 5rem;
+     width: 100%;
      border-radius: 0.25rem;
      padding: 0.25rem;
      outline: none;
@@ -50,13 +50,22 @@
 }
 
 .best {
-     background-color: var(--green-light);
-     /* position: relative; */
-     width: fit-content;
+     background-color: var(--main2);
+     background-color: var(--green-lighter);
      height: fit-content;
-     margin: 1rem;
-     padding: 0.8rem;
+     margin: 2rem 0 1rem 0;
      border-radius: 0.5rem;
+     overflow: hidden;
+
+}
+
+tr td:last-child{
+     border: none;
+     padding: 0 0.25rem;
+}
+
+tr td:last-child:hover{
+     background-color: var(--main3);
 }
 
 button {
@@ -77,7 +86,7 @@ button {
 }
 
 table, th, td {
-     border: 2px solid #fff;
+     /* border: 2px solid #fff; */
      border-collapse: collapse;
 }
 
@@ -86,22 +95,58 @@ td{
      color: #fff;
      font-weight: 600;
      text-align: center;
+     border-right: 1px solid var(--green);
+}
+
+input[type="date"] {
+     user-select: none;
+}
+
+td > input[type="number"] {
+     -webkit-appearance: textfield;
+        -moz-appearance: textfield;
+             appearance: textfield;
+}
+
+td > input[type=number]::-webkit-inner-spin-button, td >input[type=number]::-webkit-outer-spin-button { 
+     -webkit-appearance: none;
 }
 
 td > * {
      padding: 0.35rem;
      border: none;
      outline: none;
-     background-color: rgba(255, 255, 255, 0.082);
+     background-color: transparent;
      color: #fff;
      font-weight: 500;
      font-size: 1rem;
      height: 2rem;
 }
 
+.header {
+     padding: 0.35rem;
+     background-color: var(--green-light);
+     border: none;
+     pointer-events: none;
+}
+
 td > img {
      pointer-events: all;
      cursor: pointer;
+}
+
+td > input {
+     padding-left: 1.5rem;
+     min-width: fit-content;
+     width: calc(100% - 0.75rem - 1.5rem);
+}
+
+tr:nth-child(odd){
+     background-color: var(--green-lighter-alt);
+}
+
+.best > h1 {
+     margin: 1rem 0 1rem 1rem;
 }
 
 .best > img {
@@ -110,7 +155,7 @@ td > img {
      background-color: var(--green-light);
      border-radius: 1rem;
      padding: 0.5rem;
-     margin: 0.5rem;
+     margin: 1rem 0 0 0;
      pointer-events: all;
      cursor: pointer;
 }
@@ -119,6 +164,16 @@ td > img {
      background-color: var(--green-lighter);
 }
 
+.best > p {
+     font-size: 1.25rem;
+     font-weight: 600;
+     margin: 0 0 1rem 1rem;
+     background-color: var(--green-light);
+     padding: 0.75rem;
+     border-radius: 0.75rem;
+     width: fit-content;
+     cursor: pointer;
+}
 
 .subcontainer {
      display: flex;

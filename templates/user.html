@@ -24,7 +24,7 @@
                          <p>Uložit</p>
                     </div>
                     <div class="save">
-                         <img src="/static/img/svg/save.svg">
+                         <img src="/static/img/svg/download.svg">
                          <p>Exportovat</p>
                     </div>
                </div>
@@ -44,19 +44,20 @@
                <div class="subcontainer">
                     <div class="best">
                          <h1></h1>
+                         <p onclick="addPlayer()">Přidat</p>
+                         <!-- <img onclick="addPlayer()" src="/static/img/svg/add.svg" alt=""> -->
                          <div class="students">
                               <table class="studentList">
-                                   <tr>
-                                        <td></td>
-                                        <td>Jmeno</td>
-                                        <td>Prijimeni</td>
-                                        <td>Trida</td>
-                                        <td>Datum narozeni</td>
-                                        <td>Pocet bodu</td>
+                                   <tr class="header">
+                                        <td class="header">Jmeno</td>
+                                        <td class="header">Prijimeni</td>
+                                        <td class="header">Trida</td>
+                                        <td class="header">Datum narozeni</td>
+                                        <td class="header">Pocet bodu</td>
+                                        <td class="header"></td>
                                    </tr>
                               </table>
                          </div>
-                         <img onclick="addPlayer()" src="/static/img/svg/add.svg" alt="">
                     </div>
                     <div class="tables">
                          <div class="activeTable">

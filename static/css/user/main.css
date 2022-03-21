@@ -22,14 +22,13 @@ nav{
      flex-direction: column;
      width: fit-content;
      height: 100vh;
-     background-color: var(--main1);
-     /* background-image: url("/static/img/svg/sideBackground.svg"); */
      background-image: url("/static/img/svg/low-poly-grid-haikei.svg");
      background-size: cover;
 }
 
 button{
      padding: 0.5rem 1rem;
+     cursor: pointer;
 }
 input{
      color: #000;
