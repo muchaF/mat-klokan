@@ -2,7 +2,7 @@
 webová stránka pro jednoduché zadávání a vyhodnocování výsledků matematického klokana
 
 # Roadmap
-Vlastnosti projektu které bychom chtěly ve verzi 0.1
+Vlastnosti projektu které bychom chtěli ve verzi 0.1
 - příjemné uživatelské rozhraní
 - ukládání výsledků na serveru 
 - vyhodnocování výsledků
