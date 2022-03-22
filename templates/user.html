@@ -6,11 +6,10 @@
           <link rel="stylesheet" href="/static/css/user/colors.css">
           <link rel="stylesheet" href="/static/css/user/main.css">
           <link rel="stylesheet" href="/static/css/user/table.css">
-          <!-- <link rel="stylesheet" href="/static/css/user/category.css"> -->
-          <!-- <link rel="stylesheet" href="/static/css/user/profile.css"> -->
-          <!-- <link rel="stylesheet" href="/static/css/user/save.css"> -->
           <link rel="stylesheet" href="/static/css/user/navbar.css">
-          <!-- <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"> -->
+          <link rel="preload" as="image" href="/static/img/svg/done_white_24dp.svg">
+          <link rel="preload" as="image" href="/static/img/svg/delete.svg">
+          <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
      </head>
      <body>
           <nav>
@@ -19,7 +18,7 @@
                     <div class="category-container"></div>
                </div>
                <div class="control">
-                    <div class="save">
+                    <div class="save" onclick="IChange(this)">
                          <img src="/static/img/svg/save.svg">
                          <p>Uložit</p>
                     </div>

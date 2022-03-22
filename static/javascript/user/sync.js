@@ -35,12 +35,13 @@ function save(table) {
 
     // send data to server
     let xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
+    // xhr.onreadystatechange = function () {
+        // if (xhr.readyState === 4) {
             // loading and succes animation TBI
-            console.log(xhr.response);
-        }
-    }
+            // console.log(xhr.response);
+            
+        // }
+    // }
     xhr.open("POST", "/API/sync", true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(JSON.stringify(data));
@@ -53,6 +54,7 @@ function pull(table) {
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
                 let response = JSON.parse(xhr.response);
+                // console.log(response);
                 resolve(response)
             }
         }

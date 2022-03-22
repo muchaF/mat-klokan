@@ -30,20 +30,21 @@ function updateCSS(){
         fg.style.width = "calc(" + width + "px - 2rem - 1px)";
     }
 
-    let sampleHeight = document.querySelector(".sample").offsetHeight;
-    console.log(sampleHeight)
-    for(let s of document.querySelectorAll(".scinput")){
-        // console.log("calc(" + width + "px - 2rem)")
-        s.style.height = sampleHeight + "px";
-    }
+    try{
+        let sampleHeight = document.querySelector(".sample").offsetHeight;
+        // console.log(sampleHeight)
+        for(let s of document.querySelectorAll(".scinput")){
+            // console.log("calc(" + width + "px - 2rem)")
+            s.style.height = sampleHeight + "px";
+        }
+    } catch(error){}
 }
 
 window.addEventListener("resize",() => {
-    console.log("sdf")
+    // console.log("sd")
     updateCSS();
 })
 
 window.addEventListener("load",() => {
-    console.log('load')
     updateCSS();
 })

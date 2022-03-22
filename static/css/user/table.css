@@ -23,7 +23,6 @@
 .activeTable form{
      display: flex;
      flex-wrap: wrap;
-     gap: auto;
 }
 
 .fragment {
@@ -67,7 +66,8 @@ tr td:last-child{
 
 tr td:last-child:hover{
      /* background-color: red; */
-     filter: brightness(50%) sepia(100) saturate(85) hue-rotate(25deg);
+     /* filter: brightness(50%) sepia(100) saturate(85) hue-rotate(25deg); */
+     filter: invert(75%);
 }
 
 button {
@@ -88,7 +88,6 @@ button {
 }
 
 table, th, td {
-     /* border: 2px solid #fff; */
      border-collapse: collapse;
 }
 
@@ -98,14 +97,19 @@ td{
      font-weight: 600;
      text-align: left;
      height: fit-content;
-     border-right: 1px solid var(--green);
+     /* border-right: 1px solid var(--green); */
+     border-right: 1px solid #fff;
 }
 
 input[type="date"] {
      user-select: none;
+     padding-right: 1.5rem;
 }
 
 td > input[type="number"] {
+     width: 25%;
+     min-width: 25%;
+     margin-right: auto;
      -webkit-appearance: textfield;
         -moz-appearance: textfield;
              appearance: textfield;
@@ -124,7 +128,9 @@ td > input[type=number]::-webkit-inner-spin-button, td >input[type=number]::-web
      display: flex;
      justify-content: center;
      align-items: center;
-     height: 100%;
+     width: 12.5rem;
+     /* max-width: fit-content; */
+     /* height: 100%; */
 }
 
 .scinput > img {

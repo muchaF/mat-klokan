@@ -67,6 +67,7 @@
     border-radius: 0.5rem;
     user-select: none;
     margin: 1rem;
+    transition: 250ms;
 }
 
 .save > *{
@@ -80,7 +81,7 @@
 }
 
 .save:hover{
-    background-color: var(--main1);
+    background-color: var(--green);
 }
 
 /* category */
