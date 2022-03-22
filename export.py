@@ -27,8 +27,10 @@ def export(json):
      for category in json:
           sheet = book.create_sheet(category)
           sheet.title = category
+          sheet['A1'] = 'Výsledky pro kategorii ' + category
+          sheet.dimensions.ColumnDimension(auto_size=True)
           for score in json[category]:
-               sheet['A' + score] = json[category][score]
+               sheet['A' + str(int(score) + 2)] = json[category][score]
 
      
      book.save("export/Mat-klokan.xlsx")

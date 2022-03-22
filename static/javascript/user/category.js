@@ -20,7 +20,7 @@ function fillYear(year){
      for (let catIndex = 0; catIndex < category.length; catIndex++) {
           var cat = document.createElement("div");
           cat.textContent = category[catIndex];
-          cat.classList.add("cetegory");
+          cat.classList.add("category");
           // updating table to
           cat.addEventListener("click",() => {
                console.log("updating....")

@@ -8,7 +8,7 @@
 .activeTable{
      transition: none;
      height: fit-content;
-     background-color: var(--green-light);
+     background-color: var(--green);
      padding: 1rem;
      margin: 1rem;
      margin-bottom: 10rem;
@@ -30,7 +30,7 @@
      padding: 0.5rem;
      margin: 0.5rem;
      border-radius: 0.5rem;
-     background-color: var(--green-lighter);
+     background-color: var(--green-light);
 }
 
 .fragment input{
@@ -49,8 +49,7 @@
 }
 
 .best {
-     background-color: var(--main2);
-     background-color: var(--green-lighter);
+     background-color: var(--green);
      height: fit-content;
      margin: 2rem 0 1rem 0;
      border-radius: 0.5rem;
@@ -139,7 +138,10 @@ td > input[type=number]::-webkit-inner-spin-button, td >input[type=number]::-web
      padding: 0.2rem;
      margin: 0.2rem;
      border-radius: 0.5rem;
-     background-color: var(--green);
+     background-color: var(--green-highlight);
+}
+.scinput > img:hover {
+     background-color: var(--green-light);
 }
 
 .scinput > img:last-child {
@@ -183,7 +185,11 @@ td > input {
 }
 
 tr:nth-child(odd){
-     background-color: var(--green-lighter-alt);
+     background-color: var(--green-light);
+}
+input::placeholder {
+     color: #fff;
+     opacity: 0.8;
 }
 
 .best-head{
@@ -209,12 +215,15 @@ tr:nth-child(odd){
      font-size: 1.25rem;
      font-weight: 500;
      margin: auto 1rem;
-     background-color: var(--green-light);
+     background-color: var(--green-highlight);
      padding: 0.5rem 0.8rem;
      border-radius: 0.75rem;
      width: fit-content;
      cursor: pointer;
      user-select: none;
+}
+.best-nav > p:hover {
+     background-color: var(--green-light);
 }
 
 .subcontainer {
