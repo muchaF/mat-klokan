@@ -86,7 +86,7 @@ def sync():
                data["table"][x] = random.randint(0,150)
           
           return data, 200
-     return "OK ulozeno",200
+     return "OK",200
 
 if __name__ == "__main__":
      server.run(host='localhost',port=2000,debug=True)
