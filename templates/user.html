@@ -22,10 +22,10 @@
                          <img src="/static/img/svg/save.svg">
                          <p>Uložit</p>
                     </div>
-                    <div class="save">
+                    <a class="save" href="/API/export/user" style="text-decoration: none;">
                          <img src="/static/img/svg/download.svg">
                          <p>Exportovat</p>
-                    </div>
+                    </a>
                </div>
                <div class="profile">
                     <div class="elements">
@@ -35,7 +35,7 @@
                               <p style="font-weight: 300; font-size: 0.9rem;">{{ email }}</p>
                          </div>
                     </div>
-                    <a class="logout"><img src="/static/img/svg/logout.svg">Odhlasit</a>
+                    <a class="logout" href="/API/logout" style="text-decoration: none;"><img src="/static/img/svg/logout.svg">Odhlasit</a>
                </div>
           </nav>
 
@@ -46,12 +46,11 @@
                               <h1 class="best-head"></h1>
                               <p onclick="addPlayer()">Přidat</p>
                          </div>
-                         <!-- <img onclick="addPlayer()" src="/static/img/svg/add.svg" alt=""> -->
                          <div class="students">
                               <table class="studentList">
                                    <tr class="header">
                                         <td class="header">Jmeno</td>
-                                        <td class="header">Prijimeni</td>
+                                        <td class="header">Prijmeni</td>
                                         <td class="header">Trida</td>
                                         <td class="header">Datum narozeni</td>
                                         <td class="header">Pocet bodu</td>

@@ -30,7 +30,7 @@
      padding: 0.5rem;
      margin: 0.5rem;
      border-radius: 0.5rem;
-     background-color: var(--green-light);
+     background-color: var(--green-lighter);
 }
 
 .fragment input{
@@ -138,8 +138,14 @@ td > input[type=number]::-webkit-inner-spin-button, td >input[type=number]::-web
      padding: 0.2rem;
      margin: 0.2rem;
      border-radius: 0.5rem;
-     background-color: var(--green-highlight);
+     background-color: var(--green-lighter);
+     /* border: 2px solid #fff; */
 }
+
+.studentList{
+     background-color: var(--green-lighter);
+}
+
 .scinput > img:hover {
      background-color: var(--green-light);
 }
@@ -185,8 +191,13 @@ td > input {
 }
 
 tr:nth-child(odd){
+     background-color: var(--green-alt);
+}
+
+tr:nth-child(even) > .scinput > img {
      background-color: var(--green-light);
 }
+
 input::placeholder {
      color: #fff;
      opacity: 0.8;

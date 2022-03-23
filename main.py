@@ -14,9 +14,8 @@ server.config['JSON_AS_ASCII'] = False
 def admin():
      return render_template("admin.html")
 
-@server.route("/API/export")
-def export():
-     print("export files")
+@server.route("/API/export/<type>")
+def export(type):
      return send_file("export/test.xlsx",as_attachment=True)
 
 @server.route("/")
@@ -42,13 +41,10 @@ def dashboad(user):
 @server.route("/API/login",methods= ["POST"])
 def userValidation():
      requestData = request.form
-     print(request.args)
-     if (requestData["login"] in users):
-          if (requestData["password"] == users[requestData["login"]]["password"]):
-               session["user"] = requestData["login"]
-               session.permanent = True
-               # server.permanent_session_lifetime = timedelta(seconds=1)
-               return redirect("/dashboard/" + requestData["login"])
+     if (requestData["login"] in users and requestData["password"] == users[requestData["login"]]["password"]):
+          session["user"] = requestData["login"]
+          session.permanent = True
+          return redirect("/dashboard/" + requestData["login"])
      return redirect("/login/password-email")
 
 @server.route("/API/sync",methods= ["POST","GET"])
