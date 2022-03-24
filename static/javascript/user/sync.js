@@ -53,7 +53,7 @@ function pull(table) {
         }
         argsString = "";
         args = {
-            table: table
+            table: conversion[table]
         };
         for (arg in args) {
             argsString += arg + "=" + args[arg] + '&'
