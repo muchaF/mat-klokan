@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, request, send_file, session
 import json, random
 from datetime import datetime
 import pprint
+from export import exportForUser
 
 users = {
     "admin":{
@@ -21,7 +22,9 @@ def admin():
 
 @server.route("/API/export/<type>")
 def export(type):
-    return send_file("export/test.xlsx", as_attachment=True)
+    print(json.loads(session['result']))
+    exportForUser(json.loads(session['result']),session['user'])
+    return send_file("export/" + session['user'] + ".xlsx", as_attachment=True)
 
 
 @server.route("/")
@@ -71,6 +74,7 @@ def sync():
 
     if request.method == "POST":
         data = request.get_json()
+        session['result'] = json.dumps(data)
         with open("export.json", "w+") as file:
             json.dump(data, file)
         print("| data content: json")

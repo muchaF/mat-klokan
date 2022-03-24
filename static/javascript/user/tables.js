@@ -57,6 +57,13 @@ function addPlayer() {
     row.classList.add("player");
     row.innerHTML = "<td><input type='text' placeholder='jméno'> </td> <td> <input placeholder='přijmení' type='text'> </td> <td> <input placeholder='třída' type='text'> </td> <td class='sample'><input type='date' placeholder='datum'> </td></td> <td class='scinput'> <input placeholder='skóre' min='0' value='0' type='number'><img src='/static/img/svg/remove.svg' onclick='decrement(this)' ><img src='/static/img/svg/add.svg' onclick='add(this)' class='plus'> </td> <td> <img onclick='removeRow(this)' onload='updateCSS()' src='/static/img/svg/delete.svg'></td>"
     table.appendChild(row)
+    let ico = document.querySelector("#save-button");
+        for (let inp of document.querySelectorAll("input")) {
+            inp.addEventListener("change",() => {
+            ico.childNodes[1].src = "/static/img/svg/save.svg"
+            ico.childNodes[3].innerHTML = "Uložit"
+        })
+    }
 }
 
 function IChange(target) {

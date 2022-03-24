@@ -23,7 +23,7 @@ function save() {
         let childNodes = player.querySelectorAll('input');
         data["best"][index] = {};
         data["best"][index]["name"] = childNodes[0].value;
-        data["best"][index]["surename"] = childNodes[1].value;
+        data["best"][index]["surname"] = childNodes[1].value;
         data["best"][index]["grade"] = childNodes[2].value;
         data["best"][index]["date"] = childNodes[3].value;
         data["best"][index]["score"] = childNodes[4].value;
