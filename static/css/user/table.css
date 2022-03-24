@@ -1,9 +1,16 @@
+.tables{
+     width: 100%;
+     height: fit-content;
+     display: flex;
+     justify-content: center;
+}
+
 .activeTable{
      transition: none;
      height: fit-content;
-     width: 100%;
      background-color: var(--green);
      padding: 1rem;
+     margin: 1rem;
      margin-bottom: 10rem;
      border-radius: 0.5rem;
 }
@@ -24,7 +31,7 @@
      margin: 0.5rem;
      border-radius: 0.5rem;
      background-color: var(--green-lighter);
-     }
+}
 
 .fragment input{
      width: 100%;
@@ -38,8 +45,7 @@
 .fragment p {
      width: 2rem;
      text-align: center;
-     margin: 0.15rem 0.5rem 0 0;
-     height: fit-content;
+     margin-right: 0.5rem;
 }
 
 .best {
@@ -48,9 +54,19 @@
      margin: 2rem 0 1rem 0;
      border-radius: 0.5rem;
      overflow: hidden;
-     width: 80%;
-     min-width: none;
 
+}
+
+tr td:last-child{
+     border: none;
+     padding: 0 0.25rem;
+     transition: 100ms;
+}
+
+tr td:last-child:hover{
+     /* background-color: red; */
+     /* filter: brightness(50%) sepia(100) saturate(85) hue-rotate(25deg); */
+     filter: invert(75%);
 }
 
 button {
@@ -72,7 +88,16 @@ button {
 
 table, th, td {
      border-collapse: collapse;
-     border: 1px solid #000;
+}
+
+td{
+     background-color: transparent;
+     color: #fff;
+     font-weight: 600;
+     text-align: left;
+     height: fit-content;
+     /* border-right: 1px solid var(--green); */
+     border-right: 1px solid #fff;
 }
 
 input[type="date"] {
@@ -80,25 +105,97 @@ input[type="date"] {
      padding-right: 1.5rem;
 }
 
-/* td > input[type="number"] {
+td > input[type="number"] {
      width: 25%;
+     min-width: 25%;
      margin-right: auto;
      -webkit-appearance: textfield;
         -moz-appearance: textfield;
              appearance: textfield;
 }
 
-td > input[type=number]::-webkit-inner-spin-button, td > input[type=number]::-webkit-outer-spin-button { 
+td > input[type=number]::-webkit-inner-spin-button, td >input[type=number]::-webkit-outer-spin-button { 
      -webkit-appearance: none;
-} */
+}
 
 .best-nav {
      display: flex;
 
 }
 
+.scinput {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     width: 12.5rem;
+     /* max-width: fit-content; */
+     /* height: 100%; */
+}
+
+.scinput > img {
+     width: 1.25rem;
+     height: 1.25rem;
+     padding: 0.2rem;
+     margin: 0.2rem;
+     border-radius: 0.5rem;
+     background-color: var(--green-lighter);
+     /* border: 2px solid #fff; */
+}
+
+.studentList{
+     background-color: var(--green-lighter);
+}
+
+.scinput > img:hover {
+     background-color: var(--green-light);
+}
+
+.scinput > img:last-child {
+     margin-right: 0.4rem;
+}
+
+td > * {
+     padding: 0.35rem;
+     border: none;
+     outline: none;
+     background-color: transparent;
+     color: #fff;
+     font-weight: 500;
+     font-size: 1rem;
+     height: 2rem;
+}
+
+.header {
+     padding: 0.35rem;
+     background-color: var(--green-light);
+     border: none;
+     pointer-events: none;
+}
+.header > td {
+     padding-left: 1rem;
+}
+
 ::-webkit-calendar-picker-indicator {
      background-image: url('/static/img/svg/calendar.svg');
+}
+
+td > img {
+     pointer-events: all;
+     cursor: pointer;
+}
+
+td > input {
+     padding-left: 1.5rem;
+     min-width: fit-content;
+     width: calc(100% - 0.75rem - 1.5rem);
+}
+
+tr:nth-child(odd){
+     background-color: var(--green-alt);
+}
+
+tr:nth-child(even) > .scinput > img {
+     background-color: var(--green-light);
 }
 
 input::placeholder {
@@ -145,5 +242,4 @@ input::placeholder {
      flex-direction: column;
      justify-content: center;
      align-items: center;
-     width: 100%;
 }

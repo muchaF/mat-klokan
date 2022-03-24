@@ -6,7 +6,9 @@ function renderTables(name, maxScore) {
 
     let scoreParent = document.querySelector(".scoreForm");
     scoreParent.innerHTML = ""
-    scoreParent.onchange = save(activeTable);
+    scoreParent.onchange = () => {
+        save(activeTable);
+    }
     scoreParent.id = name;
     for (let s = 120; s >= 0; s--) {
         let container = document.createElement("div");

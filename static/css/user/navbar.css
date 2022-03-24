@@ -119,10 +119,10 @@
     color: #000;
 }
 
-.year > h1{
+.year h1{
     margin: 0 auto;
     font-size: 1.75rem;
-    font-weight: 600;
+    font-weight: 500;
     width: fit-content;
 }
 
