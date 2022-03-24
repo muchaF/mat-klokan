@@ -1,6 +1,5 @@
-from unittest import result
+from multiprocessing.sharedctypes import Value
 import openpyxl as xl
-import openpyxl.styles.alignment
 import json
 
 
@@ -11,18 +10,17 @@ def exportForUser(results):
         print(category)
         sheet = book.create_sheet(category)
         sheet.title = category
-        sheet.column_dimensions(bestFit=True)
         sheet["A1"] = "Výsledky pro kategorii " + category
 
-        sheet["D2"] = "Nejlepší řešitelé"
+        sheet["D3"] = "Nejlepší řešitelé"
 
-        sheet["D3"] = "Jméno"
-        sheet["E3"] = "Přijmení"
-        sheet["F3"] = "Třída"
-        sheet["G3"] = "Datum narození"
-        sheet["H3"] = "Body"
+        sheet["D4"] = "Jméno"
+        sheet["E4"] = "Přijmení"
+        sheet["F4"] = "Třída"
+        sheet["G4"] = "Datum narození"
+        sheet["H4"] = "Body"
 
-        bestIndex = 4
+        bestIndex = 5
         for best in results[category]["best"]:
             sheet["D" + str(bestIndex)] = results[category]["best"][best]["name"]
             sheet["E" + str(bestIndex)] = results[category]["best"][best]["surname"]
@@ -32,10 +30,16 @@ def exportForUser(results):
             bestIndex += 1
 
         sheet.merge_cells("A3:B3")
+        sheet.merge_cells("A1:B1")
         sheet["A3"] = "Počet řešitelů dle získaných bodů"
-        for score in results[category]["table"]:
-            sheet["A" + str(int(score) + 4)] = score
-            sheet["B" + str(int(score) + 4)] = results[category]["table"][score]
+        sheet["A4"] = "Body"
+        sheet["B4"] = "Řešitelé"
+
+        print(len(results[category]["table"].items()))
+        for key, value in results[category]["table"].items():
+            row = len(results[category]["table"].items()) - int(key) + 4
+            sheet["A" + str(row)] = str(key)
+            sheet["B" + str(row)] = str(value)
 
     book.save("export/Mat-klokan.xlsx")
 

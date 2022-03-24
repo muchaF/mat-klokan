@@ -1,7 +1,0 @@
-{
-     "path": "database/userData/",
-     "collection": {
-          "admin": "admin.json",
-          "zstgm": "zstgm.json"
-     }
-}
