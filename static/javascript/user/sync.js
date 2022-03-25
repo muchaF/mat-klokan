@@ -7,7 +7,7 @@ const conversion = {
     "Student": "student"
 }
 
-function save() {
+function fetchData(){
     // convert form to JSON format
     let form = document.querySelector("#" + activeTable);
     let formData = new FormData(form);
@@ -32,34 +32,46 @@ function save() {
 
     // save formData to data dict
     for (let field of formData) data["table"][field[0]] = field[1]
+    return data
+}
 
+function save() {
+    sessionStorage.setItem(activeTable,JSON.stringify(fetchData()))
     // send data to server
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "/API/sync", true);
     xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(JSON.stringify(data));
+    xhr.send(JSON.stringify(fetchData()));
 }
 
 function pull(table) {
     return new Promise((resolve, reject) => {
-        // synch data with server
-        let xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                let response = JSON.parse(xhr.response);
-                // console.log(response);
-                resolve(response)
+        if (sessionStorage.getItem(table) != null){
+            console.log("cache load")
+            resolve(JSON.parse(sessionStorage.getItem(table)))
+        }
+        else {
+            // synch data with server
+            let xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    console.log("call load")
+                    let response = JSON.parse(xhr.response);
+                    sessionStorage.setItem(table,JSON.stringify(response))
+                    resolve(response)
+                }
             }
+            argsString = "";
+            args = {
+                table: conversion[table]
+            };
+            for (arg in args) {
+                argsString += arg + "=" + args[arg] + '&'
+            }
+            xhr.open("GET", "/API/sync?" + argsString, true);
+            xhr.send();
+
         }
-        argsString = "";
-        args = {
-            table: conversion[table]
-        };
-        for (arg in args) {
-            argsString += arg + "=" + args[arg] + '&'
-        }
-        xhr.open("GET", "/API/sync?" + argsString, true);
-        xhr.send();
     })
 }
 
