@@ -2,13 +2,9 @@ from flask import Flask, render_template, redirect, request, send_file, session
 import json, random
 from datetime import datetime
 import pprint
-from export import exportForUser
+from export import file
 
-users = {
-    "admin":{
-        "password":"wysi"
-    }
-}
+users = {"admin": {"password": "wysi"}}
 
 server = Flask("Mat Klokan")
 server.secret_key = "jf_73j_CER"
@@ -22,9 +18,8 @@ def admin():
 
 @server.route("/API/export/<type>")
 def export(type):
-    # print(json.loads(session['result']))
-    exportForUser(json.loads(session['result']),session['user'])
-    return send_file("export/" + session['user'] + ".xlsx", as_attachment=True)
+    exportFile = file(json.loads(session["result"]), session["user"])
+    return send_file(str(exportFile), as_attachment=True)
 
 
 @server.route("/")
@@ -75,12 +70,12 @@ def sync():
     if request.method == "POST":
         data = request.get_json()
         structure = {}
-        structure[data['category']] = data
-        
-        structure[data['category']]["school"] = session["user"]
-        structure[data['category']]["adress"] = "adresa 72727"
+        structure[data["category"]] = data
 
-        session['result'] = json.dumps(structure)
+        structure[data["category"]]["school"] = session["user"]
+        structure[data["category"]]["adress"] = "adresa 72727"
+
+        session["result"] = json.dumps(structure)
         with open("export.json", "w+") as file:
             json.dump(data, file)
         print("| data content: json")
@@ -106,7 +101,7 @@ def sync():
                     "date": "2003-02-13",
                     "grade": "septima",
                     "score": random.randint(0, 120),
-                }
+                },
             },
             "table": {},
         }

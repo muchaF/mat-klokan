@@ -26,12 +26,12 @@ function fetchData(){
         data["best"][index]["surname"] = childNodes[1].value;
         data["best"][index]["grade"] = childNodes[2].value;
         data["best"][index]["date"] = childNodes[3].value;
-        data["best"][index]["score"] = childNodes[4].value;
+        data["best"][index]["score"] = parseInt(childNodes[4].value);
         index++
     }
 
     // save formData to data dict
-    for (let field of formData) data["table"][field[0]] = field[1]
+    for (let field of formData) data["table"][field[0]] = parseInt(field[1])
     return data
 }
 
