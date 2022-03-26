@@ -1,116 +1,96 @@
-from flask import Flask, render_template, redirect, request, send_file, session
-import json, random
-from datetime import datetime
-import pprint
-from export import file
+from flask import * 
+from flask_session import Session
+from flask_sqlalchemy import SQLAlchemy
+import db_API
 
-users = {"admin": {"password": "wysi"}}
-
-server = Flask("Mat Klokan")
-server.secret_key = "jf_73j_CER"
-server.config["JSON_AS_ASCII"] = False
+import hashlib
 
 
-@server.route("/admin")
-def admin():
-    return render_template("admin.html")
+server = Flask("mat klokan")
 
+server.config["SECRET_KEY"] = "38gS4_hDd4bX_k"
+server.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///session_db.sqlite3"
+server.config["SESSION_TYPE"] = "sqlalchemy"
 
-@server.route("/API/export/<type>")
-def export(type):
-    exportFile = file(json.loads(session["result"]), session["user"])
-    return send_file(str(exportFile), as_attachment=True)
+session_db = SQLAlchemy(server)
+
+server.config["SESSION_SQLALCHEMY"] = session_db
+
+sess = Session(server)
 
 
 @server.route("/")
-def home():
-    return redirect("/login")
+@server.route("/e<e_error>p<p_error>")
+def login(e_error=0, p_error=0):
+    e_message = "zadny ucet s timto emailem" if e_error == "1" else ""
+    p_message = "nespravne heslo" if p_error == "1" else ""
+    return render_template("login.html", email=e_message, password=p_message)
 
 
-@server.route("/login")
-@server.route("/login/<state>")
-def login(state=""):
-    email, password = "", ""
-    args = state.split("-")
-    if "email" in args:
-        email = "Špatný email"
-    if "password" in args:
-        password = "Špatné heslo"
-    return render_template("login.html", email=email, password=password)
-
-
-@server.route("/dashboard/<user>")
-def dashboad(user):
-    if "user" in session and session["user"] == user:
-        return render_template("user.html", name="bim", email="bam@bum.com")
+@server.route("/dashboard")
+def dashboard():
+    if "id" in session:
+        return render_template(
+            "user.html", name=session["school"], email=session["email"])
     else:
-        return redirect("/login")
+        return redirect("/")
 
 
-@server.route("/API/login", methods=["POST"])
-def userValidation():
-    requestData = request.form
-    if (
-        requestData["login"] in users
-        and requestData["password"] == users[requestData["login"]]["password"]
-    ):
-        session["user"] = requestData["login"]
-        session.permanent = True
-        return redirect("/dashboard/" + requestData["login"])
-    return redirect("/login/password-email")
-
-
-@server.route("/API/sync", methods=["POST", "GET"])
-def sync():
-    print("\33[33m" + "# API call" + "\033[0m")
-    print("| time: " + str(datetime.now()))
-    print("| user: " + session["user"])
-    print("| type: " + request.method)
-
-    if request.method == "POST":
-        data = request.get_json()
-        structure = {}
-        structure[data["category"]] = data
-
-        structure[data["category"]]["school"] = session["user"]
-        structure[data["category"]]["adress"] = "adresa 72727"
-
-        session["result"] = json.dumps(structure)
-        with open("export.json", "w+") as file:
-            json.dump(data, file)
-        print("| data content: json")
-        print("| category: " + data["category"])
-        pprint.pprint(data)
-
+@server.route("/API/login", methods=["POST", "GET"])
+def API_login():
     if request.method == "GET":
-        args = request.args
-        print("| args: " + str(args.to_dict()))
-        data = {
-            "category": args["table"],
-            "best": {
-                "0": {
-                    "name": "Petr",
-                    "surname": "Peroutka",
-                    "date": "2003-02-13",
-                    "grade": "septima",
-                    "score": random.randint(0, 120),
-                },
-                "1": {
-                    "name": "Marek",
-                    "surname": "Peroutka",
-                    "date": "2003-02-13",
-                    "grade": "septima",
-                    "score": random.randint(0, 120),
-                },
-            },
-            "table": {},
-        }
-        for x in range(121):
-            data["table"][x] = random.randint(0, 150)
+        return redirect("/")
+    elif request.method == "POST":
+        form = request.form
+        email = form["login"]
+        password = form["password"]
+        succes, output = db_API.userValiadtion(email=email, password=password)
+        if succes:
+            session["id"] = output["id"]
+            session["school"] = output["school"]
+            session["email"] = email
+            return redirect("/dashboard")
+        else:
+            return redirect(f"/e{output['email']}p{output['password']}")
 
+
+@server.route("/API/logout", methods=["POST", "GET"])
+def API_logout():
+    session.pop("id")
+    session.pop("school")
+    session.pop("email")
+    return redirect("/")
+
+
+@server.route("/API/sync", methods=["GET"])
+def API_load():
+    if "id" in session:
+        args = request.args
+        category = args["table"]
+        data = {
+                "category":category,
+                "best": db_API.getBest(user_id=session["id"], category=category),
+                "table": db_API.getScore(user_id=session["id"], category=category)
+            }
         return data, 200
-    return "OK", 200
+    else:
+        return redirect("/")
+
+
+@server.route("/API/sync", methods=["POST"])
+def API_upload():
+    if "id" in session:
+        data = request.get_json()
+
+        category = data["category"]
+
+        db_API.setScore(user_id=session["id"], category=category, data=data["table"])
+        db_API.setBest(user_id=session["id"], category=category, data=data["best"])
+
+        return "OK", 200
+    else:
+        return redirect("/")
 
 
 if __name__ == "__main__":
-    server.run(host="localhost", port=2000, debug=True)
+    server.run()
