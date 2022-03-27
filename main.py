@@ -25,7 +25,6 @@ supportedBrowser = ['chrome','firefox']
 @server.before_request 
 def checkBrowser():
     browser = request.user_agent.browser
-    print(browser)
     if browser not in supportedBrowser:
         return render_template("support.html")
 

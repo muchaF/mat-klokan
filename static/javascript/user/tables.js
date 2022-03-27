@@ -1,17 +1,38 @@
 var activeTable;
 
 function renderTables(name, maxScore) {
+    // let nameNode = document.querySelector('.scoreName')
+    // nameNode.innerHTML = name;
+
+    // let scoreParent = document.querySelector(".scoreForm");
+    // scoreParent.innerHTML = ""
+    // scoreParent.id = name;
+    // for (let s = maxScore - 1; s >= 0; s--) {
+    //     let container = document.createElement("div");
+    //     container.classList.add("fragment")
+    //     container.innerHTML = "<p>" + (s) + "</p><input name=" + s + " type='number' min='0'>"
+    //     scoreParent.appendChild(container);
+    // }
     let nameNode = document.querySelector('.scoreName')
     nameNode.innerHTML = name;
 
     let scoreParent = document.querySelector(".scoreForm");
     scoreParent.innerHTML = ""
     scoreParent.id = name;
-    for (let s = maxScore - 1; s >= 0; s--) {
-        let container = document.createElement("div");
-        container.classList.add("fragment")
-        container.innerHTML = "<p>" + (s) + "</p><input name=" + s + " type='number' min='0'>"
-        scoreParent.appendChild(container);
+    
+    let index = maxScore -1
+    for (let row = 0; row < (maxScore) / columns; row++) {
+        let rowdiv = document.createElement("div")
+        for (let s = 0; s < columns; s++) {
+            if (index >= 0) {
+                let container = document.createElement("div");
+                container.classList.add("fragment")
+                container.innerHTML = "<p>" + (index) + "</p><input name=" + index + " type='number' min='0'>"
+                rowdiv.appendChild(container);
+                index --;
+            }
+        }
+        scoreParent.appendChild(rowdiv)
     }
 }
 
