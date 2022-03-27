@@ -1,6 +1,3 @@
-from operator import le
-from textwrap import fill
-from unittest import result
 import openpyxl as excel
 
 solverCollum = ["D", "E", "F", "G", "H"]

@@ -8,7 +8,7 @@ const conversion = {
 }
 
 function fetchData(){
-    // convert form to JSON format
+    // convert form to JSON
     let form = document.querySelector("#" + activeTable);
     let formData = new FormData(form);
 
@@ -65,16 +65,15 @@ function pull(table) {
             args = {
                 table: conversion[table]
             };
+
             for (arg in args) {
                 argsString += arg + "=" + args[arg] + '&'
             }
+
             xhr.open("GET", "/API/sync?" + argsString, true);
             xhr.send();
-
         }
     })
 }
 
-document.querySelector(".save").addEventListener("click", () => {
-    save();
-})
+document.querySelector(".save").addEventListener("click", () => {save();})

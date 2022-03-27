@@ -23,7 +23,9 @@ function updateCSS() {
 
     let width = parseFloat(window.getComputedStyle(document.querySelector(".activeTable")).width)
     let fragments = document.querySelectorAll(".fragment");
+    
     width /= 8;
+
     for (let fg of fragments) {
         fg.style.width = "calc(" + width + "px - 2rem - 1px)";
     }

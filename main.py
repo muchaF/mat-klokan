@@ -1,4 +1,6 @@
-from flask import * 
+from distutils.log import debug
+from turtle import st
+from flask import *
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 import db_API
@@ -18,6 +20,14 @@ server.config["SESSION_SQLALCHEMY"] = session_db
 
 sess = Session(server)
 
+supportedBrowser = ['chrome','firefox']
+
+@server.before_request 
+def checkBrowser():
+    browser = request.user_agent.browser
+    print(browser)
+    if browser not in supportedBrowser:
+        return render_template("support.html")
 
 @server.route("/")
 @server.route("/e<e_error>p<p_error>")
@@ -31,7 +41,8 @@ def login(e_error=0, p_error=0):
 def dashboard():
     if "id" in session:
         return render_template(
-            "user.html", name=session["school"], email=session["email"])
+            "user.html", name=session["school"], email=session["email"]
+        )
     else:
         return redirect("/")
 
@@ -68,10 +79,10 @@ def API_load():
         args = request.args
         category = args["table"]
         data = {
-                "category":category,
-                "best": db_API.getBest(user_id=session["id"], category=category),
-                "table": db_API.getScore(user_id=session["id"], category=category)
-            }
+            "category": category,
+            "best": db_API.getBest(user_id=session["id"], category=category),
+            "table": db_API.getScore(user_id=session["id"], category=category),
+        }
         return data, 200
     else:
         return redirect("/")
@@ -93,4 +104,4 @@ def API_upload():
 
 
 if __name__ == "__main__":
-    server.run()
+    server.run(host='localhost', port=5000, debug=True)
