@@ -1,3 +1,4 @@
+from re import L
 import sqlite3
 import json
 
@@ -39,21 +40,6 @@ def userValiadtion(cursor, email, password):
             # hesla se neshoduji
             return False, {"email" : 0, "password" : 1}
 
-#userValiadtion(email="sklenar@gslapanice.cz", password="")
-# = query for best table ======================================================
-    cursor.execute(f"DELETE FROM {category}Best WHERE id={user_id};")
-
-    best = data["best"].values()
-    for row in best:
-        name = row["name"]
-        surname = row["surname"]
-        birthdate = row["birthdate"]
-        score = row["score"]
-        grade = row["grade"]
-        cursor.execute(f"INSERT INTO {category}Best \
-            ('id', 'name', 'surname', 'birthdate', 'score', 'grade') \
-            VALUES ({user_id}, '{name}', '{surname}', '{birthdate}', {score}, '{grade}');"
-            )
 
 @connect(db_path)
 def addUser(cursor, email, password, school):
@@ -61,37 +47,53 @@ def addUser(cursor, email, password, school):
         f"INSERT INTO user (email, password, school) VALUES ('{email}','{password}', '{school}')")
 
 @connect(db_path)
-def getScore(cursor, user_id, category):
+def getScore(cursor, user_id, categories):
     data = {}
-    r = cursor.execute(f"SELECT * FROM {category}Score WHERE id={user_id};")
-    keys = [i[0] for i in r.description[1:]]
-    r = r.fetchall()
-    if len(r) == 0:
-        for key in keys:
-            data[key] = 0
-    else:
-        r = r[0][1:]
-        for i, key in enumerate(keys):
-            data[key] = r[i]
+    for category in categories:
+        category_data = {}
+        r = cursor.execute(f"SELECT * FROM {category}Score WHERE id={user_id};")
+        keys = [i[0] for i in r.description[1:]]
+        r = r.fetchall()
+        if len(r) == 0:
+            for key in keys:
+                category_data[key] = 0
+        else:
+            r = r[0][1:]
+            for i, key in enumerate(keys):
+                category_data[key] = r[i]
+        data[category] = category_data
+
+    if len(categories) == 1:
+        data = data[list(data.keys())[0]]
+
     return data
+
 
 @connect(db_path)
-def getBest(cursor, user_id, category):
+def getBest(cursor, user_id, categories):
     data = {}
-    r = cursor.execute(
-        f"SELECT name, surname, birthdate, grade, score \
-            FROM {category}Best WHERE id={user_id};")
-    r = r.fetchall()
-    for i, row in enumerate(r):
-        data[f"{i+1}"] = {
-            "name" : row[0],
-            "surname" : row[1],
-            "date" : row[2],
-            "grade" : row[3],
-            "score" : row[4]            
-        }
+
+    for category in categories:
+        data_category = {}
+        r = cursor.execute(
+            f"SELECT name, surname, birthdate, grade, score \
+                FROM {category}Best WHERE id={user_id};")
+        r = r.fetchall()
+        for i, row in enumerate(r):
+            data_category[f"{i+1}"] = {
+                "name" : row[0],
+                "surname" : row[1],
+                "date" : row[2],
+                "grade" : row[3],
+                "score" : row[4]            
+            }
+        data[category] = data_category
+
+    if len(categories) == 1:
+        data = data[list(data.keys())[0]]
 
     return data
+
 
 @connect(db_path)
 def setScore(cursor, user_id, category, data):
@@ -130,6 +132,8 @@ def setBest(cursor, user_id, category, data):
     VALUES ({user_id}, '{name}', '{surname}', '{birthdate}', {score}, '{grade}');")
         except KeyError:
             pass
+
+# ------------------------------------------------------------------------------------------------
 
 @connect(db_path)
 def updateDb(cursor, json_file):
