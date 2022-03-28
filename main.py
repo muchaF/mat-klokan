@@ -28,6 +28,7 @@ def checkBrowser():
     if browser not in supportedBrowser:
         return render_template("support.html")
 
+
 @server.route("/")
 @server.route("/e<e_error>p<p_error>")
 def login(e_error=0, p_error=0):
@@ -100,6 +101,11 @@ def API_upload():
         return "OK", 200
     else:
         return redirect("/")
+
+
+@server.route("/API/export")
+def export():
+    return send_file("template.xlsx")
 
 
 if __name__ == "__main__":

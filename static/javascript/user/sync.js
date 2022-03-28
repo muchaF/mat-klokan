@@ -7,6 +7,11 @@ const conversion = {
     "Student": "student"
 }
 
+function parsePrevent(number){
+    if (isNaN(parseInt(number))) return 0
+    else return parseInt(number)
+}
+
 function fetchData(){
     // convert form to JSON
     let form = document.querySelector("#" + activeTable);
@@ -26,12 +31,12 @@ function fetchData(){
         data["best"][index]["surname"] = childNodes[1].value;
         data["best"][index]["grade"] = childNodes[2].value;
         data["best"][index]["date"] = childNodes[3].value;
-        data["best"][index]["score"] = parseInt(childNodes[4].value);
+        data["best"][index]["score"] = parsePrevent(childNodes[4].value);
         index++
     }
 
     // save formData to data dict
-    for (let field of formData) data["table"][field[0]] = parseInt(field[1])
+    for (let field of formData) data["table"][field[0]] = parsePrevent(field[1])
     return data
 }
 
@@ -76,4 +81,8 @@ function pull(table) {
     })
 }
 
+function getExport(){
+    save();
+    window.location.href = "/API/export";
+}
 document.querySelector(".save").addEventListener("click", () => {save();})

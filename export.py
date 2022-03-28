@@ -1,6 +1,6 @@
 import openpyxl as excel
 
-solverCollum = ["D", "E", "F", "G", "H"]
+column = ["D", "E", "F", "G", "H"]
 
 
 class file:
@@ -19,7 +19,7 @@ class file:
         for category in self.results:
             sheet = self.workspace.copy_worksheet(templateSheet)
             sheet.title = category
-
+            sheet.column_dimensions["A"].width = 50
             # filling template
             sheet["B2"] = self.results[category]["school"]
             sheet["B3"] = self.results[category]["adress"]
@@ -37,7 +37,7 @@ class file:
                 solver = self.results[category]["best"][x]
                 dataIndex = 0
                 for dataPoint in solver:
-                    sheet[solverCollum[dataIndex] + str(xIndex)] = solver[dataPoint]
+                    sheet[column[dataIndex] + str(xIndex)] = solver[dataPoint]
                     dataIndex += 1
                 xIndex += 1
 
