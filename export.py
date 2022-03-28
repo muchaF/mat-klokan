@@ -1,7 +1,16 @@
+from unittest import result
 import openpyxl as excel
+import pprint
 
 column = ["D", "E", "F", "G", "H"]
-
+categoryDict = {
+    "cvrcek":'Cvrček',
+    "benjamin":'Benamín',
+    "junior":'Junior',
+    "kadet":'Kadet',
+    "klokanek":"Klokánek",
+    "student":'Student',
+}
 
 class file:
     def __init__(self, results, name) -> None:
@@ -16,25 +25,25 @@ class file:
 
     def fill(self):
         templateSheet = self.workspace.active
-        for category in self.results:
+        for category in self.results["score"]:
             sheet = self.workspace.copy_worksheet(templateSheet)
-            sheet.title = category
-            sheet.column_dimensions["A"].width = 50
+            sheet.title = categoryDict[category]
+
             # filling template
-            sheet["B2"] = self.results[category]["school"]
-            sheet["B3"] = self.results[category]["adress"]
-            sheet["B4"] = category
+            sheet["B2"] = self.results["school"]
+            sheet["B3"] = self.results["address"]
+            sheet["B4"] = categoryDict[category]
 
             # filling points
-            score = len(self.results[category]["table"])
+            score = len(self.results["score"][category])
             for i in range(score - 1, -1, -1):   
-                sheet["A" + str(score - i + 9)] = i
-                sheet["B" + str(score - i + 9)] = self.results[category]["table"][str(i)]
+                sheet["A" + str(score - i + 8)] = i
+                sheet["B" + str(score - i + 8)] = self.results["score"][category][str(i)]
 
             # filling solvers
-            xIndex = 8
-            for x in self.results[category]["best"]:
-                solver = self.results[category]["best"][x]
+            xIndex = 9
+            for x in self.results["best"][category]:
+                solver = self.results["best"][category][x]
                 dataIndex = 0
                 for dataPoint in solver:
                     sheet[column[dataIndex] + str(xIndex)] = solver[dataPoint]

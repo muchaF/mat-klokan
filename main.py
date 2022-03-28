@@ -3,7 +3,7 @@ from flask import *
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 import db_API
-import export
+from export import file
 
 
 import hashlib
@@ -21,10 +21,10 @@ server.config["SESSION_SQLALCHEMY"] = session_db
 
 sess = Session(server)
 
-supportedBrowser = ['chrome','firefox', 'edge', 'safari']
+supportedBrowser = ["chrome", "firefox", "edge", "safari"]
 
 
-@server.before_request 
+@server.before_request
 def checkBrowser():
     browser = request.user_agent.browser
     if browser not in supportedBrowser:
@@ -104,22 +104,37 @@ def API_upload():
     else:
         return redirect("/")
 
+
 @server.route("/API/export")
 def API_export():
     if "id" in session:
         data = {
-            "address" : "",
-            "school" : session["school"],
-            "score" : db_API.getScore(
-                user_id = session["id"],
-                categories=["benjamin", "cvrcek", "junior", "kadet", "klokanek", "student"]
+            "address": "",
+            "school": session["school"],
+            "score": db_API.getScore(
+                user_id=session["id"],
+                categories=[
+                    "cvrcek",
+                    "benjamin",
+                    "junior",
+                    "kadet",
+                    "klokanek",
+                    "student",
+                ],
             ),
-            "best" : db_API.getBest(
-                user_id = session["id"],
-                categories=["benjamin", "cvrcek", "junior", "kadet", "klokanek", "student"]
+            "best": db_API.getBest(
+                user_id=session["id"],
+                categories=[
+                    "cvrcek",
+                    "benjamin",
+                    "junior",
+                    "kadet",
+                    "klokanek",
+                    "student",
+                ],
             ),
         }
-        exportFile = export.file(json.loads(session["result"]), session["user"])
+        exportFile = file(data, session["school"])
         return send_file(str(exportFile), as_attachment=True)
     else:
         return redirect("/")
@@ -131,4 +146,4 @@ def export():
 
 
 if __name__ == "__main__":
-    server.run(host='localhost', port=5000, debug=True)
+    server.run(host="localhost", port=5000, debug=True)
