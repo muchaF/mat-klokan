@@ -13,15 +13,21 @@ categoryDict = {
 
 
 class file:
-    def __init__(self, results, name) -> None:
+    def __init__(self) -> None:
         self.workspace = excel.load_workbook("template.xlsx")
+
+    def __str__(self) -> str:
+        return "export/" + self.name + ".xlsx"
+
+
+class userExport(file):
+    def __init__(self, results, name) -> None:
+        # self.workspace = excel.load_workbook("template.xlsx")
         self.results = results
         self.name = name
         self.fill()
         self.workspace.save("export/" + self.name + ".xlsx")
 
-    def __str__(self) -> str:
-        return "export/" + self.name + ".xlsx"
 
     def fill(self) -> None:
         for category in self.results["score"]:
@@ -47,3 +53,44 @@ class file:
                     sheet[column[dataIndex] + str(index + 9)] = solver[dataPoint]
 
         del self.workspace["Sheet1"]
+
+class finalExport(file):
+    def __init__(self,results) -> None:
+        self.name = "MatKlokan"
+        self.results = results
+    
+    def fill(self) -> None:
+        for category in self.results:
+            templateSheet = self.workspace.active
+            sheet = self.workspace.copy_worksheet(templateSheet)
+            sheet.title = categoryDict[category]
+
+            for school in self.results["school"]:
+                print(school)
+
+        del self.workspace["Sheet1"]
+
+
+test = {
+    "klokan":{
+        "school":{
+            "Klanica":{
+                "120":12
+            },
+            "Brno":{
+                "120":12
+            },
+            "SSP Purkynova":{
+                "120":12
+            },
+        },
+        "best":{
+            "0":{
+                "user":{
+                    "name":"Filip"
+                }
+            }
+        }
+    }
+}
+finalExport()
