@@ -1,16 +1,16 @@
-from unittest import result
 import openpyxl as excel
-import pprint
+
 
 column = ["D", "E", "F", "G", "H"]
 categoryDict = {
-    "cvrcek":'Cvrček',
-    "benjamin":'Benamín',
-    "junior":'Junior',
-    "kadet":'Kadet',
-    "klokanek":"Klokánek",
-    "student":'Student',
+    "cvrcek": "Cvrček",
+    "benjamin": "Benamín",
+    "junior": "Junior",
+    "kadet": "Kadet",
+    "klokanek": "Klokánek",
+    "student": "Student",
 }
+
 
 class file:
     def __init__(self, results, name) -> None:
@@ -18,14 +18,14 @@ class file:
         self.results = results
         self.name = name
         self.fill()
-        self.workspace.save("export/" + name + ".xlsx")
+        self.workspace.save("export/" + self.name + ".xlsx")
 
     def __str__(self) -> str:
         return "export/" + self.name + ".xlsx"
 
-    def fill(self):
-        templateSheet = self.workspace.active
+    def fill(self) -> None:
         for category in self.results["score"]:
+            templateSheet = self.workspace.active
             sheet = self.workspace.copy_worksheet(templateSheet)
             sheet.title = categoryDict[category]
 
@@ -36,23 +36,14 @@ class file:
 
             # filling points
             score = len(self.results["score"][category])
-            for i in range(score - 1, -1, -1):   
+            for i in range(score - 1, -1, -1):
                 sheet["A" + str(score - i + 8)] = i
                 sheet["B" + str(score - i + 8)] = self.results["score"][category][str(i)]
 
             # filling solvers
-            xIndex = 9
-            for x in self.results["best"][category]:
+            for index, x in enumerate(self.results["best"][category]):
                 solver = self.results["best"][category][x]
-                dataIndex = 0
-                for dataPoint in solver:
-                    sheet[column[dataIndex] + str(xIndex)] = solver[dataPoint]
-                    dataIndex += 1
-                xIndex += 1
+                for dataIndex, dataPoint in enumerate(solver):
+                    sheet[column[dataIndex] + str(index + 9)] = solver[dataPoint]
 
         del self.workspace["Sheet1"]
-
-# @server.route("/API/export/<type>")
-# def export(type):
-#     exportFile = file(json.loads(session["result"]), session["user"])
-#     return send_file(str(exportFile), as_attachment=True)

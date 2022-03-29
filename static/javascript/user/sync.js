@@ -7,10 +7,12 @@ const conversion = {
     "Student": "student"
 }
 
+
 function parsePrevent(number){
     if (isNaN(parseInt(number))) return 0
     else return parseInt(number)
 }
+
 
 function fetchData(){
     // convert form to JSON
@@ -40,6 +42,7 @@ function fetchData(){
     return data
 }
 
+
 function save() {
     sessionStorage.setItem(activeTable,JSON.stringify(fetchData()))
     // send data to server
@@ -48,6 +51,7 @@ function save() {
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(JSON.stringify(fetchData()));
 }
+
 
 function pull(table) {
     return new Promise((resolve, reject) => {
@@ -81,8 +85,11 @@ function pull(table) {
     })
 }
 
+
 function getExport(){
     save();
     window.location.href = "/API/export";
 }
+
+
 document.querySelector(".save").addEventListener("click", () => {save();})

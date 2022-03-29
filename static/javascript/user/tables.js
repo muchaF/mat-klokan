@@ -1,5 +1,6 @@
 var activeTable;
 
+
 function renderTables(name, maxScore) {
     let nameNode = document.querySelector('.scoreName')
     nameNode.innerHTML = name;
@@ -24,11 +25,12 @@ function renderTables(name, maxScore) {
     }
 }
 
-let table = document.querySelector(".tables");
 
 function updateTo(name) {
     pull(name).then((response) => {
         //set best player to table
+        document.querySelector(".best-head").innerHTML = "Nejlepší řešitelé pro kategorii " + name;
+        
         let players = document.querySelectorAll(".player");
         for (let player of players) player.remove();
 
@@ -48,9 +50,8 @@ function updateTo(name) {
             <td> <img onclick='removeRow(this)' onload='updateCSS()' src='/static/img/svg/delete.svg'></td>"
             playerTable.appendChild(playerObject)
         }
+        
         if (Object.keys(response.best).length == 0) addPlayer()
-        document.querySelector(".best-head").innerHTML = "Nejlepší řešitelé pro kategorii " + name;
-
 
         // display selected cetegory table
         renderTables(name, Object.keys(response.table).length);
@@ -70,6 +71,7 @@ function updateTo(name) {
         }
     })
 }
+
 
 function addPlayer() {
     let table = document.querySelector(".studentList")
@@ -95,22 +97,28 @@ function addPlayer() {
     }
 }
 
+
 function IChange(target) {
     target.childNodes[1].src = "/static/img/svg/done_white_24dp.svg"
     target.childNodes[3].innerHTML = "Uloženo"
 }
+
 
 function removeRow(element) {
     element.parentElement.parentElement.remove()
     if (document.querySelectorAll(".player").length == 0) addPlayer();
 }
 
+
 function add(element) {
     element.parentNode.querySelector('input[type=number]').stepUp();
 }
+
+
 function decrement(element) {
     element.parentNode.querySelector('input[type=number]').stepDown();
 }
+
 
 updateTo("Cvrček")
 activeTable = "Cvrček";

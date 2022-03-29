@@ -1,29 +1,33 @@
 const categoryDict = ["Cvrček",
-                  "Klokánek",
-                  "Benjamín",
-                  "Kadet",
-                  "Junior",
-                  "Student"]
+     "Klokánek",
+     "Benjamín",
+     "Kadet",
+     "Junior",
+     "Student"]
 
 var categoryObject = new Object();
 
-function fillYear(year){
-     for (let x = 0; x < categoryDict.length; x++) {
+
+function fillYear(year) {
+     // for (let x = 0; x < categoryDict.length; x++) {
+     for (let item of categoryDict) {
+
           var category = document.createElement("div");
-          category.textContent = categoryDict[x];
+          category.textContent = item;
           category.classList.add("category");
           // updating table to
-          category.addEventListener("click",() => {
+          category.addEventListener("click", () => {
                save()
                console.log("updating....")
-               updateTo(categoryDict[x]);
-               activeTable = categoryDict[x];
+               updateTo(item);
+               activeTable = item;
           });
-          
-          categoryObject[categoryDict[x]] = category;
+
+          categoryObject[item] = category;
           year.appendChild(category);
      }
 }
+
 
 document.querySelectorAll(".category-container").forEach(year => {
      fillYear(year);
