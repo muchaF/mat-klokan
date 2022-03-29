@@ -9,9 +9,7 @@ var categoryObject = new Object();
 
 
 function fillYear(year) {
-     // for (let x = 0; x < categoryDict.length; x++) {
      for (let item of categoryDict) {
-
           var category = document.createElement("div");
           category.textContent = item;
           category.classList.add("category");

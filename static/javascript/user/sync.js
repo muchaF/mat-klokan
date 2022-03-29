@@ -44,8 +44,8 @@ function fetchData(){
 
 
 function save() {
-    sessionStorage.setItem(activeTable,JSON.stringify(fetchData()))
     // send data to server
+    sessionStorage.setItem(activeTable,JSON.stringify(fetchData()))
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "/API/sync", true);
     xhr.setRequestHeader("Content-Type", "application/json");
@@ -55,12 +55,13 @@ function save() {
 
 function pull(table) {
     return new Promise((resolve, reject) => {
+        // getting table data from sessionStorage
         if (sessionStorage.getItem(table) != null){
             console.log("cache load")
             resolve(JSON.parse(sessionStorage.getItem(table)))
         }
-        else {
-            // synch data with server
+        // downloading data from server
+        else { 
             let xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4) {
@@ -71,13 +72,8 @@ function pull(table) {
                 }
             }
             argsString = "";
-            args = {
-                table: conversion[table]
-            };
-
-            for (arg in args) {
-                argsString += arg + "=" + args[arg] + '&'
-            }
+            args = { table: conversion[table] };
+            for (arg in args) argsString += arg + "=" + args[arg] + '&'
 
             xhr.open("GET", "/API/sync?" + argsString, true);
             xhr.send();
