@@ -3,7 +3,7 @@ from flask import *
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 import db_API
-from export import file
+from export import userExport, finalExport
 
 
 import hashlib
@@ -34,6 +34,8 @@ def checkBrowser():
 @server.route("/")
 @server.route("/e<e_error>p<p_error>")
 def login(e_error=0, p_error=0):
+    if "permission" in session:
+        return redirect("/dashboard")
     e_message = "zadny ucet s timto emailem" if e_error == "1" else ""
     p_message = "nespravne heslo" if p_error == "1" else ""
     return render_template("login.html", email=e_message, password=p_message)
@@ -41,10 +43,12 @@ def login(e_error=0, p_error=0):
 
 @server.route("/dashboard")
 def dashboard():
-    if "id" in session:
+    if session["permission"] == 1:
         return render_template(
             "user.html", name=session["school"], email=session["email"]
         )
+    elif session["permission"] == 2:
+        return render_template("admin.html")
     else:
         return redirect("/")
 
@@ -62,6 +66,7 @@ def API_login():
             session["id"] = output["id"]
             session["school"] = output["school"]
             session["email"] = email
+            session["permission"] = output["permission"]
             return redirect("/dashboard")
         else:
             return redirect(f"/e{output['email']}p{output['password']}")
@@ -72,6 +77,7 @@ def API_logout():
     session.pop("id")
     session.pop("school")
     session.pop("email")
+    session.pop("permission")
     return redirect("/")
 
 
@@ -134,15 +140,11 @@ def API_export():
                 ],
             ),
         }
-        exportFile = file(data, session["school"])
+        exportFile = userExport(data, session["school"])
         return send_file(str(exportFile), as_attachment=True)
     else:
         return redirect("/")
 
-
-@server.route("/API/export")
-def export():
-    return send_file("template.xlsx")
 
 
 if __name__ == "__main__":

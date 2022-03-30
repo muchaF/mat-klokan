@@ -2,6 +2,8 @@ from re import L
 import sqlite3
 import json
 
+from flask import template_rendered
+
 
 def connect(database_path):
     def decorator(func):
@@ -24,7 +26,7 @@ db_path = "data_test.sqlite3"
 
 @connect(database_path=db_path)
 def userValiadtion(cursor, email, password):
-    r = cursor.execute(f"SELECT id, password, school FROM user WHERE email='{email}';")
+    r = cursor.execute(f"SELECT id, password, school, permission FROM user WHERE email='{email}';")
     r = r.fetchall()
     if len(r) == 0:
         # email neni v databazi
@@ -33,18 +35,20 @@ def userValiadtion(cursor, email, password):
         user_id = r[0][0]
         user_pwd = r[0][1]
         school = r[0][2]
+        permission = r[0][3]
         if password == user_pwd:
             # uspesne prihlaseni
-            return True, {"id" : user_id, "school" : school}
+            return True, {"id" : user_id, "school" : school, "permission" : permission }
         else:
             # hesla se neshoduji
             return False, {"email" : 0, "password" : 1}
 
 
 @connect(db_path)
-def addUser(cursor, email, password, school):
+def addUser(cursor, email, password, permission):
     cursor.execute(
-        f"INSERT INTO user (email, password, school) VALUES ('{email}','{password}', '{school}')")
+        f"INSERT INTO user (email, password, permission) VALUES ('{email}','{password}', {permission})")
+
 
 @connect(db_path)
 def getScore(cursor, user_id, categories):
@@ -136,6 +140,66 @@ def setBest(cursor, user_id, category, data):
 # ------------------------------------------------------------------------------------------------
 
 @connect(db_path)
+def bestExport(cursor, category):
+    data = []
+    data_return = {}
+    r = cursor.execute(f"SELECT * FROM {category}Best ORDER BY score")
+    columns = [r.description[i][0] for i in range(len(r.description))]
+    students = r.fetchall()
+    for student in students:
+        temp_student = {}
+        for i, key in enumerate(columns):
+            temp_student[key] = student[i]
+        if temp_student["name"] != '' and temp_student["surname"] != '' and \
+            temp_student["score"] != 0:
+            if temp_student["birthdate"] != '':
+                temp_student["year"], temp_student["month"], temp_student["day"] = temp_student["birthdate"].split("-")
+            else:
+                temp_student["year"], temp_student["month"], temp_student["day"] = 0, 0, 0
+            data.append(temp_student)
+    
+    data = sorted(data, key=lambda x:(x["score"], int(x["year"]), int(x["month"]), int(x["day"])))
+    data.reverse()
+
+    for i, student in enumerate(data):
+        student.pop("month")
+        student.pop("day")
+        student.pop("year")
+        student_id = student.pop("id")
+        address, school = cursor.execute(f"SELECT address, school FROM user WHERE id={student_id}").fetchall()[0]
+        student["address"] = address if address != None else ''
+        student["school"] = school if school != None else ''
+        data_return[f"{i}"] = student
+
+    return data_return
+
+
+@connect(db_path)
+def scoreExport(cursor, category):
+    data = {}
+    r = cursor.execute(f"SELECT * FROM {category}Score")
+    columns = [r.description[i][0] for i in range(len(r.description))]
+    for row in r.fetchall():
+        temp_row = {}
+        for key, value in zip(columns, row):
+            temp_row[key] = value
+        row_id = temp_row.pop("id")
+        school = cursor.execute(f"SELECT school FROM user WHERE id={row_id}").fetchall()[0][0]
+        data[school] = temp_row
+
+    return data
+
+
+x = bestExport(category="cvrcek")
+for key, value in zip(x.keys(), x.values()):
+    print(key, value)
+
+x = scoreExport(category="cvrcek")
+for key, value in zip(x.keys(), x.values()):
+    print(key, value)
+
+
+@connect(db_path)
 def updateDb(cursor, json_file):
     cursor.execute(f"")
 
@@ -160,3 +224,5 @@ def addBest(cursor, user_id, name, surname, birthdate, score, grade):
     r = cursor.execute(f"INSERT INTO cvrcekBest \
 ('id', 'name', 'surname', 'birthdate', 'score', 'grade') \
 VALUES ({user_id}, '{name}', '{surname}', '{birthdate}', {score}, '{grade}');")
+
+
