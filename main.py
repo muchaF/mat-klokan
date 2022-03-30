@@ -43,6 +43,8 @@ def login(e_error=0, p_error=0):
 
 @server.route("/dashboard")
 def dashboard():
+    if not "permission" in session:
+        return redirect("/")
     if session["permission"] == 1:
         return render_template(
             "user.html", name=session["school"], email=session["email"]
@@ -83,7 +85,7 @@ def API_logout():
 
 @server.route("/API/sync", methods=["GET"])
 def API_load():
-    if "id" in session:
+    if "permission" in session:
         args = request.args
         category = args["table"]
         data = {
@@ -98,7 +100,7 @@ def API_load():
 
 @server.route("/API/sync", methods=["POST"])
 def API_upload():
-    if "id" in session:
+    if "permission" in session:
         data = request.get_json()
 
         category = data["category"]
@@ -113,7 +115,7 @@ def API_upload():
 
 @server.route("/API/export")
 def API_export():
-    if "id" in session:
+    if "permission" in session:
         data = {
             "address": "",
             "school": session["school"],
