@@ -8,6 +8,8 @@ Vlastnosti projektu které bychom chtěli ve verzi 0.1
 - vyhodnocování výsledků
 - export výsledků do .xlsx
 
+- lidi s top 3 bodama
+
 # API
 
 template pro json
