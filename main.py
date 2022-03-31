@@ -147,6 +147,21 @@ def API_export():
     else:
         return redirect("/")
 
+@server.route("/API/full_export")
+def API_full_export():
+    data = {}
+    categories = ["cvrcek", "benjamin", "junior", "kadet", "klokanek", "student"]
+    for category in categories:
+        data[f"{category}"] = {
+            "score" : db_API.scoreExport(category=category),
+            "best" : db_API.bestExport(category=category)
+        }
+    exportFile = finalExport(data)
+    return send_file(str(exportFile), as_attachment=True)
+
+@server.route("/admin")
+def admin():
+    return render_template("admin.html")
 
 
 if __name__ == "__main__":
