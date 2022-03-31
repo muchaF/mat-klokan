@@ -16,12 +16,12 @@ server.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///session_db.sqlite3"
 server.config["SESSION_TYPE"] = "sqlalchemy"
 
 session_db = SQLAlchemy(server)
-
 server.config["SESSION_SQLALCHEMY"] = session_db
-
 sess = Session(server)
 
 supportedBrowser = ["chrome", "firefox", "edge", "safari"]
+
+all_categories = ["cvrcek", "benjamin", "junior", "kadet", "klokanek", "student"]
 
 
 @server.before_request
@@ -55,6 +55,7 @@ def dashboard():
         return redirect("/")
 
 
+
 @server.route("/API/login", methods=["POST", "GET"])
 def API_login():
     if request.method == "GET":
@@ -85,75 +86,62 @@ def API_logout():
 
 @server.route("/API/sync", methods=["GET"])
 def API_load():
-    if "permission" in session:
-        args = request.args
-        category = args["table"]
-        data = {
-            "category": category,
-            "best": db_API.getBest(user_id=session["id"], categories=[category]),
-            "table": db_API.getScore(user_id=session["id"], categories=[category]),
-        }
-        return data, 200
-    else:
+    if not "permission" in session:
         return redirect("/")
+    args = request.args
+    category = args["table"]
+    data = {
+        "category": category,
+        "best": db_API.getBest(user_id=session["id"], categories=[category]),
+        "table": db_API.getScore(user_id=session["id"], categories=[category]),
+    }
+    return data, 200
 
 
 @server.route("/API/sync", methods=["POST"])
 def API_upload():
-    if "permission" in session:
-        data = request.get_json()
-
-        category = data["category"]
-
-        db_API.setScore(user_id=session["id"], category=category, data=data["table"])
-        db_API.setBest(user_id=session["id"], category=category, data=data["best"])
-
-        return "OK", 200
-    else:
+    if not "permission" in session:
         return redirect("/")
+    data = request.get_json()
+
+    category = data["category"]
+
+    db_API.setScore(user_id=session["id"], category=category, data=data["table"])
+    db_API.setBest(user_id=session["id"], category=category, data=data["best"])
+
+    return "OK", 200
 
 
 @server.route("/API/export")
 def API_export():
-    if "permission" in session:
-        data = {
-            "address": "",
-            "school": session["school"],
-            "score": db_API.getScore(
-                user_id=session["id"],
-                categories=[
-                    "cvrcek",
-                    "benjamin",
-                    "junior",
-                    "kadet",
-                    "klokanek",
-                    "student",
-                ],
-            ),
-            "best": db_API.getBest(
-                user_id=session["id"],
-                categories=[
-                    "cvrcek",
-                    "benjamin",
-                    "junior",
-                    "kadet",
-                    "klokanek",
-                    "student",
-                ],
-            ),
-        }
-        exportFile = userExport(data, session["school"])
-        return send_file(str(exportFile), as_attachment=True)
-    else:
+    if not "permission" in session:
         return redirect("/")
+    data = {
+        "address": "",
+        "school": session["school"],
+        "score": db_API.getScore(
+            user_id=session["id"],
+            categories=all_categories,
+        ),
+        "best": db_API.getBest(
+            user_id=session["id"],
+            categories=all_categories,
+        ),
+    }
+    exportFile = userExport(data, session["school"])
+    return send_file(str(exportFile), as_attachment=True)
+
 
 @server.route("/API/full_export")
 def API_full_export():
+    if not "permission" in session:
+        return redirect("/")
     data = {}
-    categories = ["cvrcek", "benjamin", "junior", "kadet", "klokanek", "student"]
-    for category in categories:
+    for category in all_categories:
+        data_range, score = db_API.scoreExport(category=category)
         data[f"{category}"] = {
-            "score" : db_API.scoreExport(category=category),
+            "range" : data_range,
+            "score" : score,
             "best" : db_API.bestExport(category=category)
         }
     exportFile = finalExport(data)
@@ -161,6 +149,8 @@ def API_full_export():
 
 @server.route("/admin")
 def admin():
+    if not "permission" in session:
+        return redirect("/")
     return render_template("admin.html")
 
 

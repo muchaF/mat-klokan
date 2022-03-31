@@ -49,6 +49,7 @@ def addUser(cursor, email, password, permission):
     cursor.execute(
         f"INSERT INTO user (email, password, permission) VALUES ('{email}','{password}', {permission})")
 
+#addUser(email="export", password="x1fe2", permission="2")
 
 @connect(db_path)
 def getScore(cursor, user_id, categories):
@@ -177,26 +178,33 @@ def bestExport(cursor, category):
 @connect(db_path)
 def scoreExport(cursor, category):
     data = {}
+    schools = cursor.execute(f"SELECT school FROM user").fetchall()
+    for school in schools:
+        data[f"{school[0]}"] = {}
     r = cursor.execute(f"SELECT * FROM {category}Score")
     columns = [r.description[i][0] for i in range(len(r.description))]
     for row in r.fetchall():
         temp_row = {}
         for key, value in zip(columns, row):
-            temp_row[key] = value
+            if key == "id" or value != 0:
+                temp_row[key] = value
         row_id = temp_row.pop("id")
         school = cursor.execute(f"SELECT school FROM user WHERE id={row_id}").fetchall()[0][0]
         data[school] = temp_row
 
-    return data
+    data_range = {"lowest" : columns[1], "biggest" : columns[-1]}
+
+    return data_range, data
 
 
-x = bestExport(category="cvrcek")
-for key, value in zip(x.keys(), x.values()):
-    print(key, value)
+# x = bestExport(category="cvrcek")
+# for key, value in zip(x.keys(), x.values()):
+#     print(key, value)
 
-x = scoreExport(category="cvrcek")
-for key, value in zip(x.keys(), x.values()):
-    print(key, value)
+# y, x = scoreExport(category="cvrcek")
+# print(y)
+# for key, value in zip(x.keys(), x.values()):
+#     print(key, value)
 
 
 @connect(db_path)
