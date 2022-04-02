@@ -138,7 +138,6 @@ def setBest(cursor, user_id, category, data):
         except KeyError:
             pass
 
-# ------------------------------------------------------------------------------------------------
 
 @connect(db_path)
 def bestExport(cursor, category):
@@ -178,7 +177,7 @@ def bestExport(cursor, category):
 @connect(db_path)
 def scoreExport(cursor, category):
     data = {}
-    schools = cursor.execute(f"SELECT school FROM user").fetchall()
+    schools = cursor.execute(f"SELECT school FROM user WHERE permission=1;").fetchall()
     for school in schools:
         data[f"{school[0]}"] = {}
     r = cursor.execute(f"SELECT * FROM {category}Score")
