@@ -6,6 +6,10 @@
      position: relative;
 }
 
+h2{
+     margin: 1rem;
+}
+
 body {
      display: flex;
      flex-direction: column;
@@ -30,9 +34,9 @@ a > :last-child {
 }
 
 a > p {
-     /* text-decoration: none; */
      color: #fff;
 }
+
 a {
      text-decoration: none;
 }
@@ -42,21 +46,6 @@ a:active {
 
 a:hover {
      background-color: #616161;
-}
-
-.stats {
-     margin-bottom: 2rem;
-}
-
-.stats > p {
-     margin: 0.5rem;
-}
-
-.item-container {
-     width: fit-content;
-     display: flex;
-     flex-direction: column;
-     align-items: center;
 }
 
 .logout{

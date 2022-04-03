@@ -4,10 +4,10 @@ from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 import db_API
 from export import userExport, finalExport
-
-
 import hashlib
-
+# text credentials
+# export - x1fe2
+# sklenar@gslapanice.cz - z8af2
 
 server = Flask("mat klokan")
 
