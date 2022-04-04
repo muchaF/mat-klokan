@@ -1,10 +1,11 @@
 from pprint import pprint
 import random
+from turtle import width
 import openpyxl as excel
 from openpyxl.utils import get_column_letter
 from openpyxl.styles import PatternFill, Border, Side
 
-column = ["A", "B", "C", "D", "E"]
+column = ["D", "B", "C", "D", "E"]
 categoryDict = {
     "cvrcek": "Cvrček",
     "benjamin": "Benamín",
@@ -25,12 +26,27 @@ columnDictionary = {
 
 minWidth = {"A": 6, "B": 7, "C": 10, "D": 7, "E": 17, "F": 7}
 
-thin_border = Border(left=Side(style='thin'), 
-                     right=Side(style='thin'), 
-                     top=Side(style='thin'), 
-                     bottom=Side(style='thin'))
+thin_border = Border(
+    left=Side(style="thin"),
+    right=Side(style="thin"),
+    top=Side(style="thin"),
+    bottom=Side(style="thin"),
+)
+
 
 class file:
+    def parseWidth(self, text, column):
+        if column in self.columnWidth:
+            self.columnWidth[column] = max(
+                [self.columnWidth[column], len(str(text)), 5]
+            )
+        else:
+            try:
+                self.columnWidth[column] = max([len(str(text)), minWidth[column]])
+            except:
+                self.columnWidth[column] = max([len(str(text)), 5])
+
+
     def __str__(self) -> str:
         return "export/" + self.name + ".xlsx"
 
@@ -51,14 +67,13 @@ class userExport(file):
 
             # filling template
             sheet["B2"] = self.results["school"]
-            sheet["B3"] = self.results["address"]
-            sheet["B4"] = categoryDict[category]
+            sheet["B3"] = categoryDict[category]
 
             # filling points
             score = len(self.results["score"][category])
             for i in range(score - 1, -1, -1):
-                sheet["A" + str(score - i + 8)] = i
-                sheet["B" + str(score - i + 8)] = self.results["score"][category][
+                sheet["A" + str(score - i + 6)] = i
+                sheet["B" + str(score - i + 6)] = self.results["score"][category][
                     str(i)
                 ]
 
@@ -66,7 +81,9 @@ class userExport(file):
             for index, x in enumerate(self.results["best"][category]):
                 solver = self.results["best"][category][x]
                 for dataIndex, dataPoint in enumerate(solver):
-                    sheet[column[dataIndex] + str(index + 9)] = solver[dataPoint]
+                    sheet.cell(row=index + 7, column=dataIndex + 4).value = solver[
+                        dataPoint
+                    ]
 
         del self.workspace["Sheet1"]
 
@@ -80,31 +97,21 @@ class finalExport(file):
         self.columnWidth = {}
         self.fill()
         self.workspace.save("export/" + self.name + ".xlsx")
-
-    def parseWidth(self, text, column):
-        if column in self.columnWidth:
-            self.columnWidth[column] = max(
-                [self.columnWidth[column], len(str(text)), 5]
-            )
-        else:
-            try:
-                self.columnWidth[column] = max([len(str(text)), minWidth[column]])
-            except:
-                self.columnWidth[column] = max([len(str(text)), 5])
+   
 
     def fill(self) -> None:
-        for key,category in self.results.items():
+        for key, category in self.results.items():
             self.columnWidth = {}
             maxScore = int(category["range"]["biggest"])
             rowValue = [0 for _ in range(maxScore)]
-            
+
             sheet = self.workspace.copy_worksheet(self.template)
             sheet.title = categoryDict[key]
 
             finalSum = 0
 
             for row in range(maxScore, -1, -1):
-                coord = "M" + str(maxScore - row + 2) 
+                coord = "M" + str(maxScore - row + 2)
                 sheet[coord] = row
                 sheet[coord].fill = PatternFill(
                     start_color="d9d9d9", patternType="solid"
@@ -116,22 +123,22 @@ class finalExport(file):
                 cell = sheet.cell(row=1, column=index + 14)
                 cell.value = school
                 cell.border = thin_border
-                cell.fill = PatternFill(
-                    start_color="a9d08e", patternType="solid"
-                )
+                cell.fill = PatternFill(start_color="a9d08e", patternType="solid")
 
                 for row in range(maxScore, -1, -1):
                     try:
                         value = category["score"][school][str(row)]
-                        sheet.cell(row=maxScore - row + 2, column=index + 14).value = value
+                        sheet.cell(
+                            row=maxScore - row + 2, column=index + 14
+                        ).value = value
                         rowValue[maxScore - row] += value
                         finalSum += value
                     except:
                         pass
-            
+
             for row, value in enumerate(rowValue):
-                sheet.cell(row=row+2,column=12).value = value
-                sheet.cell(row=row+2,column=12).border = thin_border
+                sheet.cell(row=row + 2, column=12).value = value
+                sheet.cell(row=row + 2, column=12).border = thin_border
             sheet["J2"] = finalSum
 
             # solver fill - done
@@ -143,8 +150,8 @@ class finalExport(file):
                         self.parseWidth(value, columnDictionary[datapoint])
                     except:
                         pass
-            
-            #column resize
+
+            # column resize
             for each in self.columnWidth:
                 sheet.column_dimensions[each].width = self.columnWidth[each]
 
