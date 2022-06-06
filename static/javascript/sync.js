@@ -15,8 +15,6 @@ function parsePrevent(number){
 
 function fetchActiveTable(){
     // convert form to JSON
-    // let formData = new FormData(document.querySelector("#" + activeTable));
-
     let data = {
         category: conversion[activeTable],
         best: {},
@@ -47,12 +45,11 @@ function fetchActiveTable(){
 function save() {
     // send data to server
     sessionStorage.setItem(activeTable,JSON.stringify(fetchActiveTable()))
-    console.log(fetchActiveTable())
 
     let saveButton = document.querySelector("#save")
     saveButton.childNodes[1].src = "/static/img/svg/done_white_24dp.svg"
     saveButton.childNodes[3].innerHTML = "Uloženo"
-    return 
+    // return 
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "/API/sync", true);
     xhr.setRequestHeader("Content-Type", "application/json");
@@ -64,10 +61,9 @@ function pull(table) {
     return new Promise((resolve, reject) => {
         // getting table data from sessionStorage
         
-        // if (sessionStorage.getItem(table) != null){
-        //     resolve(JSON.parse(sessionStorage.getItem(table)))
-        // }
-        if(false){}
+        if (sessionStorage.getItem(table) != null){
+            resolve(JSON.parse(sessionStorage.getItem(table)))
+        }
         // downloading data from server
         else { 
             let xhr = new XMLHttpRequest();

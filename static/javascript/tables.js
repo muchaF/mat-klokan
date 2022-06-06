@@ -5,7 +5,6 @@ var activeTable;
 
 function setTo(table) {
     pull(table).then((response) => {
-        
         // Clearing table of previous data
         let solvers = document.querySelectorAll(".solver");
         for (let solver of solvers) solver.remove();
@@ -22,13 +21,15 @@ function setTo(table) {
         for (let key in response.table){
             document.querySelector(`#${CSS.escape(key.toString())}`).innerHTML = response.table[key]
         }
+
         // highlight selected category
         for (var key in categoryObject) categoryObject[key].classList.remove("selected");
         categoryObject[table].classList.add("selected");
         
         let ico = document.querySelector("#save");
-        for (let input of document.querySelectorAll("textarea")) {
+        for (let input of document.querySelector('form').querySelectorAll("textarea")) {
             input.addEventListener("change",() => {
+                input.value = limitToNumber(input.value)
                 sessionStorage.setItem(activeTable,JSON.stringify(fetchActiveTable()))
                 ico.childNodes[1].src = "/static/img/svg/save.svg"
                 ico.childNodes[3].innerHTML = "Uložit"
@@ -48,8 +49,15 @@ function addStats(name, maxScore) {
             if (index >= 0) {
                 let container = document.createElement("div");
                 container.classList.add("fragment")
-                container.innerHTML = `<p>${index}</p><textarea id=${index} type='number' min='0'></textarea>`
+                container.innerHTML = `<p>${index}</p><textarea spellcheck='false' id=${index} type='number' min='0'></textarea>`
                 rowdiv.appendChild(container);
+                index --;
+            }
+            if (index < 0 & s < columns) {
+                let filldiv = document.createElement("div")
+                filldiv.classList.add("fragment")
+                rowdiv.appendChild(filldiv)                    
+                console.log("ss")
                 index --;
             }
         }
@@ -64,44 +72,40 @@ function addSolver(student) {
 
     if (student != null){
         row.innerHTML = `
-        <td> <textarea type='text' placeholder='jméno'>${student.name}</textarea></td>
-        <td> <textarea placeholder='přijmení' type='text'>${student.surname}</textarea></td>
-        <td> <textarea placeholder='třída' type='text'>${student.class}</textarea></td>
-        <td> <textarea type='date' placeholder='datum'>${student.birthday}</textarea></td>
-        <td class='score'> 
-            <textarea placeholder='skóre' min='0' value='0'>${student.score}</textarea><img src='/static/img/svg/remove.svg' onclick='decrement(this)' >
-            <img src='/static/img/svg/add.svg' onclick='add(this)'> 
-        </td>
-        <td> <img class='trash' onclick='removeRow(this)' src='/static/img/svg/delete.svg'> </td>`
+        <td> <textarea spellcheck='false' type='text' placeholder='jméno'>${student.name}</textarea></td>
+        <td> <textarea spellcheck='false' placeholder='přijmení' type='text'>${student.surname}</textarea></td>
+        <td> <textarea spellcheck='false' placeholder='třída' type='text'>${student.grade}</textarea></td>
+        <td> <textarea spellcheck='false' type='date' placeholder='datum'>${student.date}</textarea></td>
+        <td> <textarea spellcheck='false' class='number'placeholder='skóre' min='0' value='0'>${student.score}</textarea></td>
+        <td class='trash' onclick='removeRow(this)'> <img src='/static/img/svg/delete.svg'> </td>`
     }
     else{
         row.innerHTML = `
-        <td> <textarea type='text' placeholder='jméno'></textarea></td>
-        <td> <textarea placeholder='přijmení' type='text'></textarea></td>
-        <td> <textarea placeholder='třída' type='text'></textarea></td>
-        <td> <textarea type='date' placeholder='datum'></textarea></td>
-        <td class='score'> 
-            <textarea placeholder='skóre' min='0' value='0'></textarea><img src='/static/img/svg/remove.svg' onclick='decrement(this)' >
-            <img src='/static/img/svg/add.svg' onclick='add(this)'> 
-        </td>
-        <td> <img class='trash' onclick='removeRow(this)' src='/static/img/svg/delete.svg'></td>`        
+        <td> <textarea spellcheck='false' type='text' placeholder='jméno'></textarea></td>
+        <td> <textarea spellcheck='false' placeholder='přijmení' type='text'></textarea></td>
+        <td> <textarea spellcheck='false' placeholder='třída' type='text'></textarea></td>
+        <td> <textarea spellcheck='false' type='date' placeholder='datum'></textarea></td>
+        <td> <textarea spellcheck='false' class='number'placeholder='skóre' min='0' value='0'></textarea></td>
+        <td class='trash' onclick='removeRow(this)'> <img src='/static/img/svg/delete.svg'></td>`        
     }
 
     let saveButton = document.querySelector("#save");
     for (let textarea of row.querySelectorAll("textarea")) {
         textarea.addEventListener("change",() => {
+            if (textarea.classList.contains("number")){
+                textarea.value = limitToNumber(textarea.value)
+            }
+
             sessionStorage.setItem(activeTable,JSON.stringify(fetchActiveTable()))
             saveButton.childNodes[1].src = "/static/img/svg/save.svg"
             saveButton.childNodes[3].innerHTML = "Uložit"
         })
     }
     table.appendChild(row)
-
-    // Mozna performance issue
 }
 
 function removeRow(element) {
-    element.parentElement.parentElement.remove()
+    element.parentElement.remove()
     if (document.querySelectorAll(".solver").length == 0) addPlayer();
 }
 
@@ -115,6 +119,9 @@ function decrement(element) {
     element.parentNode.querySelector('input[type=number]').stepDown();
 }
 
+function limitToNumber(text){
+    return text.replace(/[^\d]/g, "")
+}
 
 setTo("Cvrček")
 activeTable = "Cvrček";
