@@ -10,14 +10,14 @@ var categoryObject = new Object();
 
 function fillYear(year) {
      for (let item of categoryDict) {
-          var category = document.createElement("div");
-          category.textContent = item;
+          var category = document.createElement("a");
+          category.innerHTML = `<p>${item}</p>`;
           category.classList.add("category");
+          category.classList.add('button')
           // updating table to
           category.addEventListener("click", () => {
                save()
-               console.log("updating....")
-               updateTo(item);
+               setTo(item);
                activeTable = item;
           });
 
@@ -27,6 +27,6 @@ function fillYear(year) {
 }
 
 
-document.querySelectorAll(".category-container").forEach(year => {
+document.querySelectorAll("#category-container").forEach(year => {
      fillYear(year);
 });

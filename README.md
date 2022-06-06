@@ -1,6 +1,9 @@
 # Matematický klokan
 webová stránka pro jednoduché zadávání a vyhodnocování výsledků matematického klokana
 
+# TO-DO
+limit text area to numbers
+
 # Roadmap
 Vlastnosti projektu které bychom chtěli ve verzi 0.1
 - příjemné uživatelské rozhraní

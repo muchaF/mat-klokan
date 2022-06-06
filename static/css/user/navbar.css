@@ -1,32 +1,32 @@
 /* profile css */
-.profile{
+#profile{
     width: fit-content;
-    height: fit-content;
-    border-top: 2px solid #fff;
-    background-color: var(--green);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* margin-top: auto; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .elements {
-    display: flex;
+    width: fit-content;
     height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: var(--nav-element-margin);
 }
 
-.information > p {
-    margin-left: 0.5rem;
+#information {
+    margin: 0 var(--nav-element-margin);
+    padding: 1rem var(--nav-element-padding) 0;
+}
+
+#information > p{
+    color: #353535;
 }
 
 .logout{
     padding: 0.75rem;
-    margin: 0.75rem;
+    margin: var(--nav-element-margin);
     border-radius: 0.5rem;
     font-weight: 500;
+    width: calc(100% - 1.5rem - 2 * var(--nav-element-margin));
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,88 +42,51 @@
     margin-right: 0.5rem;
 }
 
-.elements{
-    margin-left: 1rem;
+/* Buttons */
+.button {
+    display: flex;
+    width: (100% - 2 * var(--nav-element-margin) - 2 * var(--nav-element-padding) );
+    height: 1rem;
+    border-radius: 1rem;
+    margin: var(--nav-element-margin);
+    padding: var(--nav-element-padding);
+    text-decoration: none;
+    cursor: pointer;
+    align-items: center;
+    transition: 150ms;
 }
 
-/* buttons */
+.button:hover {
+    background-color: var(--light-green);
+}
+
+.button > img{
+    height: 1.5rem;
+    margin-right: 1rem;
+}
+
+.button > p {
+    color: #353535;
+    font-weight: 600;
+}
+
 .control {
     background-color: var(--green);
     border-top: 2px solid #fff;
 }
 
-.save{
-    background-color: var(--green-highlight);
-    width: calc(100% - 4rem);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    user-select: none;
-    margin: 1rem;    
-    border-radius: 0.5rem;
-    padding: 0.8rem 1rem;
-}
-
-.save > p{
-    font-weight: 500;
-    color: #fff;
-}
-
-.save > img {
-    margin:0 0.5rem 0 0;
-}
-
-.save > *:last-child{
-    margin-left: 0;
-}
-
-.save:hover{
-    background-color: var(--green-light);
-}
-
 /* category */
-.year-container {
-    position: fixed;
-    min-width: fit-content;
+#category {
+    position: relative;
     width: 100%;
-    height: 100%;
-    margin-left: 5rem;
-    display: flex;
-    flex-direction: column;
-    background-color: #f0f0f0;
-}
-
-.year {
     min-width: fit-content;
     height: fit-content;
-    width: calc(100% - 2rem);
-    background-color: var(--green);
     margin-bottom: auto;
-    padding: 1rem;
-    border-bottom: 2px solid #fff;
-    font-weight: 500;
+    border-top: none;
+    border-bottom: #CCC 2px solid;
 }
-
-.category {
-    position: relative;
-    width: calc(100% - 2rem);
-    min-width: fit-content;
-    text-align: center;
-    height: 1rem;
-    padding: 0.8rem 1rem 0.8rem 1rem;
-    margin: 1rem 0 0 0;
-    border-radius: 0.5rem;
-    background-color: #fff;
-    cursor: pointer;
-    color: #000;
-}
-
-.year h1{
-    margin: 0 auto;
-    font-size: 1.75rem;
-    font-weight: 500;
-    width: fit-content;
+#category > h1{
+    border-bottom: #CCC 2px solid;
 }
 
 .selected{
@@ -132,8 +95,4 @@
 }
 .selected:hover{
     background-color: var(--green-light) !important;
-}
-
-.category:hover{
-    background-color: var(--main1);
 }

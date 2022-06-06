@@ -13,64 +13,60 @@
      </head>
      <body>
           <nav>
-               <div class="year">
+               <section id="category">
                     <h1>Ročník 2022</h1>
-                    <div class="category-container"></div>
-               </div>
-               <div class="control">
-                    <div class="save" id="save-button" onclick="IChange(this)">
+                    <div id="category-container"></div>
+               </section>
+               <section id="control">
+                    <a class="button" id="save" onclick="save()">
                          <img src="/static/img/svg/save.svg">
                          <p>Uložit</p>
-                    </div>
-                    <!-- <a class="save" href="/API/export/user" style="text-decoration: none;"> -->
-                    <a class="save" onclick="getExport()" style="text-decoration: none;">
+                    </a>
+                    <a class="button" onclick="getExport()">
                          <img src="/static/img/svg/download.svg">
                          <p>Exportovat</p>
                     </a>
-               </div>
-               <div class="profile">
-                    <div class="elements">
-                         <img class="profile-icon" src="/static/img/svg/account.svg">
-                         <div class="information">
-                              <p style="font-weight: 500; font-size: 1rem;">{{ name }}</p>
-                              <p style="font-weight: 300; font-size: 0.9rem;">{{ email }}</p>
-                         </div>
+               </section>
+               <section id="profile">
+                    <div id="information">
+                         <p style="font-weight: 500; font-size: 1rem;">{{ name }}</p>
+                         <p style="font-weight: 300; font-size: 0.9rem;">{{ email }}</p>
                     </div>
-                    <a class="logout" href="/API/logout" style="text-decoration: none;"><img src="/static/img/svg/logout.svg">Odhlasit</a>
-               </div>
+                    
+                    <a class="button" href="/API/logout">
+                         <img src="/static/img/svg/logout.svg">
+                         <p>Odhlasit</p>
+                    </a>
+               </section>
           </nav>
 
-          <div class="input-container hide">
-               <div class="subcontainer">
-                    <div class="best">
-                         <div class="best-nav">
-                              <h1 class="best-head"></h1>
-                              <p onclick="addPlayer()">Přidat</p>
-                         </div>
-                         <div class="students">
-                              <table class="studentList">
-                                   <tr class="header">
-                                        <td class="header">Jmeno</td>
-                                        <td class="header">Prijmeni</td>
-                                        <td class="header">Trida</td>
-                                        <td class="header">Datum narozeni</td>
-                                        <td class="header">Pocet bodu</td>
-                                        <td class="header"></td>
-                                   </tr>
-                              </table>
-                         </div>
+          <div id="main">
+               <div id="best" class="table">
+                    <div id="best-control">
+                         <h1>Nejlepší řešitelé</h1>
+                         <a onclick="addPlayer(null)" class="single button"><img src="/static/img/svg/add.svg" alt=""></a>
                     </div>
-                    <div class="tables">
-                         <div class="activeTable">
-                              <h1 class="scoreName">Kategorie</h1>
-                              <form class="scoreForm"></form>
-                         </div>
-                    </div>
+
+                    <table id="results">
+                         <tr id="navigation">
+                              <td>Jmeno</td>
+                              <td>Prijmeni</td>
+                              <td>Trida</td>
+                              <td>Datum narozeni</td>
+                              <td>Pocet bodu</td>
+                              <td></td>
+                         </tr>
+                    </table>
+               </div>
+               <div id="category-statistic" class="table">
+                    <h1 id="category-name">Kategorie</h1>
+                    <form id="result-form"></form>
                </div>
           </div>
-          <script src="/static/javascript/user/css.js"></script>
-          <script src="/static/javascript/user/category.js"></script>
-          <script src="/static/javascript/user/sync.js"></script>
-          <script src="/static/javascript/user/tables.js"></script>
+
+          <script src="/static/javascript/css.js"></script>
+          <script src="/static/javascript/category.js"></script>
+          <script src="/static/javascript/sync.js"></script>
+          <script src="/static/javascript/tables.js"></script>
      </body>
 </html>

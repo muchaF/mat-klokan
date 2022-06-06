@@ -5,15 +5,15 @@
      margin: 0;
      padding: 0;
      color: #fff;
-     transition: 100ms;
 }
 
 body{
      font-family: 'Roboto', 'sans-serif' ;
      display: flex;
      min-height: 100vh;
-     background-image: url("/static/img/svg/stacked-peaks-haikei.svg");
+     /* background-image: url("/static/img/svg/stacked-peaks-haikei.svg"); */
      background-size: cover;
+     background-color: #F6F6F6;
 }
 
 nav{
@@ -21,17 +21,28 @@ nav{
      display: flex;
      flex-direction: column;
      width: fit-content;
+     background-color: #FFF;
      height: 100vh;
-     background-image: url("/static/img/svg/low-poly-grid-haikei.svg");
-     background-size: cover;
+     /* background-image: url("/static/img/svg/low-poly-grid-haikei.svg"); */
+     /* background-size: cover; */
+     /* border-right: #CCC 1px solid; */
+     transition: none;
+}
+
+section{
+     border-top: 2px solid #CCC;
+}
+
+h1{
+     font-size: 1.25rem;
+     font-weight: 500;
+     padding: var(--nav-element-padding);
+     color: #555;
 }
 
 button{
      padding: 0.5rem 1rem;
      cursor: pointer;
-}
-input{
-     color: #000;
 }
 
 .hide{

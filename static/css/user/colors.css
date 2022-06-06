@@ -13,9 +13,14 @@
 
      /* release colors */
      --green:#28a125;
-     --green-highlight:#2bcf28;
      --green-light:#23b120;
      --green-lighter:#25bd22;
-     --green-alt:#1bb119;
-
+     
+     --edge: 1rem;
+     
+     --nav-element-margin: 0.5rem;
+     --nav-element-padding: 1rem;
+     --green-light:#62dd60;
+     --green-highlight:#5ce85a;
+     --light-green: #88f486;
 }
