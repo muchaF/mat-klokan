@@ -16,7 +16,7 @@ function fillYear(year) {
           category.classList.add('button')
           // updating table to
           category.addEventListener("click", () => {
-               save()
+               save(false)
                setTo(item);
                activeTable = item;
           });

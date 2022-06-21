@@ -9,6 +9,8 @@ import hashlib
 # export - x1fe2
 # sklenar@gslapanice.cz - z8af2
 
+# add session timeout to production
+
 server = Flask("mat klokan")
 
 server.config["SECRET_KEY"] = "38gS4_hDd4bX_k"
@@ -19,7 +21,7 @@ session_db = SQLAlchemy(server)
 server.config["SESSION_SQLALCHEMY"] = session_db
 sess = Session(server)
 
-supportedBrowser = ["chrome", "firefox", "edge", "safari"]
+supportedBrowser = ["chrome", "firefox", "edge", "safari"] # Filipu notas haze None -> fix nevim co tam je blbe
 
 all_categories = ["cvrcek", "benjamin", "junior", "kadet", "klokanek", "student"]
 

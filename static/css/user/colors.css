@@ -1,21 +1,4 @@
 :root{
-     --white:#fff;
-     --main1:#f0f0f0;
-     --main2:#cfcfcf;
-     --main3:#bbbbbb;
-     --main4:#a3a3a3;
-     
-     --contrast1:#808080;
-     --contrast2:#5c5c5c;
-
-     --highlight:#727272;
-     --text:#252525;
-
-     /* release colors */
-     --green:#28a125;
-     --green-light:#23b120;
-     --green-lighter:#25bd22;
-     
      --edge: 1rem;
      
      --nav-element-margin: 0.5rem;

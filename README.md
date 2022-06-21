@@ -1,8 +1,7 @@
 # Matematický klokan
 webová stránka pro jednoduché zadávání a vyhodnocování výsledků matematického klokana
 
-# TO-DO
-limit text area to numbers
+Petr Šebela, Filip Mucha, Filip Nyahay
 
 # Roadmap
 Vlastnosti projektu které bychom chtěli ve verzi 0.1
@@ -13,9 +12,34 @@ Vlastnosti projektu které bychom chtěli ve verzi 0.1
 
 - lidi s top 3 bodama
 
-# API
+# Design
+## Login page
+![login](https://cdn.discordapp.com/attachments/687780138359848963/988784224452636732/unknown.png)
 
-template pro json
+## User interface
+- intuitivní a jednoduché na používání
+
+![UI](https://cdn.discordapp.com/attachments/687780138359848963/988816636029050881/unknown.png)
+
+
+# API dokumentace
+## Endpoints
+- /API/login [POST]
+    - slouží k autentizaci a autorizaci uživatele
+    - přesměruje na /dashboard
+
+- /API/logout [POST, GET]
+    - POST / GET - je jedno jaka metoda se pouzije (jsou definovany kvuli kompatibilite)
+    - odhlasi aktualne prislaseneho uzivatele a opsle redirect na prihlasovani stranku
+- /API/sync [POST, GET]
+    - POST - nahravani dat na server
+    - GET - ziskani dat ze serveru
+- /API/export
+    - chranena permisemi uzivatele
+- /API/full_export
+    - chranena permisemi uzivatela
+
+## Format dat posilany pres API
 ```json
 {
     "category":"Cvrček",
@@ -24,7 +48,7 @@ template pro json
                 "name":"Marek",
                 "surname":"Polívka",
                 "birthday":"2003-09-24",
-                "class":"V2B",
+                "class":"V3B",
                 "score": "102"                
         }
     },

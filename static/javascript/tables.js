@@ -1,8 +1,5 @@
 var activeTable;
 
-
-
-
 function setTo(table) {
     pull(table).then((response) => {
         // Clearing table of previous data
@@ -53,7 +50,7 @@ function addStats(name, maxScore) {
                 rowdiv.appendChild(container);
                 index --;
             }
-            if (index < 0 & s < columns) {
+            if (index < 0 & s < columns - 1) {
                 let filldiv = document.createElement("div")
                 filldiv.classList.add("fragment")
                 rowdiv.appendChild(filldiv)                    
@@ -106,17 +103,7 @@ function addSolver(student) {
 
 function removeRow(element) {
     element.parentElement.remove()
-    if (document.querySelectorAll(".solver").length == 0) addPlayer();
-}
-
-
-function add(element) {
-    element.parentNode.querySelector('input[type=number]').stepUp();
-}
-
-
-function decrement(element) {
-    element.parentNode.querySelector('input[type=number]').stepDown();
+    if (document.querySelectorAll(".solver").length == 0) addSolver(null);
 }
 
 function limitToNumber(text){

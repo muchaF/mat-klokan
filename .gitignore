@@ -1,5 +1,5 @@
-
 __pycache__
 .vscode
-*.sqlite3
+data_test.sqlite3
+session_db.sqlite3
 export/

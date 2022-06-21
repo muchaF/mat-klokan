@@ -21,27 +21,6 @@
     color: #353535;
 }
 
-.logout{
-    padding: 0.75rem;
-    margin: var(--nav-element-margin);
-    border-radius: 0.5rem;
-    font-weight: 500;
-    width: calc(100% - 1.5rem - 2 * var(--nav-element-margin));
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--green-highlight);
-}
-
-.logout:hover{
-    background-color: var(--green-light);
-    cursor: pointer;
-}
-
-.logout img {
-    margin-right: 0.5rem;
-}
-
 /* Buttons */
 .button {
     display: flex;
@@ -67,7 +46,7 @@
 
 .button > p {
     color: #353535;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .control {
@@ -93,6 +72,30 @@
     background-color: var(--green-highlight);
     color: #fff;
 }
+
+.selected > p {
+    color: #fff;
+}
 .selected:hover{
     background-color: var(--green-light) !important;
+}
+
+#header{
+    display: flex;
+    align-items: center;
+}
+
+
+/* testing */
+#header > img{
+    margin-left: auto;
+    height: 2.5rem;
+    width: 2.5rem;
+    pointer-events: all;
+    cursor: pointer;
+    transition: 100ms;
+}
+
+#header > img:hover{
+    transform: rotate(180deg);
 }

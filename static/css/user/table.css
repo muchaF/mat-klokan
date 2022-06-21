@@ -19,14 +19,14 @@
 
 #best-control{
      padding: var(--nav-element-margin);
-     border-bottom: #DDD 2px solid;
+     /* border-bottom: #DDD 2px solid; */
      display: flex;
      align-items: center;
 }
 
 /* button modification */
 #best-control > .button {
-     background-color: var(--green);
+     background-color: var(--green-light);
      margin-left: auto;
      box-sizing: border-box;
 }
@@ -64,13 +64,9 @@ table{
 }
 
 .solver{
-     border-top: 2px solid #ccc;
-     padding: 2px;
+     border-top: 1px solid #ccc;
+     padding: 1px;
 }
-
-/* .solver:last-child > td{
-     padding-bottom: 0.1rem;
-} */
 
 
 textarea{
@@ -122,6 +118,49 @@ textarea::placeholder{
 .trash:hover{
      opacity: 0.5;
 }
+
+form div{
+     display: flex;
+}
+
+form div:first-child .fragment{
+     border-top: 1px rgba(0,0,0,0.25) solid;
+}
+
+form div .fragment:last-child{
+     border-right: none;
+}
+     
+.fragment{
+     border: rgba(0,0,0,0.25) solid;
+     border-width: 0 1px 0px 0px;
+     padding: 0.25rem;
+}
+.fragment:hover{
+     background-color: #F0F0F0;
+}
+     
+.fragment p{
+     width: 2rem;
+     padding: 0 0.5rem;
+     border-radius: 0.75rem;
+     text-align: center;
+     color: rgba(0,0,0,0.65);
+     /* border: 1px solid rgba(0,0,0,0.16); */
+     /* background-color: rgba(0,0,0,0.65); */
+     line-height: 34px;
+}
+
+.fragment textarea{
+     padding-bottom: 4px;
+     margin-right: 0.5rem;
+     border-bottom: 1px solid rgba(0,0,0,0.23);
+}
+
+form div:last-of-type div{
+     width: 20%;
+}
+
 
 /* debug */
 

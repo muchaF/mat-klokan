@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+
 :root{
      --board: #f8f8f8;
      --menu: #24557a;
@@ -11,6 +12,9 @@
      --submit: #1a7a18;
      --submitHigh: #1e971c;
      --submitDark: #146413;
+
+     --green-light:#62dd60;
+     --green-highlight:#5ce85a;
 }
 
 *{
@@ -28,7 +32,7 @@ body{
      justify-content: center;
      flex-direction: column;
      background-color: var(--menu);
-     background-image: url('../img/svg/greenBackground.svg');
+     background-image: url('../img/svg/blob-scene-haikei.svg');
      background-size: cover;
      background-position: center center;
      background-attachment: fixed;
@@ -46,18 +50,21 @@ form{
      flex-direction: column;
      align-items: center;
      justify-content: center;
-     width: 18%;
      min-width: 200px;
-     padding: 2rem 1.5rem;
+     width: calc(20vw + 6rem);
+     padding: 2rem 3rem;
      border-radius: 0.5rem;
      color: var(--text);
      margin-bottom: 20vh;
      background-color: var(--form);
+     box-sizing: border-box;
+     box-shadow: 0 3px 3px rgba(0,0,0,0.16), 0 3px 3px rgba(0,0,0,0.23);
+     overflow: hidden;
 }
 
 #submit{
-     background-color: var(--submit);
-     /* border-color: var(--submit); */
+     background-color: var(--green-light);
+     border-color: var(--submit);
      border: none;
      color: #FFF;
      cursor: pointer;
@@ -68,7 +75,7 @@ form{
 }
 
 #submit:hover{
-     background-color: var(--submitHigh);
+     background-color: #5ce85a;
 }
 
 .item{
