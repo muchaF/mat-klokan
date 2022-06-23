@@ -16,7 +16,7 @@ Vlastnosti projektu které bychom chtěli ve verzi 0.1
 
 # Design
 ## Login page
-- jednodchá, čistá a bez rušivích prvků
+- jednodchá, čistá a bez rušivých prvků
 ![login](https://cdn.discordapp.com/attachments/687780138359848963/988784224452636732/unknown.png)
 
 ## User interface
